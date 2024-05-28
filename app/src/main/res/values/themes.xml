@@ -13,4 +13,57 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Teks buat deskripsi bagian register,login, welcome -->
+    <style name="information_desc_welcome">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">16sp</item>
+       <item name="android:layout_marginStart">33dp</item>
+        <item name="android:layout_marginEnd">33dp</item>
+    </style>
+
+    <!-- Teks buat judul deskripsi bagian register,login, welcome -->
+    <style name="information_title_welcome">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_teal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">33dp</item>
+        <item name="android:layout_marginEnd">33dp</item>
+    </style>
+
+    <!-- Teks buat Button bagian register,login, welcome -->
+    <style name="large_btn">
+        <item name="android:layout_width">335dp</item>
+        <item name="android:layout_height">69dp</item>
+    </style>
+    
+    <style name="tv_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/dark_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_marginStart">34dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="edit_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">33dp</item>
+        <item name="android:layout_marginEnd">33dp</item>
+    </style>
+
+    <style name="title_app">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/title_app</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

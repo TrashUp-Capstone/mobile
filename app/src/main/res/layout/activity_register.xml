@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterActivity">
+
+    <TextView
+        android:id="@+id/register_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/title"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/register_logo"
+        android:layout_width="235dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_title" />
+
+
+    <TextView
+        android:id="@+id/title_register"
+        style="@style/information_title_welcome"
+        android:layout_marginTop="54dp"
+        android:text="@string/register_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_logo" />
+
+    <TextView
+        android:id="@+id/desc_register"
+        style="@style/information_desc_welcome"
+        android:text="@string/desc_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_register" />
+
+    <Button
+        android:id="@+id/btn_create_user"
+        style="@style/large_btn"
+        android:layout_marginTop="64dp"
+        android:text="@string/create_as_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc_register" />
+
+    <Button
+        android:id="@+id/btn_create_driver"
+        style="@style/large_btn"
+        android:layout_marginTop="38dp"
+        android:text="@string/create_as_driver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_user" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
