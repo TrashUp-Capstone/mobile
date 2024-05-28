@@ -79,118 +79,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="Add sign in features">
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/metadata.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/sources/org/gradle/accessors/dm/LibrariesForLibs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/b34ce838b311e55d9c4ad7cd90f08b867a190198/sources/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxDatastoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$MaterialLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxDatastoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$MaterialLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/metadata.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/sources/org/gradle/accessors/dm/LibrariesForLibs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/d53fd3fd754c30ff713c38e758492f14089ec0d4/sources/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxDatastoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxCoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxDatastoreLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxEspressoLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleLivedataLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxLifecycleViewmodelLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationFragmentLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$AndroidxNavigationUiLibraryAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$BundleAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsKotlinPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$JetbrainsPluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$PluginAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$VersionAccessors.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/metadata.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/sources/org/gradle/accessors/dm/LibrariesForLibs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.6/dependencies-accessors/f0b6b818f4f676d2210c6c6e687f9af0c8216c9b/sources/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -410,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716862705702</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add sign in features">
+      <option name="closed" value="true" />
+      <created>1716863412317</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716863412317</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
