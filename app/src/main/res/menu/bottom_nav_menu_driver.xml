@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_home_driver"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_history_driver"
+        android:icon="@drawable/ic_history_24"
+        android:title="@string/history" />
+
+    <item
+        android:id="@+id/navigation_pickup_driver"
+        android:icon="@drawable/ic_pick_up_24"
+        android:title="@string/pick_up" />
+
+    <item
+        android:id="@+id/navigation_profile_driver"
+        android:icon="@drawable/ic_account_circle_24"
+        android:title="@string/profile" />
+</menu>

@@ -32,4 +32,29 @@
     <string name="log_in_as_driver">Log In As Driver</string>
     <string name="log_in_as_user">Log In As User</string>
     <string name="error_empty">Field must not be empty</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="history">History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="view_profile">View Profile</string>
+    <string name="number_plat">B 1234 GOR</string>
+    <string name="number">0812++++++++</string>
+    <string name="your_name">David Suryana</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="available_pickup">Available Pickup</string>
+    <string name="view_all">View All</string>
+    <string name="pick_up_location">Pick Up Location</string>
+    <string name="cancel">Cancel</string>
+    <string name="chat_user">Chat User</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="help_center">Help Center</string>
+    <string name="log_out">Log Out</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="insert_name">Insert Name</string>
+    <string name="save_information">Save Information</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
 </resources>
