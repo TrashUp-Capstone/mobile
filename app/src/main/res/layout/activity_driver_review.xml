@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_vertical"
+    app:cardCornerRadius="20dp"
+    android:elevation="20dp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/done_pickup_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/done_pick_up"
+            android:textColor="@color/green_secondary_color_1"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date_pickup_done_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/date_done_pickup"
+            android:textAlignment="textEnd"
+            android:textColor="@color/dark_grey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/user_photo_done_pickup"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginVertical="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/done_pickup_tv" />
+
+        <TextView
+            android:id="@+id/name_available_pickup_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/your_name"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
+            app:layout_constraintTop_toTopOf="@+id/user_photo_done_pickup" />
+
+        <TextView
+            android:id="@+id/number_user_done_pickup_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/number"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
+            app:layout_constraintTop_toBottomOf="@+id/name_available_pickup_tv" />
+
+        <TextView
+            android:id="@+id/weight_waste_available_pickup_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/weight_waste"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
+            app:layout_constraintTop_toBottomOf="@+id/number_user_done_pickup_tv" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

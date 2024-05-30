@@ -50,6 +50,9 @@ class ProfileDriverFragment : Fragment() {
             btnLogOutDriver.setOnClickListener {
                 viewModel.deleteSession()
             }
+            btnResetDriverPw.setOnClickListener {
+                startActivity(Intent(requireActivity(), ChangePasswordActivity::class.java))
+            }
         }
 
     }

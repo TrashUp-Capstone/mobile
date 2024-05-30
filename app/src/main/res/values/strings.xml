@@ -57,4 +57,16 @@
     <string name="insert_name">Insert Name</string>
     <string name="save_information">Save Information</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="waiting_for_pick_up">Waiting for Pick Up</string>
+    <string name="date_available_pickup">22 \n May</string>
+    <string name="weight_waste">10kg of Waste</string>
+    <string name="your_address">Jl. Kartini No. 2 Blok C1, Kec. Cipayung, Kota Depok, 11234</string>
+    <string name="done_pick_up">Done Pick Up</string>
+    <string name="date_done_pickup">22 May 2024</string>
+    <string name="change_password">Change Password</string>
+    <string name="insert_your_email_and_password">Please insert your email and password</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="detail">Detail</string>
+    <string name="accept">Accept</string>
 </resources>
