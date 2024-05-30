@@ -11,4 +11,7 @@
     <color name="dark_teal">#3B7F7F</color>
     <color name="dark_grey">#797777</color>
     <color name="dark_title">#404040</color>
+    <color name="red">#F52E2E</color>
+    <color name="white_bg">#F6F9FF</color>
+    <color name="green_secondary_color_1">#22B07D</color>
 </resources>

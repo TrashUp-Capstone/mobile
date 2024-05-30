@@ -31,6 +31,7 @@ class LoginDriverActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        supportActionBar?.hide()
 
         binding.apply {
             loginBtn.setOnClickListener {
@@ -41,7 +42,12 @@ class LoginDriverActivity : AppCompatActivity() {
                 }
                 else {
                     viewModel.saveSession(UserModel(token = "berhasilmasuk", isUser = false, isDriver = true))
-                    startActivity(Intent(this@LoginDriverActivity, HomeActivityDriver::class.java))
+                    startActivity(Intent(this@LoginDriverActivity, HomeActivityDriver::class.java)
+                        .apply {
+                            // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
+                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        })
+                    finish()
                 }
             }
         }

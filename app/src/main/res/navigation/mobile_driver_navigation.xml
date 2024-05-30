@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_driver_navigation"
+    app:startDestination="@id/navigation_home_driver">
+
+    <fragment
+        android:id="@+id/navigation_home_driver"
+        android:name="com.dicoding.trashup.ui.driver.home.HomeDriverFragment"
+        android:label="fragment_home_driver"
+        tools:layout="@layout/fragment_home_driver" />
+    <fragment
+        android:id="@+id/navigation_history_driver"
+        android:name="com.dicoding.trashup.ui.driver.history.HistoryDriverFragment"
+        android:label="fragment_history_driver"
+        tools:layout="@layout/fragment_history_driver" />
+    <fragment
+        android:id="@+id/navigation_pickup_driver"
+        android:name="com.dicoding.trashup.ui.driver.pickup.PickupDriverFragment"
+        android:label="fragment_pickup_driver"
+        tools:layout="@layout/fragment_pickup_driver" />
+    <fragment
+        android:id="@+id/navigation_profile_driver"
+        android:name="com.dicoding.trashup.ui.driver.profile.ProfileDriverFragment"
+        android:label="fragment_profile_driver"
+        tools:layout="@layout/fragment_profile_driver" />
+</navigation>
