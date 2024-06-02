@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_bg"
     tools:context=".ui.driver.home.HomeDriverFragment">
 
     <androidx.cardview.widget.CardView
@@ -47,7 +48,7 @@
                 android:layout_width="91dp"
                 android:layout_height="96dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/driver_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_driver_welcome" />
@@ -96,7 +97,7 @@
                 android:id="@+id/btn_view_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="15dp"
                 android:backgroundTint="@color/white"
@@ -141,12 +142,11 @@
         app:layout_constraintTop_toBottomOf="@+id/card_profile_welcome" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_available_pick_up"
+        android:layout_marginTop="10dp"
+        android:id="@+id/list_available_home_rv"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="15dp"
         android:layout_height="0dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

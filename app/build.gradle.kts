@@ -14,7 +14,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "BASE_URL", properties["baseUrl"].toString())
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -64,5 +65,16 @@ dependencies {
 
     // Import card view
     implementation (libs.cardview)
+
+    // Import Livedata
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v270)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v270)
+    implementation(libs.androidx.activity.ktx)
+    // Import Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    // Import Glide
+    implementation(libs.glide)
 
 }

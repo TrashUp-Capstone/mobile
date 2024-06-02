@@ -40,7 +40,17 @@ class HistoryDriverFragment : Fragment() {
             if (viewPager != null) {
                 TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                     tab.text =  "Tab ${position + 1}"
+                    if (position == 0) {
+                        tab.text = getString(R.string.in_process)
+                    } else {
+                        tab.text = getString(R.string.activity)
+                    }
                 }.attach()
+
+                tabLayout.setTabTextColors(
+                    resources.getColor(R.color.dark_grey, null),
+                    resources.getColor(R.color.light_teal, null)
+                )
             }
         }
     }

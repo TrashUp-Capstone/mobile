@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_gravity="center_vertical"
     app:cardCornerRadius="20dp"
-    android:elevation="20dp"
+    android:elevation="30dp"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginVertical="15dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +21,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/done_pick_up"
             android:textColor="@color/green_secondary_color_1"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,29 +35,30 @@
             android:text="@string/date_done_pickup"
             android:textAlignment="textEnd"
             android:textColor="@color/dark_grey"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/user_photo_done_pickup"
-            android:layout_width="63dp"
-            android:layout_height="63dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginVertical="16dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/photo_profile"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/done_pickup_tv" />
 
         <TextView
-            android:id="@+id/name_available_pickup_tv"
+            android:id="@+id/name_done_pickup_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/your_name"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
             app:layout_constraintTop_toTopOf="@+id/user_photo_done_pickup" />
@@ -66,9 +69,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/number"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
-            app:layout_constraintTop_toBottomOf="@+id/name_available_pickup_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/name_done_pickup_tv" />
 
         <TextView
             android:id="@+id/weight_waste_available_pickup_tv"
@@ -76,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/weight_waste"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/user_photo_done_pickup"
             app:layout_constraintTop_toBottomOf="@+id/number_user_done_pickup_tv" />
 
