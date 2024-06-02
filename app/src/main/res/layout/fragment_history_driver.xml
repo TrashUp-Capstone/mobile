@@ -14,7 +14,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabTextColor="@color/dark_grey" />
+        app:tabTextColor="@color/dark_grey"
+        app:tabIndicatorColor="@color/light_teal"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorAnimationMode="elastic"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_history"
