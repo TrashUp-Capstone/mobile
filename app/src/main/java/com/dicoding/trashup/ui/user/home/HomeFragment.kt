@@ -38,9 +38,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-        binding.btnLogout.setOnClickListener {
-            viewModel.deleteSession()
-        }
         return root
     }
 
