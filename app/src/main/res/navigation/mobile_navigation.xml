@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_home_user">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_home_user"
         android:name="com.dicoding.trashup.ui.user.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.dicoding.trashup.ui.user.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_history_user"
+        android:name="com.dicoding.trashup.ui.user.history.HistoryUserFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history_user" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.dicoding.trashup.ui.user.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_cart_user"
+        android:name="com.dicoding.trashup.ui.user.cart.CartUserFragment"
+        android:label="@string/title_cart"
+        tools:layout="@layout/fragment_cart_user" />
+
+    <fragment
+        android:id="@+id/navigation_profile_user"
+        android:name="com.dicoding.trashup.ui.user.profile.ProfileUserFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile_user" />
 </navigation>

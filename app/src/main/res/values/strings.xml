@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TrashUp</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_history">History</string>
     <string name="title_notifications">Notifications</string>
     <string name="description">Trash Up is your easy-to-use app for responsible waste collection. Collect waste, reduce landfills, and earn points for amazing prizes.</string>
     <string name="title">TrashUP!</string>
@@ -69,4 +69,6 @@
     <string name="current_password">Current Password</string>
     <string name="detail">Detail</string>
     <string name="accept">Accept</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
 </resources>

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home_driver"
+        android:id="@+id/navigation_home_user"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
@@ -14,7 +14,7 @@
     <item
         android:id="@+id/navigation_cart_user"
         android:icon="@drawable/ic_cart_24"
-        android:title="@string/pick_up" />
+        android:title="@string/cart" />
 
     <item
         android:id="@+id/navigation_profile_user"
