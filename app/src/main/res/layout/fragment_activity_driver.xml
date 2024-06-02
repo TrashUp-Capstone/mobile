@@ -7,10 +7,11 @@
     tools:context=".ui.driver.history.activity.ActivityDriverFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/white_bg"
         android:id="@+id/activity_driver_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="22dp"
+        android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

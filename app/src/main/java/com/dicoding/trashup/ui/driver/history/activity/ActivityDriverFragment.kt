@@ -5,7 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
+import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.databinding.FragmentActivityDriverBinding
+import com.dicoding.trashup.databinding.FragmentHistoryDriverBinding
+import com.dicoding.trashup.databinding.FragmentPickupDriverBinding
+import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
+import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -13,20 +20,34 @@ import com.dicoding.trashup.R
  * create an instance of this fragment.
  */
 class ActivityDriverFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentActivityDriverBinding? = null
+    private val binding get() = _binding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_activity_driver, container, false)
+        _binding = FragmentActivityDriverBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val activity = activity as HomeActivityDriver
+        val activityHistoryViewModel =activity.activityHistoryDriverViewModel
+        activityHistoryViewModel.listPickup.observe(viewLifecycleOwner) {
+            setListActivityHistoryData(it)
+        }
+
+        val layoutManager = LinearLayoutManager(requireActivity())
+        binding?.activityDriverRv?.layoutManager = layoutManager
+    }
+
+    private fun setListActivityHistoryData(reviewHistoryActivity: List<ResponseItem>?) {
+        val adapter = ReviewHistoryAdapter()
+        adapter.submitList(reviewHistoryActivity)
+        binding?.activityDriverRv?.adapter = adapter
     }
 }
