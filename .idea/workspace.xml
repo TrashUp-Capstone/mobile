@@ -158,7 +158,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="Add Register features, and driver features (profile, history, home, pickup page)" />
+    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="Add Register features, and driver features (profile, history, home, pickup page)">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/dashboard/DashboardFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/dashboard/DashboardViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/notifications/NotificationsFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/notifications/NotificationsViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -265,7 +273,7 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "userdev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Developer/Bangkit/a352-android-intermediate-labs-main/firebase/LatihanFirebaseChat (starter) - lat",
     "settings.editor.selected.configurable": "editor.preferences.import",
