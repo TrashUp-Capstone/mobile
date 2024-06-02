@@ -7,6 +7,7 @@
     app:cardCornerRadius="20dp"
     android:elevation="30dp"
     android:layout_marginTop="15dp"
+    android:layout_marginHorizontal="10dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +22,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/waiting_for_pick_up"
             android:textColor="#E28173"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/your_name"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/user_photo_available_pickup"
             app:layout_constraintTop_toTopOf="@+id/user_photo_available_pickup" />
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/weight_waste"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/user_photo_available_pickup"
             app:layout_constraintTop_toBottomOf="@+id/name_available_pickup_tv" />
 
@@ -83,7 +84,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="80dp"
             android:text="@string/your_address"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_photo_available_pickup" />
@@ -93,8 +94,9 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="14dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:text="@string/detail"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address_user_available_pickup" />
@@ -105,9 +107,11 @@
             android:layout_height="50dp"
             android:layout_marginHorizontal="14dp"
             android:layout_marginVertical="15dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/accept"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/detail_btn"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address_user_available_pickup" />
 
 
