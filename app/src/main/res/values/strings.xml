@@ -77,4 +77,11 @@
     <string name="title_history">History</string>
     <string name="title_cart">Cart</string>
     <string name="title_profile">Profile</string>
+    <string name="hi_message">Hi, James!</string>
+    <string name="your_points">Your Points</string>
+    <string name="points">100000</string>
+    <string name="reedem_points">Reedem Points</string>
+    <string name="recent_waste">Recent Waste</string>
+    <string name="add_waste">Add Waste</string>
+    <string name="confirm">Confirm</string>
 </resources>

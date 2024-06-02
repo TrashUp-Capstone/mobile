@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home_user"
         android:name="com.dicoding.trashup.ui.user.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_user" />
 
     <fragment
         android:id="@+id/navigation_history_user"

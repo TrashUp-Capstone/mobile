@@ -7,25 +7,46 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dicoding.trashup.R
+import com.dicoding.trashup.databinding.FragmentHistoryUserBinding
+import com.dicoding.trashup.ui.driver.history.SectionsPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HistoryUserFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HistoryUserFragment()
-    }
 
+    private var _binding: FragmentHistoryUserBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: HistoryUserViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_history_user, container, false)
+        _binding = FragmentHistoryUserBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val viewPager = binding.viewPagerHistory
+        val tabLayout = binding.historyTabs
+
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        viewPager.adapter = sectionsPagerAdapter
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = "Tab ${position + 1}"
+            if (position == 0) {
+                tab.text = getString(R.string.in_process)
+            } else {
+                tab.text = getString(R.string.activity)
+            }
+        }.attach()
+
+        tabLayout.setTabTextColors(
+            resources.getColor(R.color.dark_grey, null),
+            resources.getColor(R.color.light_teal, null)
+        )
     }
 }

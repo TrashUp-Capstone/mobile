@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.trashup.databinding.FragmentHomeBinding
+import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.main.MainViewModel
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeUserBinding? = null
     private val viewModel by activityViewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
@@ -31,13 +31,12 @@ class HomeFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeUserBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+
+
         return root
     }
 
