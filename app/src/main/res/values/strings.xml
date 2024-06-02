@@ -74,4 +74,7 @@
     <string name="detail_order">Detail Order</string>
     <string name="other_descriptions">Other Descriptions</string>
     <string name="nothing">Nothing</string>
+    <string name="title_history">History</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
 </resources>
