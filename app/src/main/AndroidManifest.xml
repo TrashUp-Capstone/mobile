@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TrashUp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.driver.pickup.DetailPickUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.driver.profile.ChangePasswordActivity"
             android:exported="false" />
         <activity

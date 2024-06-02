@@ -17,6 +17,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityHomeDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
+import com.dicoding.trashup.ui.driver.history.activity.HistoryViewModel
+import com.dicoding.trashup.ui.driver.pickup.PickUpViewModel
 import com.dicoding.trashup.ui.welcome.WelcomeActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,6 +27,9 @@ class HomeActivityDriver : AppCompatActivity() {
     private val viewModel by viewModels<HomeDriverViewModel> {
         ViewModelFactory.getInstance(this)
     }
+    val availablePickupViewModel by viewModels<PickUpViewModel>()
+    val activityHistoryDriverViewModel by viewModels<HistoryViewModel>()
+
     private lateinit var binding: ActivityHomeDriverBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +62,6 @@ class HomeActivityDriver : AppCompatActivity() {
 //        )
        //  setupActionBarWithNavController(navController)
         navView.setupWithNavController(navController)
-
     }
+
 }

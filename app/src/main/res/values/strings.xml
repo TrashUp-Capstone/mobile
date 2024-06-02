@@ -69,4 +69,9 @@
     <string name="current_password">Current Password</string>
     <string name="detail">Detail</string>
     <string name="accept">Accept</string>
+    <string name="in_process">In Process</string>
+    <string name="activity">Activity</string>
+    <string name="detail_order">Detail Order</string>
+    <string name="other_descriptions">Other Descriptions</string>
+    <string name="nothing">Nothing</string>
 </resources>
