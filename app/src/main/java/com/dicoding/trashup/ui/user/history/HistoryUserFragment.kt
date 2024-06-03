@@ -32,7 +32,7 @@ class HistoryUserFragment : Fragment() {
         val viewPager = binding.viewPagerHistory
         val tabLayout = binding.historyTabs
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        val sectionsPagerAdapter = SectionUserPagerAdapter(this)
         viewPager.adapter = sectionsPagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
