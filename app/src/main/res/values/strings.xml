@@ -84,4 +84,5 @@
     <string name="recent_waste">Recent Waste</string>
     <string name="add_waste">Add Waste</string>
     <string name="confirm">Confirm</string>
+    <string name="ic_coin_desc">Icon points</string>
 </resources>
