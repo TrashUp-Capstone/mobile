@@ -87,17 +87,7 @@
           <theme>@style/Theme.TrashUp</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml">
-        <config>
-          <theme>@style/Theme.TrashUp</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_history_driver.xml">
-        <config>
-          <theme>@style/Theme.TrashUp</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
         <config>
           <theme>@style/Theme.TrashUp</theme>
         </config>
@@ -108,11 +98,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_maps_activity.xml">
-        <config>
-          <theme>@style/Theme.TrashUp</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml">
         <config>
           <theme>@style/Theme.TrashUp</theme>
         </config>
@@ -153,7 +138,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="Add Register features, and driver features (profile, history, home, pickup page)" />
+    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="merging">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +149,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Access\.android\avd\Pixel_6_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Access\.android\avd\Pixel_7_API_34_1.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -261,7 +248,7 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "Rebasing main",
+    "git-widget-placeholder": "userdev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Ferdi/Dicoding/Submission Intermediate/MyStoryApp",
     "settings.editor.selected.configurable": "editor.preferences.import",
@@ -420,6 +407,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add sign in features" />
     <MESSAGE value="Add Register features, and driver features (profile, history, home, pickup page)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Register features, and driver features (profile, history, home, pickup page)" />
+    <MESSAGE value="merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="merging" />
   </component>
 </project>
