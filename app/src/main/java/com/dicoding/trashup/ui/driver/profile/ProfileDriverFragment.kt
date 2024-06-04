@@ -54,6 +54,5 @@ class ProfileDriverFragment : Fragment() {
                 startActivity(Intent(requireActivity(), ChangePasswordActivity::class.java))
             }
         }
-
     }
 }

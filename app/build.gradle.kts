@@ -76,5 +76,9 @@ dependencies {
     implementation(libs.logging.interceptor)
     // Import Glide
     implementation(libs.glide)
+    // Import CameraX
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
 
 }
