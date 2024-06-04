@@ -99,4 +99,5 @@
     <string name="other_description_label">Other Description</string>
     <string name="submit">Submit</string>
     <string name="hint_other_desc">Insert something</string>
+    <string name="status_waiting">Waiting for Pick-up</string>
 </resources>

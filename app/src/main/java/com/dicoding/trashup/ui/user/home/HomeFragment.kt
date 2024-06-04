@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
 
         binding.btnAddWaste.setOnClickListener {
             startCamera()
-            navigateToCart()
         }
 
         return binding.root
