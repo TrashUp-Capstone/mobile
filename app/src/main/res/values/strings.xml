@@ -100,4 +100,6 @@
     <string name="submit">Submit</string>
     <string name="hint_other_desc">Insert something</string>
     <string name="status_waiting">Waiting for Pick-up</string>
+    <string name="waste_name">Waste name</string>
+    <string name="waste_weight">10 Kg</string>
 </resources>
