@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
 import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
 import com.dicoding.trashup.databinding.HomeAvailableReviewBinding
+import com.dicoding.trashup.formatDate
 import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 
 class HomeAvailableAdapter : ListAdapter<ResponseItem, HomeAvailableAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -34,11 +36,12 @@ class HomeAvailableAdapter : ListAdapter<ResponseItem, HomeAvailableAdapter.MyVi
     }
 
     class MyViewHolder(val binding: HomeAvailableReviewBinding) : RecyclerView.ViewHolder(binding.root){
+        val context = binding.root.context
         fun bind(review: ResponseItem) {
-            binding.dateAvalaiablePickupTv.text = review.createdAt
+            binding.dateAvalaiablePickupTv.text = formatDate(review.createdAt)
             binding.nameAvailablePickupTv.text = review.name
             binding.addressUserAvailablePickup.text = review.address
-            binding.weightWasteAvailablePickupTv.text = review.weightWaste.toString()
+            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.weightWaste.toString().toDouble())
             Glide.with(binding.root)
                 .load("${review.avatar}")
                 .apply(RequestOptions().transform(CircleCrop()))

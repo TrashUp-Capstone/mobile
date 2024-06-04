@@ -6,24 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
 import com.dicoding.trashup.databinding.FragmentHomeDriverBinding
-import com.dicoding.trashup.databinding.FragmentPickupDriverBinding
-import com.dicoding.trashup.ui.driver.pickup.DetailPickUpActivity
-import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
+import com.dicoding.trashup.ui.driver.pickup.PickupDriverFragment
+import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeDriverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeDriverFragment : Fragment() {
 
     private var _binding: FragmentHomeDriverBinding? = null
@@ -47,8 +38,26 @@ class HomeDriverFragment : Fragment() {
             setListPickupData(it)
         }
 
+        availablePickupViewmodel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+
         val layoutManager = LinearLayoutManager(requireActivity())
         binding?.listAvailableHomeRv?.layoutManager = layoutManager
+        binding?.btnViewProfile?.setOnClickListener {
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_home_driver, true)
+                .build()
+            activity.navController.navigate(R.id.navigation_profile_driver, null, navOptions)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding?.progressBar?.visibility = View.VISIBLE
+        } else {
+            binding?.progressBar?.visibility = View.INVISIBLE
+        }
     }
 
     private fun setListPickupData(reviewAvailablePickup: List<ResponseItem>) {
@@ -59,6 +68,7 @@ class HomeDriverFragment : Fragment() {
         adapter.setOnItemClickCallback(object : HomeAvailableAdapter.OnItemClickCallback{
             override fun onItemClicked(data: ResponseItem) {
                 val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
+                intentToDetail.putExtra(EXTRA_ID, data.id)
                 startActivity(intentToDetail)
             }
         })
@@ -72,6 +82,12 @@ class HomeDriverFragment : Fragment() {
         activity?.window?.decorView?.systemUiVisibility = 0
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-
+    companion object {
+        private const val EXTRA_ID = "extra_id"
+    }
 }

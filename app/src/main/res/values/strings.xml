@@ -85,8 +85,8 @@
     <string name="add_waste">Add Waste</string>
     <string name="confirm">Confirm</string>
     <string name="ic_coin_desc">Icon points</string>
-    <string name="card_points">200 Points</string>
-    <string name="card_weight">10Kg of Waste</string>
+    <string name="card_points">%1$d Points</string>
+    <string name="card_weight">%1$.2f Kg of Waste</string>
     <string name="card_date">22 September 2024</string>
     <string name="please_wait">Please wait\nyour pickup is on the way.</string>
     <string name="number_plate">B 1234 JGX</string>
@@ -102,4 +102,5 @@
     <string name="status_waiting">Waiting for Pick-up</string>
     <string name="waste_name">Waste name</string>
     <string name="waste_weight">10 Kg</string>
+    <string name="log_in">Log In</string>
 </resources>

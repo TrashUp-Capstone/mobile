@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTealBg
         android:id="@+id/btn_signin"
         android:layout_width="327dp"
         android:layout_height="69dp"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
         android:id="@+id/btn_register"
         android:layout_width="327dp"
         android:layout_height="69dp"

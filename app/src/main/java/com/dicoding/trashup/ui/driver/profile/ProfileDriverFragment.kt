@@ -13,16 +13,7 @@ import com.dicoding.trashup.databinding.FragmentProfileDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileDriverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileDriverFragment : Fragment() {
 
     private lateinit var _binding: FragmentProfileDriverBinding
