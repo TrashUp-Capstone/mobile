@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
 import com.dicoding.trashup.databinding.ActivityDriverReviewBinding
 import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
+import com.dicoding.trashup.formatDate
 
 import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 
@@ -27,10 +29,11 @@ class ReviewHistoryAdapter : ListAdapter<ResponseItem, ReviewHistoryAdapter.MyVi
     }
 
     class MyViewHolder(val binding: ActivityDriverReviewBinding) : RecyclerView.ViewHolder(binding.root){
+        val context = binding.root.context
         fun bind(review: ResponseItem) {
-            binding.datePickupDoneTv.text = review.createdAt
+            binding.datePickupDoneTv.text = formatDate(review.createdAt)
             binding.nameDonePickupTv.text = review.name
-            binding.weightWasteAvailablePickupTv.text = review.weightWaste.toString()
+            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.weightWaste.toString().toDouble())
             Glide.with(binding.root)
                 .load("${review.avatar}")
                 .apply(RequestOptions().transform(CircleCrop()))

@@ -10,8 +10,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dicoding.trashup.R
@@ -29,6 +32,7 @@ class HomeActivityDriver : AppCompatActivity() {
     }
     val availablePickupViewModel by viewModels<PickUpViewModel>()
     val activityHistoryDriverViewModel by viewModels<HistoryViewModel>()
+    lateinit var navController: NavController
 
     private lateinit var binding: ActivityHomeDriverBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,15 +57,11 @@ class HomeActivityDriver : AppCompatActivity() {
             }
         }
 
-        val navView: BottomNavigationView = binding.bottomNavigationDriver
-        val navController = findNavController(R.id.nav_host_fragment_driver_activity_main)
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home_driver, R.id.navigation_history_driver, R.id.navigation_pickup_driver, R.id.navigation_profile_driver
-//            )
-//        )
-       //  setupActionBarWithNavController(navController)
-        navView.setupWithNavController(navController)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_driver_activity_main) as NavHostFragment
+        navController = navHostFragment.navController
+
+        // Setup BottomNavigationView with NavController
+        NavigationUI.setupWithNavController(binding.bottomNavigationDriver, navController)
     }
 
 }

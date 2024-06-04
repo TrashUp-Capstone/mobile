@@ -92,10 +92,10 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTealBg
         android:id="@+id/login_btn"
         style="@style/large_btn"
-        android:text="@string/next"
+        android:text="@string/log_in"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

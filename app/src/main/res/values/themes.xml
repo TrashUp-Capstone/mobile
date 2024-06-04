@@ -37,8 +37,10 @@
 
     <!-- Teks buat Button bagian register,login, welcome -->
     <style name="large_btn">
-        <item name="android:layout_width">335dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">69dp</item>
+        <item name="android:layout_marginStart">33dp</item>
+        <item name="android:layout_marginEnd">33dp</item>
     </style>
     
     <style name="tv_label">

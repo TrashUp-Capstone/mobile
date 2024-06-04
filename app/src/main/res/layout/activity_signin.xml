@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_register" />
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
         android:id="@+id/btn_signin_user"
         style="@style/large_btn"
         android:layout_marginTop="64dp"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/desc_register" />
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
         android:id="@+id/btn_signin_driver"
         style="@style/large_btn"
         android:layout_marginTop="38dp"

@@ -30,7 +30,7 @@
             android:name=".ui.user.camera.CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.driver.pickup.DetailPickUpActivity"
+            android:name=".ui.driver.pickup.detailpickup.DetailPickUpActivity"
             android:exported="false" />
         <activity
             android:name=".ui.driver.profile.ChangePasswordActivity"
