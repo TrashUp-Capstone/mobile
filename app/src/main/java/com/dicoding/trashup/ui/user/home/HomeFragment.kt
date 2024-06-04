@@ -1,6 +1,7 @@
 package com.dicoding.trashup.ui.user.home
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -17,6 +18,9 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.camera.CameraActivity
@@ -65,14 +69,33 @@ class HomeFragment : Fragment() {
 
         binding.btnAddWaste.setOnClickListener {
             startCamera()
+            navigateToCart()
         }
 
         return binding.root
     }
 
+    private val startCameraLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // Perform any async operation here before navigating to the cart fragment
+                navigateToCart()
+            } else {
+                Toast.makeText(requireContext(), "Camera activity was canceled", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+    private fun navigateToCart() {
+        findNavController().navigate(R.id.navigation_cart_user)
+    }
+
+
     private fun startCamera() {
         val intent = Intent(requireContext(), CameraActivity::class.java)
-        startActivity(intent)
+        startCameraLauncher.launch(intent)
     }
 
 

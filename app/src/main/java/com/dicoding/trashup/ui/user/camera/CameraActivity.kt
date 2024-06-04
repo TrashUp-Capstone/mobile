@@ -1,5 +1,6 @@
 package com.dicoding.trashup.ui.user.camera
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -129,6 +130,7 @@ class CameraActivity : AppCompatActivity() {
                     val savedUri = output.savedUri ?: return
                     val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
                         putExtra(AddWasteActivity.EXTRA_IMAGE_URI, savedUri.toString())
+                        setResult(Activity.RESULT_OK, intent)
                     }
                     startActivity(intent)
                     finish()

@@ -1,8 +1,11 @@
 package com.dicoding.trashup.ui.user.main
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +20,7 @@ import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityMainBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
+import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
 import com.dicoding.trashup.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {

@@ -1,7 +1,9 @@
 package com.dicoding.trashup.ui.user.add_waste
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
@@ -21,6 +23,7 @@ class AddWasteActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityAddWasteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -34,9 +37,19 @@ class AddWasteActivity : AppCompatActivity() {
         currentImageUri?.let {
             binding.previewImageView.setImageURI(it)
         }
+
+        binding.btnSubmit.setOnClickListener {
+            // Set result to indicate successful submission
+            val resultIntent = Intent().apply {
+                putExtra(EXTRA_NAVIGATE_TO_CART, true)
+            }
+            setResult(RESULT_OK, resultIntent)
+            finish()
+        }
     }
 
     companion object {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
+        const val EXTRA_NAVIGATE_TO_CART = "extra_navigate_to_cart"
     }
 }
