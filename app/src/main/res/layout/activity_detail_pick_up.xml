@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/dark_teal"
-    tools:context=".ui.driver.pickup.DetailPickUpActivity">
+    tools:context=".ui.driver.pickup.detailpickup.DetailPickUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_header"
@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         >
+
         <TextView
             android:id="@+id/title_header"
             android:layout_width="wrap_content"
@@ -23,7 +24,9 @@
             android:text="@string/detail_order"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/pickup_desc_label"
@@ -32,13 +35,16 @@
             android:text="Detail information \nabout order and user"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_header" />
 
-        <Button
+        <com.dicoding.trashup.ui.customview.MyButtonTealBg
             android:id="@+id/btn_accept"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
             android:text="@string/accept"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -171,6 +177,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/desc_label" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/white_bg"
+            android:indeterminateTint="@color/dark_grey"
+            android:padding="170dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

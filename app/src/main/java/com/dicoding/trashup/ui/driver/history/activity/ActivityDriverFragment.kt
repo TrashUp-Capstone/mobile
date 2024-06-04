@@ -41,8 +41,20 @@ class ActivityDriverFragment : Fragment() {
             setListActivityHistoryData(it)
         }
 
+        activityHistoryViewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+
         val layoutManager = LinearLayoutManager(requireActivity())
         binding?.activityDriverRv?.layoutManager = layoutManager
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding?.progressBar?.visibility = View.VISIBLE
+        } else {
+            binding?.progressBar?.visibility = View.INVISIBLE
+        }
     }
 
     private fun setListActivityHistoryData(reviewHistoryActivity: List<ResponseItem>?) {

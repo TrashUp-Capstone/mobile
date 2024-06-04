@@ -145,7 +145,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTealBg
         android:id="@+id/regist_next_btn"
         style="@style/large_btn"
         android:text="@string/next"

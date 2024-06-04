@@ -93,15 +93,17 @@
                 app:layout_constraintStart_toEndOf="@+id/profile_driver_home"
                 app:layout_constraintTop_toBottomOf="@+id/driver_number" />
 
-            <Button
+            <com.dicoding.trashup.ui.customview.MyButtonWhiteBg
                 android:id="@+id/btn_view_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/white"
                 android:text="@string/view_profile"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textSize="12dp"
                 android:textColor="@color/dark_teal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -152,5 +154,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/available_pickup"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/white_bg"
+        android:indeterminateTint="@color/dark_grey"
+        android:padding="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

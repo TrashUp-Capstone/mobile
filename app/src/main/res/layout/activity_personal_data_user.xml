@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo_profile_label" />
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
@@ -127,7 +127,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.dicoding.trashup.ui.customview.MyButtonTealBg
         android:id="@+id/regist_create_account_btn"
         style="@style/large_btn"
         android:text="@string/next"

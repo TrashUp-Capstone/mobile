@@ -17,14 +17,20 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
+import com.dicoding.trashup.data.network.response.PointsResponseItem
 import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.camera.CameraActivity
 import com.dicoding.trashup.ui.user.camera.CameraActivity.Companion.CAMERAX_RESULT
+import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
+import com.dicoding.trashup.ui.user.history.inprocess.ReviewPointsAdapter
 import com.dicoding.trashup.ui.user.main.MainViewModel
 
 class HomeFragment : Fragment() {
@@ -33,6 +39,10 @@ class HomeFragment : Fragment() {
     private val viewModel by activityViewModels<HomeViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
+
+    // Viewmodel buat menampilkan points
+    private val viewModelPoints : ActivityUserViewModel by viewModels()
+
 
 
     private val requestPermissionLauncher =
@@ -69,9 +79,24 @@ class HomeFragment : Fragment() {
 
         binding.btnAddWaste.setOnClickListener {
             startCamera()
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_home_user, true)
+                .build()
+            findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+            // Menampilkan list point di home
+        viewModelPoints.listPoints.observe(viewLifecycleOwner) {
+            setHistoryPoints(it)
+        }
+        val layoutManager = LinearLayoutManager(requireActivity())
+        binding.rvRecentWaste.layoutManager = layoutManager
     }
 
     private val startCameraLauncher =
@@ -101,6 +126,12 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {
+        val adapter = ReviewPointsAdapter()
+        adapter.submitList(reviewPointsActivity)
+        binding.rvRecentWaste.adapter = adapter
     }
 
     companion object {
