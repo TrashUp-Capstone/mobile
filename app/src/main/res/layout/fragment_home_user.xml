@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/white_bg"
     tools:context=".ui.user.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_profile_point"
@@ -30,8 +30,8 @@
 
                 <ImageView
                     android:id="@+id/ic_coin"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
                     android:src="@drawable/ic_coin"
                     android:layout_gravity="bottom|start"
                     android:layout_marginBottom="-20dp"
@@ -65,7 +65,7 @@
                         android:id="@+id/tv_your_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
                         android:text="@string/your_points"
                         android:textColor="@color/white"
@@ -89,7 +89,7 @@
                         android:id="@+id/btn_view_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="22dp"
                         android:backgroundTint="@color/white"
                         android:paddingStart="20dp"
@@ -150,12 +150,17 @@
 
         <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
             android:id="@+id/btn_add_waste"
-            style="@style/large_btn"
-            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="33dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:text="@string/add_waste"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_recent_waste" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
