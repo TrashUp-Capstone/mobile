@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "544644906863",
+    "project_id": "trashup-ce94e",
+    "storage_bucket": "trashup-ce94e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544644906863:android:8881a8b41dc8e4254bf29a",
+        "android_client_info": {
+          "package_name": "com.dicoding.trashup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyEqLOw2n5k6taatEvI-465iHgeHlnxbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
