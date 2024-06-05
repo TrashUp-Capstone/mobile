@@ -1,10 +1,13 @@
 package com.dicoding.trashup.ui.user.camera
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.OrientationEventListener
 import android.view.Surface
@@ -20,6 +23,7 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -27,6 +31,8 @@ import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityCameraBinding
 import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
 import com.dicoding.trashup.utils.createCustomTempFile
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 class CameraActivity : AppCompatActivity() {
 
@@ -45,6 +51,8 @@ class CameraActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        checkPermissions()
 
         binding.switchCamera.setOnClickListener {
             cameraSelector =
@@ -66,11 +74,18 @@ class CameraActivity : AppCompatActivity() {
     ) { uri: Uri? ->
         if (uri != null) {
             currentImageUri = uri
-            val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
-                putExtra(AddWasteActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
+            val filePath = getFilePathFromUri(uri)
+            if (filePath != null) {
+                val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
+                    putExtra(AddWasteActivity.EXTRA_IMAGE_URI, filePath.toString())
+                }
+                startActivity(intent)
+                finish()
+            } else {
+                Log.e("CameraActivity", "Failed to get real path from Uri")
+                // Handle the case where the file path cannot be obtained (e.g., show error message)
             }
-            startActivity(intent)
-            finish()
+
         } else {
             Log.d("Photo Picker", "No media selected")
         }
@@ -179,6 +194,48 @@ class CameraActivity : AppCompatActivity() {
             }
         }
     }
+
+    // Menyimpan file gambar langsung
+    private fun getRealPathFromUri(uri: Uri): String? {
+        var filePath: String? = null
+        val scheme = uri.scheme
+        if (scheme == "content") {
+            val projection = arrayOf(MediaStore.Images.Media.DATA)
+            contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
+                if (cursor.moveToFirst()) {
+                    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                    filePath = cursor.getString(columnIndex)
+                }
+            }
+        } else if (scheme == "file") {
+            filePath = uri.path
+        }
+        return filePath
+    }
+
+    private fun getFilePathFromUri(uri: Uri): String? {
+        val parcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
+        val fileDescriptor = parcelFileDescriptor?.fileDescriptor ?: return null
+        val inputStream = FileInputStream(fileDescriptor)
+        val file = createCustomTempFile(this)
+        val outputStream = FileOutputStream(file)
+        inputStream.copyTo(outputStream)
+        inputStream.close()
+        outputStream.close()
+        parcelFileDescriptor.close()
+        return file.absolutePath
+    }
+
+    private fun checkPermissions() {
+        val permissions = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (permissions.any { ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED }) {
+            ActivityCompat.requestPermissions(this, permissions, 113)
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
