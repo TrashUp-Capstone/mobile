@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="30dp"
     app:cardCornerRadius="30dp"
+    android:layout_margin="15dp"
     android:backgroundTint="@color/white">
 
     <FrameLayout
@@ -24,13 +25,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:padding="25dp"
+            android:padding="20dp"
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/iv_waste"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_place_holder"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
