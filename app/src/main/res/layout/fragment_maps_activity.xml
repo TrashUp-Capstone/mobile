@@ -109,7 +109,7 @@
                 android:layout_marginTop="20dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:text="@string/chat_user"
+                android:text="@string/call_user"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/white"
                 android:textSize="10sp"

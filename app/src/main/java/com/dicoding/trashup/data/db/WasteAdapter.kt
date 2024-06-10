@@ -2,6 +2,7 @@ package com.dicoding.trashup.data.db
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,6 +73,8 @@ class WasteAdapter(private val context: Context) : RecyclerView.Adapter<WasteAda
                     removeItem(position)
                 }
             }
+            Log.e("WasteAdapter", waste.points.toString())
+            binding.tvPoints.text =  waste.points.toString()
         }
     }
 }

@@ -17,16 +17,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:id="@+id/title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_app"
-        android:textSize="50sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoApp" />
+        app:layout_constraintTop_toBottomOf="@+id/logoApp" >
+        <TextView
+            android:id="@+id/titleTrash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_teal"
+            android:text="@string/trash"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/titleUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_teal"
+            android:text="@string/up"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -35,7 +49,7 @@
         android:text="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
 
     <com.dicoding.trashup.ui.customview.MyButtonTealBg

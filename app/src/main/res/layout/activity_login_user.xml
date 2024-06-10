@@ -6,13 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.signin.LoginUserActivity">
-    <TextView
-        android:id="@+id/title_app"
-        style="@style/title_app"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <LinearLayout
+        android:id="@+id/title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/titleTrash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_teal"
+            android:text="@string/trash"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/titleUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_teal"
+            android:text="@string/up"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +41,7 @@
         android:src="@drawable/photo_signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_app" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
     <TextView
         android:id="@+id/title_signin"
