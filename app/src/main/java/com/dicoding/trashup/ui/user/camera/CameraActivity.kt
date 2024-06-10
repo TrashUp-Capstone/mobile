@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -29,10 +31,22 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityCameraBinding
+import com.dicoding.trashup.ui.ml.ImageClassifierHelper
 import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
 import com.dicoding.trashup.utils.createCustomTempFile
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.Interpreter
+import org.tensorflow.lite.flex.FlexDelegate
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.io.IOException
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
+import java.text.NumberFormat
 
 class CameraActivity : AppCompatActivity() {
 
@@ -40,6 +54,9 @@ class CameraActivity : AppCompatActivity() {
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
     private var currentImageUri: Uri? = null
+    private var myResult: String = ""
+    private val imageSize: Int = 256
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +96,14 @@ class CameraActivity : AppCompatActivity() {
                 val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
                     putExtra(AddWasteActivity.EXTRA_IMAGE_URI, filePath.toString())
                 }
+                val inputStream = contentResolver.openInputStream(uri)
+                // 2. Konversi gambar dari URI ke Bitmap
+                val imageBitmap = BitmapFactory.decodeStream(inputStream)
+
+                // 3. Lakukan penskalaan jika diperlukan
+                val scaledBitmap = Bitmap.createScaledBitmap(imageBitmap, imageSize, imageSize, false)
+                //classifyImage(scaledBitmap)
+
                 startActivity(intent)
                 finish()
             } else {
@@ -236,6 +261,10 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -246,6 +275,74 @@ class CameraActivity : AppCompatActivity() {
         super.onStop()
         orientationEventListener.disable()
     }
+
+
+    // COBA COBA GES
+//    private fun classifyImage(image: Bitmap) {
+//        try {
+//            // Load the model
+//            val options = Interpreter.Options()
+//            options.addDelegate(FlexDelegate())
+//            val interpreter = Interpreter(loadModelFile(), options)
+//
+//            // Prepare input tensor
+//            val inputHeight = 128  // Adjust to your model's expected input height
+//            val inputWidth = 128  // Adjust to your model's expected input width
+//            val inputChannels = 3  // Number of color channels (usually 3 for RGB)
+//            val byteBuffer = ByteBuffer.allocateDirect(4 * inputHeight * inputWidth * inputChannels)
+//            byteBuffer.order(ByteOrder.nativeOrder())
+//
+//            // Resize the image to the model's expected input size
+//            val resizedImage = Bitmap.createScaledBitmap(image, inputWidth, inputHeight, true)
+//            val intValues = IntArray(inputHeight * inputWidth)
+//            resizedImage.getPixels(intValues, 0, resizedImage.width, 0, 0, resizedImage.width, resizedImage.height)
+//            var pixel = 0
+//            for (i in 0 until inputHeight) {
+//                for (j in 0 until inputWidth) {
+//                    val value = intValues[pixel++]
+//                    byteBuffer.putFloat(((value shr 16) and 0xFF) * (1f / 255))
+//                    byteBuffer.putFloat(((value shr 8) and 0xFF) * (1f / 255))
+//                    byteBuffer.putFloat((value and 0xFF) * (1f / 255))
+//                }
+//            }
+//
+//            // Run model inference
+//            val inputArray = arrayOf<Any>(byteBuffer)
+//            val outputMap = mutableMapOf<Int, Any>()
+//            val outputBuffer = FloatArray(2) // Adjust this according to your model's output
+//            outputMap[0] = outputBuffer
+//            interpreter.runForMultipleInputsOutputs(inputArray, outputMap)
+//
+//            // Process the output
+//            val confidences = outputBuffer
+//            var maxPos = 0
+//            var maxConfidence = 0f
+//            for (i in confidences.indices) {
+//                if (confidences[i] > maxConfidence) {
+//                    maxConfidence = confidences[i]
+//                    maxPos = i
+//                }
+//            }
+//            myResult = maxPos.toString()
+//            Log.e("CameraActivity", myResult)
+//            showToast(myResult)
+//
+//            // Close the interpreter to release resources
+//            interpreter.close()
+//        } catch (e: IOException) {
+//            Log.e("CameraActivity", "Error in classifying image", e)
+//        }
+//    }
+//
+//    private fun loadModelFile(): MappedByteBuffer {
+//        val fileDescriptor = assets.openFd("model.tflite")
+//        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+//        val fileChannel = inputStream.channel
+//        val startOffset = fileDescriptor.startOffset
+//        val declaredLength = fileDescriptor.declaredLength
+//        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
+//    }
+
 
     companion object {
         private const val TAG = "CameraActivity"

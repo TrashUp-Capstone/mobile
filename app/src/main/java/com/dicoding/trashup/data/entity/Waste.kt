@@ -9,4 +9,5 @@ data class Waste(
     var typeWaste: String = "",
     var photo: String= "",
     var weight: Double= 0.0,
+    var points: Int = 0
 ) : Parcelable

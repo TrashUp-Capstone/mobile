@@ -40,6 +40,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
 }
 
@@ -86,6 +87,12 @@ dependencies {
 
     //
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    // Import TFLite
+    implementation(libs.tensorflow.lite.support.v044)
+    implementation(libs.tensorflow.lite.metadata.v044)
+    implementation(libs.tensorflow.lite.task.vision)
+    implementation (libs.tensorflow.lite.select.tf.ops)
+    implementation(libs.play.services.tflite.acceleration.service)
 
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
