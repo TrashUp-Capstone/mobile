@@ -10,6 +10,7 @@ internal class DatabaseContract {
             const val TYPEWASTE = "typewaste"
             const val PHOTO = "photo"
             const val WEIGHT = "weight"
+            const val POINTS = "points"
         }
     }
 }

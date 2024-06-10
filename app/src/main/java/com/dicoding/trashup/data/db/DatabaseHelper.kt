@@ -14,7 +14,8 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " (${DatabaseContract.WasteColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " ${DatabaseContract.WasteColumns.TYPEWASTE} TEXT NOT NULL," +
                 " ${DatabaseContract.WasteColumns.PHOTO} TEXT NOT NULL," +
-                " ${DatabaseContract.WasteColumns.WEIGHT} REAL NOT NULL)"
+                " ${DatabaseContract.WasteColumns.WEIGHT} REAL NOT NULL," +
+                " ${DatabaseContract.WasteColumns.POINTS} INTEGER NOT NULL)"
     }
 
     override fun onCreate(db: SQLiteDatabase) {

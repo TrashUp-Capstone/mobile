@@ -103,12 +103,17 @@
     <string name="waste_name">Waste name</string>
     <string name="waste_weight">10 Kg</string>
     <string name="log_in">Log In</string>
+    <string name="trash">Trash</string>
+    <string name="up">UP!</string>
+    <string name="call_user">Call User</string>
+    <string name="failure">Image Classifier Tidak berhasil diinisialisasi.</string>
+    <string name="item_points">%d Points</string>
     <string-array name="waste_types">
-        <item>Plastic</item>
-        <item>Paper</item>
+        <item>Cardboard</item>
         <item>Glass</item>
         <item>Metal</item>
-        <item>Organic</item>
+        <item>Paper</item>
+        <item>Plastic</item>
         <item>Nothing</item>
     </string-array>
 </resources>

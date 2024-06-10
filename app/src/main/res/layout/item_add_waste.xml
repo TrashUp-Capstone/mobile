@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,27 +28,28 @@
             android:layout_width="match_parent"
             android:padding="20dp"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/iv_waste"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_place_holder"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/ic_place_holder"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_waste_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/waste_name"
                 android:layout_marginStart="10dp"
+                android:text="@string/waste_name"
                 android:textColor="@color/light_teal"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="@id/iv_waste"
-                app:layout_constraintStart_toEndOf="@id/iv_waste"/>
+                app:layout_constraintStart_toEndOf="@id/iv_waste"
+                app:layout_constraintTop_toTopOf="@id/iv_waste" />
 
             <TextView
                 android:id="@+id/tv_waste_weight"
@@ -59,6 +61,18 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_waste_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_waste_name" />
+
+            <TextView
+                android:id="@+id/tv_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_points"
+                android:textColor="@color/light_teal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/iv_waste"
+                app:layout_constraintStart_toStartOf="@+id/tv_waste_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_waste_weight" />
 
 
 

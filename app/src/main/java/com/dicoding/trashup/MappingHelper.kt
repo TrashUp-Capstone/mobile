@@ -17,7 +17,8 @@ object MappingHelper {
                 val typeWaste = getString(getColumnIndexOrThrow(DatabaseContract.WasteColumns.TYPEWASTE))
                 val weight = getDouble(getColumnIndexOrThrow(DatabaseContract.WasteColumns.WEIGHT))
                 val photo = getString(getColumnIndexOrThrow(DatabaseContract.WasteColumns.PHOTO))
-                wasteList.add(Waste(id, typeWaste, photo, weight))
+                val points = getInt(getColumnIndexOrThrow(DatabaseContract.WasteColumns.POINTS))
+                wasteList.add(Waste(id, typeWaste, photo, weight, points))
             }
         }
         return wasteList
