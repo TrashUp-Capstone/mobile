@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.dicoding.trashup" />
+                  <option name="mobileSdkAppId" value="1:544644906863:android:8881a8b41dc8e4254bf29a" />
+                  <option name="projectId" value="trashup-ce94e" />
+                  <option name="projectNumber" value="544644906863" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
