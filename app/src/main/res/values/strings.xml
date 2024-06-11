@@ -108,6 +108,17 @@
     <string name="call_user">Call User</string>
     <string name="failure">Image Classifier Tidak berhasil diinisialisasi.</string>
     <string name="item_points">%d Points</string>
+    <string name="title_points">Your Points</string>
+    <string name="claim_reward">Claim Reward</string>
+    <string name="history_points">History Points</string>
+    <string name="available_reward">Available Reward</string>
+    <string name="title_reward">Voucher Shopping</string>
+    <string name="value_reward">Rp 100.000</string>
+    <string name="valid_reward">Valid Until Nov 5, 2024</string>
+    <string name="cost_reward">100.000 Points</string>
+    <string name="detail_reward">Detail Reward</string>
+    <string name="title_point_cost">Point Cost</string>
+    <string name="desc_reward">Get the best deals with our shopping \nvouchers! Save big on your favorite \nbrands and products. Simply select a \nvoucher, apply it at checkout, and enjoy \ninstant discounts. Start shopping smarter \ntoday!</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>
