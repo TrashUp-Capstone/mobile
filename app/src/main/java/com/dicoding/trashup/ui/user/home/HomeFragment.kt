@@ -96,6 +96,7 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
+        binding.rvRecentWaste.isNestedScrollingEnabled = false;
     }
 
     private val startCameraLauncher =
@@ -128,8 +129,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {
+        val latestPoints = reviewPointsActivity.takeLast(3)
         val adapter = ReviewPointsAdapter()
-        adapter.submitList(reviewPointsActivity)
+        adapter.submitList(latestPoints)
         binding.rvRecentWaste.adapter = adapter
     }
 

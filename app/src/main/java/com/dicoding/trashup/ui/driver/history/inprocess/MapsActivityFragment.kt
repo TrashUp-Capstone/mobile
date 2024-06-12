@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dicoding.trashup.R
+import com.dicoding.trashup.databinding.FragmentMapsActivityBinding
+import com.dicoding.trashup.databinding.FragmentMapsUserBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -14,8 +16,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MapsActivityFragment : Fragment() {
+
+    private var _binding: FragmentMapsActivityBinding? = null
+    private val binding get() = _binding!!
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -30,7 +36,7 @@ class MapsActivityFragment : Fragment() {
         val sydney = LatLng(-34.0, 151.0)
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        googleMap.uiSettings.isZoomControlsEnabled = true
+        googleMap.uiSettings.isZoomControlsEnabled = false
         googleMap.uiSettings.isIndoorLevelPickerEnabled = true
         googleMap.uiSettings.isCompassEnabled = true
         googleMap.uiSettings.isMapToolbarEnabled = true
@@ -40,13 +46,32 @@ class MapsActivityFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps_activity, container, false)
+    ): View {
+        _binding = FragmentMapsActivityBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+        val bottomSheet = binding.bottomSheetDriver
+        BottomSheetBehavior.from(bottomSheet).apply {
+            peekHeight = 250
+            this.state = BottomSheetBehavior.STATE_COLLAPSED
+            addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    // Handle state changes if needed
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    // Change the alpha value of the dimView based on slide offset
+                    binding.dimView.visibility = View.VISIBLE
+                    binding.dimView.alpha = slideOffset
+                }
+            })
+        }
     }
 }
