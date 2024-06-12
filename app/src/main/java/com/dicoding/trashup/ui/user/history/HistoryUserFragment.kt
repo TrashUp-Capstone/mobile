@@ -34,6 +34,7 @@ class HistoryUserFragment : Fragment() {
 
         val sectionsPagerAdapter = SectionUserPagerAdapter(this)
         viewPager.adapter = sectionsPagerAdapter
+        viewPager.isUserInputEnabled = false
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = "Tab ${position + 1}"
