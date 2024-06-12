@@ -35,6 +35,7 @@ class HistoryDriverFragment : Fragment() {
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         viewPager?.adapter = sectionsPagerAdapter
+        viewPager?.isUserInputEnabled = false
 
         if (tabLayout != null) {
             if (viewPager != null) {
