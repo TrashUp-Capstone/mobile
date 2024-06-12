@@ -128,8 +128,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {
+        val latestPoints = reviewPointsActivity.takeLast(3)
         val adapter = ReviewPointsAdapter()
-        adapter.submitList(reviewPointsActivity)
+        adapter.submitList(latestPoints)
         binding.rvRecentWaste.adapter = adapter
     }
 
