@@ -44,6 +44,10 @@ class HistoryUserFragment : Fragment() {
             }
         }.attach()
 
+        // Get the tab index from the arguments and set the selected tab
+        val tabIndex = arguments?.getInt("TAB_INDEX", 0) ?: 0
+        viewPager.setCurrentItem(tabIndex, false)
+
         tabLayout.setTabTextColors(
             resources.getColor(R.color.dark_grey, null),
             resources.getColor(R.color.light_teal, null)

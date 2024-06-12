@@ -96,6 +96,7 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
+        binding.rvRecentWaste.isNestedScrollingEnabled = false;
     }
 
     private val startCameraLauncher =
