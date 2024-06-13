@@ -28,4 +28,10 @@
         android:name="com.dicoding.trashup.ui.user.profile.ProfileUserFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile_user" />
+
+    <action
+        android:id="@+id/action_homeFragment_to_historyUserFragment"
+        app:destination="@id/navigation_history_user"
+        app:popUpTo="@id/navigation_home_user"
+        app:popUpToInclusive="false"/>
 </navigation>

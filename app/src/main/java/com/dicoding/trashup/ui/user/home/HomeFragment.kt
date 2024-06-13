@@ -4,23 +4,17 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
@@ -28,10 +22,9 @@ import com.dicoding.trashup.data.network.response.PointsResponseItem
 import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.camera.CameraActivity
-import com.dicoding.trashup.ui.user.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
 import com.dicoding.trashup.ui.user.history.inprocess.ReviewPointsAdapter
-import com.dicoding.trashup.ui.user.main.MainViewModel
+import com.dicoding.trashup.ui.user.points.PointsUserActivity
 
 class HomeFragment : Fragment() {
 
@@ -85,6 +78,11 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
         }
 
+        binding.btnViewPoints.setOnClickListener {
+            val intent = Intent(requireContext(), PointsUserActivity::class.java)
+            startActivity(intent)
+        }
+
         return binding.root
     }
 
@@ -95,8 +93,10 @@ class HomeFragment : Fragment() {
         viewModelPoints.listPoints.observe(viewLifecycleOwner) {
             setHistoryPoints(it)
         }
+
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
+        binding.rvRecentWaste.isNestedScrollingEnabled = false;
     }
 
     private val startCameraLauncher =
@@ -129,8 +129,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {
+        val latestPoints = reviewPointsActivity.takeLast(3)
         val adapter = ReviewPointsAdapter()
-        adapter.submitList(reviewPointsActivity)
+        adapter.submitList(latestPoints)
         binding.rvRecentWaste.adapter = adapter
     }
 
