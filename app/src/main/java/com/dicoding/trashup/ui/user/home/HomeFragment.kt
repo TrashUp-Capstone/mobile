@@ -74,7 +74,6 @@ class HomeFragment : Fragment() {
                     homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
                     tvUserPoints.text = user.points.toString()
                 }
-
             }
         }
 
