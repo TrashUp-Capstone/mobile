@@ -12,6 +12,7 @@ import com.dicoding.trashup.databinding.FragmentProfileUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.profile.ChangePasswordActivity
 import com.dicoding.trashup.ui.driver.profile.EditProfileActivity
+import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
 
 class ProfileUserFragment : Fragment() {
@@ -19,6 +20,10 @@ class ProfileUserFragment : Fragment() {
     private lateinit var _binding: FragmentProfileUserBinding
     private val binding get() = _binding
     private val viewModel: MainViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    private val homeViewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -32,6 +37,16 @@ class ProfileUserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        homeViewModel.getUserData()
+        homeViewModel.userData.observe(viewLifecycleOwner) {user ->
+            binding.apply {
+                if (user != null) {
+                    profileNameLabel.text = user.name.toString()
+                }
+            }
+        }
+
         binding.apply {
             btnLogOutUser.setOnClickListener {
                 viewModel.deleteSession()

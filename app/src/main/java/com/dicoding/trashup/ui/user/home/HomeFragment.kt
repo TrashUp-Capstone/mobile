@@ -66,6 +66,18 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeUserBinding.inflate(inflater, container, false)
 
+        // Data user
+        viewModel.getUserData()
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                binding.apply {
+                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
+                    tvUserPoints.text = user.points.toString()
+                }
+
+            }
+        }
+
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
@@ -81,18 +93,6 @@ class HomeFragment : Fragment() {
         binding.btnViewPoints.setOnClickListener {
             val intent = Intent(requireContext(), PointsUserActivity::class.java)
             startActivity(intent)
-        }
-
-        // Data user
-        viewModel.getUserData()
-        viewModel.userData.observe(viewLifecycleOwner) { user ->
-            if (user != null) {
-                binding.apply {
-                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
-                    tvUserPoints.text = user.points.toString()
-                }
-
-            }
         }
 
         return binding.root
