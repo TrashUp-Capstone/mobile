@@ -83,6 +83,18 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        // Data user
+        viewModel.getUserData()
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                binding.apply {
+                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
+                    tvUserPoints.text = user.points.toString()
+                }
+
+            }
+        }
+
         return binding.root
     }
 
