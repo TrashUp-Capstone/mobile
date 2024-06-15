@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
@@ -40,15 +41,39 @@ class LoginUserActivity : AppCompatActivity() {
                 if (email.isEmpty() || password.isEmpty()) {
                     showToast(getString(R.string.error_empty))
                 } else {
-                    viewModel.saveSession(UserModel(token = "berhasilmasuk", isUser = true, isDriver = false))
-                    startActivity(Intent(this@LoginUserActivity, MainActivity::class.java)
-                        .apply {
-                            // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
-                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        })
-                    finish()
+                    viewModel.loginUser(email, password)
                 }
             }
+        }
+
+        viewModel.apply {
+            isLoading.observe(this@LoginUserActivity) {
+                showLoading(it)
+            }
+
+            resultAccount.observe(this@LoginUserActivity) { token ->
+                setUser(token)
+            }
+
+            message.observe(this@LoginUserActivity) {
+                showToast(it)
+            }
+        }
+    }
+
+    private fun showLoading(it: Boolean) {
+
+    }
+
+    private fun setUser(token: String) {
+        if (token != null) {
+            viewModel.saveSession(UserModel(token = "berhasilmasuk", isUser = true, isDriver = false))
+            startActivity(Intent(this@LoginUserActivity, MainActivity::class.java)
+                .apply {
+                    // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                })
+            finish()
         }
     }
 
