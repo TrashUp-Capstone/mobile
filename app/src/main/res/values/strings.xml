@@ -120,6 +120,9 @@
     <string name="title_point_cost">Point Cost</string>
     <string name="desc_reward">Get the best deals with our shopping vouchers! Save big on your favorite brands and products. Simply select a voucher, apply it at checkout, and enjoy instant discounts. Start shopping smarter today!</string>
     <string name="success_login">You have been logged in successfully.</string>
+    <string name="successfully_created">Account successfully created, please log in.</string>
+    <string name="input_license_plate">Input License Plate</string>
+    <string name="license_plate">License Plate</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>

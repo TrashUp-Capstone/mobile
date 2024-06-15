@@ -77,7 +77,7 @@ class LoginDriverActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginDriverActivity, HomeActivityDriver::class.java)
                 .apply {
                     // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
-                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 })
             finish()
         }

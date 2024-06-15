@@ -59,7 +59,7 @@ class SigninViewModel (private val repository: UserRepository): ViewModel() {
                         Log.e(SigninDriverViewModel.TAG, "Error Message: ${errorResponse.message}")
                     } catch (e: Exception) {
                         _message.value = "Unknown error"
-                        Log.e(SigninDriverViewModel.TAG, "Parsing error: ${e.message}")
+                        Log.e(TAG, "Parsing error: ${e.message}")
                     }
                 }
             }

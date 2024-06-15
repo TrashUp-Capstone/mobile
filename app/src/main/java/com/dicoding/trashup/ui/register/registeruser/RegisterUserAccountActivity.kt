@@ -36,12 +36,22 @@ class RegisterUserAccountActivity : AppCompatActivity() {
             else if (!password.equals(confimPassword)) {
                 showToast(getString(R.string.passwords_do_not_match))
             } else {
-                startActivity(Intent(this@RegisterUserAccountActivity, PersonalDataUserActivity::class.java))
+                val intent = Intent(this@RegisterUserAccountActivity, PersonalDataUserActivity::class.java)
+                intent.putExtra(EXTRA_NAME, name)
+                intent.putExtra(EXTRA_PASSWORD, password)
+                intent.putExtra(EXTRA_EMAIL, email)
+                startActivity(intent)
             }
         }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        const val EXTRA_NAME = "extra_name"
+        const val  EXTRA_EMAIL = "extra_email"
+        const val EXTRA_PASSWORD = "extra_password"
     }
 }
