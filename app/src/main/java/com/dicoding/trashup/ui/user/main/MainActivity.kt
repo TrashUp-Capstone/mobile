@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,12 +22,17 @@ import com.dicoding.trashup.databinding.ActivityMainBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
 import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
+import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
+    private val homeViewModel by viewModels<HomeViewModel> {
         ViewModelFactory.getInstance(this)
     }
 

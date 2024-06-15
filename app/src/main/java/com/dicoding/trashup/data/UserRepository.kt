@@ -2,9 +2,11 @@ package com.dicoding.trashup.data
 
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserResponse
+import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.dicoding.trashup.data.network.retrofit.ApiService
 import com.dicoding.trashup.data.network.retrofit.user.UserApiService
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 
 class UserRepository private constructor(
     private val userApiService: UserApiService,
@@ -22,6 +24,9 @@ class UserRepository private constructor(
 
     // User
     suspend fun getUserData(): UserResponse {
+        val userModel = userPreferences.getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
         return userApiService.getUserData()
     }
 
