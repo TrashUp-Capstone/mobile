@@ -65,6 +65,7 @@ class SigninViewModel (private val repository: UserRepository): ViewModel() {
             }
 
             override fun onFailure(call: Call<LoginUserResponse>, t: Throwable) {
+                _isLoading.value = false
                Log.e(TAG, "onFailure ${t.message}")
             }
 
