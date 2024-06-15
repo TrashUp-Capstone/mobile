@@ -118,7 +118,7 @@
     <string name="cost_reward">100.000 Points</string>
     <string name="detail_reward">Detail Reward</string>
     <string name="title_point_cost">Point Cost</string>
-    <string name="desc_reward">Get the best deals with our shopping \nvouchers! Save big on your favorite \nbrands and products. Simply select a \nvoucher, apply it at checkout, and enjoy \ninstant discounts. Start shopping smarter \ntoday!</string>
+    <string name="desc_reward">Get the best deals with our shopping vouchers! Save big on your favorite brands and products. Simply select a voucher, apply it at checkout, and enjoy instant discounts. Start shopping smarter today!</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>
@@ -127,4 +127,22 @@
         <item>Plastic</item>
         <item>Nothing</item>
     </string-array>
+
+    <string-array name="voucher_date">
+        <item>10 November 2024</item>
+        <item>30 November 2024</item>
+        <item>30 December 2024</item>
+    </string-array>
+
+    <integer-array name="voucher_points">
+        <item>20000</item>
+        <item>50000</item>
+        <item>100000</item>
+    </integer-array>
+
+    <integer-array name="voucher_price">
+        <item>20000</item>
+        <item>50000</item>
+        <item>100000</item>
+    </integer-array>
 </resources>

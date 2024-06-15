@@ -74,7 +74,7 @@ class WasteAdapter(private val context: Context) : RecyclerView.Adapter<WasteAda
                 }
             }
             Log.e("WasteAdapter", waste.points.toString())
-            binding.tvPoints.text =  waste.points.toString()
+            binding.tvPoints.text = context.getString(R.string.item_points, waste.points.toString().toInt())
         }
     }
 }
