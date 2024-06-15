@@ -13,14 +13,17 @@ import com.dicoding.trashup.R
 import com.dicoding.trashup.data.entity.Voucher
 import com.dicoding.trashup.databinding.ActivityMainBinding
 import com.dicoding.trashup.databinding.FragmentClaimRewardBinding
+import com.dicoding.trashup.ui.ViewModelFactory
+import com.dicoding.trashup.ui.user.home.HomeViewModel
 
 class ClaimRewardFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ClaimRewardFragment()
+    private val viewModel: ClaimRewardViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
     }
-
-    private val viewModel: ClaimRewardViewModel by viewModels()
+    private val homeViewModel : HomeViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
     private lateinit var binding: FragmentClaimRewardBinding
     private val list = ArrayList<Voucher>()
 
@@ -41,6 +44,17 @@ class ClaimRewardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentClaimRewardBinding.inflate(inflater, container, false)
+
+        homeViewModel.getUserData()
+        homeViewModel.userData.observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                binding.apply {
+                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
+                    tvUserPoints.text = user.points.toString()
+                }
+            }
+        }
+
         return binding.root
 
     }
