@@ -1,7 +1,9 @@
 package com.dicoding.trashup.ui.signin
 
 import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -18,7 +20,7 @@ import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
 class LoginDriverActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginDriverBinding
-    private val viewModel by viewModels<SigninViewModel> {
+    private val viewModel by viewModels<SigninDriverViewModel> {
         ViewModelFactory.getInstance(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,21 +37,49 @@ class LoginDriverActivity : AppCompatActivity() {
 
         binding.apply {
             loginBtn.setOnClickListener {
-                val email = edLoginEmail.text.toString()
-                val password = edLoginPassword.text.toString()
+                val email = binding.edLoginEmail.text.toString()
+                val password = binding.edLoginPassword.text.toString()
                 if (email.isEmpty() || password.isEmpty()) {
                     showToast(getString(R.string.error_empty))
                 }
                 else {
-                    viewModel.saveSession(UserModel(token = "berhasilmasuk", isUser = false, isDriver = true))
-                    startActivity(Intent(this@LoginDriverActivity, HomeActivityDriver::class.java)
-                        .apply {
-                            // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
-                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        })
-                    finish()
+                    viewModel.loginDriver(email, password)
                 }
             }
+        }
+
+        viewModel.apply {
+            isLoading.observe(this@LoginDriverActivity) {
+                showLoading(it)
+            }
+            resultAccount.observe(this@LoginDriverActivity) {
+                setupAction(it)
+            }
+            message.observe(this@LoginDriverActivity) {
+                showToast(it)
+            }
+        }
+
+    }
+
+    private fun showLoading(it: Boolean) {
+        if(it) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+        }
+    }
+
+    fun setupAction(tokens: String) {
+        if (tokens != null) {
+            showToast(getString(R.string.success_login))
+            viewModel.saveSession(UserModel(token = tokens, isUser = false, isDriver = true))
+            startActivity(Intent(this@LoginDriverActivity, HomeActivityDriver::class.java)
+                .apply {
+                    // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                })
+            finish()
         }
     }
 

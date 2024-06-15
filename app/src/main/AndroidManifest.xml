@@ -79,16 +79,16 @@
             android:name=".ui.signin.SigninActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.PersonalDataDriverActivity"
+            android:name=".ui.register.registerdriver.PersonalDataDriverActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.RegisterDriverAccountActivity"
+            android:name=".ui.register.registerdriver.RegisterDriverAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.PersonalDataUserActivity"
+            android:name=".ui.register.registeruser.PersonalDataUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.RegisterUserAccountActivity"
+            android:name=".ui.register.registeruser.RegisterUserAccountActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"

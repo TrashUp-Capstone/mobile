@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.PersonalDataDriverActivity">
+    tools:context=".ui.register.registerdriver.PersonalDataDriverActivity">
     <TextView
         android:id="@+id/title_personal_driver"
         android:layout_width="wrap_content"

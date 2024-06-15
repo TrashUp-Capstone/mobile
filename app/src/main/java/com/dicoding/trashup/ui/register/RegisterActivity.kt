@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityRegisterBinding
+import com.dicoding.trashup.ui.register.registerdriver.RegisterDriverAccountActivity
+import com.dicoding.trashup.ui.register.registeruser.RegisterUserAccountActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding

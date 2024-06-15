@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.trashup.data.UserRepository
 import com.dicoding.trashup.di.Injection
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
+import com.dicoding.trashup.ui.signin.SigninDriverViewModel
 import com.dicoding.trashup.ui.signin.SigninViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
 
@@ -22,6 +23,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(HomeDriverViewModel::class.java) -> {
                 HomeDriverViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SigninDriverViewModel::class.java) -> {
+                SigninDriverViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

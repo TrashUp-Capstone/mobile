@@ -18,6 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         buildConfigField("String", "BASE_URL", properties["baseUrl"].toString())
+        buildConfigField("String", "BASE_URL_TRASHUP", properties["baseUrlTrashUP"].toString())
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
