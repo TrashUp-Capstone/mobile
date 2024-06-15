@@ -76,21 +76,27 @@
             android:name=".ui.driver.home.HomeActivityDriver"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.signin.SigninActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registerdriver.PersonalDataDriverActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registerdriver.RegisterDriverAccountActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registeruser.PersonalDataUserActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registeruser.RegisterUserAccountActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity

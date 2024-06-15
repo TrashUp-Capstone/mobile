@@ -3,6 +3,7 @@ package com.dicoding.trashup.ui.signin
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -62,16 +63,20 @@ class LoginUserActivity : AppCompatActivity() {
     }
 
     private fun showLoading(it: Boolean) {
-
+        if (it) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+        }
     }
 
     private fun setUser(token: String) {
         if (token != null) {
-            viewModel.saveSession(UserModel(token = "berhasilmasuk", isUser = true, isDriver = false))
+            viewModel.saveSession(UserModel(token, isUser = true, isDriver = false))
             startActivity(Intent(this@LoginUserActivity, MainActivity::class.java)
                 .apply {
                     // Menambahkan flag untuk menghapus tumpukan kembali (back stack)
-                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 })
             finish()
         }

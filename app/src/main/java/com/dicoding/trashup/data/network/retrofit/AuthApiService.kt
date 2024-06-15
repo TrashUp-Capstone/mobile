@@ -4,6 +4,8 @@ import com.dicoding.trashup.data.network.response.DataRegisterDriver
 import com.dicoding.trashup.data.network.response.DataRegisterUser
 import com.dicoding.trashup.data.network.response.LoginDriverResponse
 import com.dicoding.trashup.data.network.response.LoginUserResponse
+import com.dicoding.trashup.data.network.response.RegisterDriverResponse
+import com.dicoding.trashup.data.network.response.RegisterUserResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -17,28 +19,12 @@ interface AuthApiService {
     @POST("login/user")
     fun loginUser(@Body requestBody: Map<String, String>): Call<LoginUserResponse>
 
-
-    @FormUrlEncoded
     @POST("register/user")
     fun registerUser(
-        @Field("name") name:String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("birth") birth: String,
-        @Field("phone") phone: String,
-        @Field("address") address: String
-    ) : Call<List<DataRegisterUser>>
+        @Body requestBody: Map<String, String>) : Call<RegisterUserResponse>
 
-    @FormUrlEncoded
     @POST("register/driver")
     fun registerDriver(
-        @Field("name") name:String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("address") address: String,
-        @Field("birth") birth: String,
-        @Field("phone") phone: String,
-        @Field("license_plate") licensePlate: String
-    ) : Call<List<DataRegisterDriver>>
+        @Body requestBody: Map<String, String>) : Call<RegisterDriverResponse>
 
 }
