@@ -1,17 +1,13 @@
 package com.dicoding.trashup.ui.register.registeruser
 
-import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.trashup.data.network.response.DataRegisterUser
 import com.dicoding.trashup.data.network.response.ErrorResponse
-import com.dicoding.trashup.data.network.response.RegisterUserResponse
+import com.dicoding.trashup.data.network.response.register.RegisterUserResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
-import com.dicoding.trashup.ui.signin.SigninDriverViewModel
 import com.google.gson.Gson
-import okhttp3.Address
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

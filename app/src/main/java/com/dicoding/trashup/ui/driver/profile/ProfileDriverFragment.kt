@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.FragmentHistoryDriverBinding
@@ -18,8 +19,8 @@ class ProfileDriverFragment : Fragment() {
 
     private lateinit var _binding: FragmentProfileDriverBinding
     private val binding get() = _binding
-    private val viewModel: HomeDriverViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
+    private val driverViewModel: HomeDriverViewModel by activityViewModels {
+        ViewModelFactory.getInstance(requireActivity().application)
     }
 
     override fun onCreateView(
@@ -34,12 +35,16 @@ class ProfileDriverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        driverViewModel.driverName.observe(requireActivity()) {
+            binding.profileNameLabel.text = it
+        }
+
         binding.apply {
             btnEditProfile.setOnClickListener {
                 startActivity(Intent(requireActivity(), EditProfileActivity::class.java))
             }
             btnLogOutDriver.setOnClickListener {
-                viewModel.deleteSession()
+                driverViewModel.deleteSession()
             }
             btnResetDriverPw.setOnClickListener {
                 startActivity(Intent(requireActivity(), ChangePasswordActivity::class.java))

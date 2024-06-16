@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.dicoding.trashup.data.UserModel
 import com.dicoding.trashup.data.UserRepository
 import com.dicoding.trashup.data.network.response.ErrorResponse
-import com.dicoding.trashup.data.network.response.LoginUserResponse
+import com.dicoding.trashup.data.network.response.register.LoginUserResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -65,6 +65,7 @@ class SigninViewModel (private val repository: UserRepository): ViewModel() {
             }
 
             override fun onFailure(call: Call<LoginUserResponse>, t: Throwable) {
+                _isLoading.value = false
                Log.e(TAG, "onFailure ${t.message}")
             }
 

@@ -69,5 +69,34 @@ class ApiConfig {
                 .build()
             return retrofit.create(UserApiService::class.java)
         }
+
+        fun getDriverApiService(token: String): ApiServiceDriver {
+            val loggingInterceptor = if(BuildConfig.DEBUG) {
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            } else {
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+            }
+
+            val authInterceptor = Interceptor { chain ->
+                val req = chain.request()
+                val requestHeaders = req.newBuilder()
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+                chain.proceed(requestHeaders)
+            }
+
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .build()
+            Log.d("coy token", token)
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL_TRASHUP)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+            return retrofit.create(ApiServiceDriver::class.java)
+        }
+
     }
 }
