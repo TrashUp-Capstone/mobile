@@ -27,10 +27,12 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityCameraBinding
+import com.dicoding.trashup.ml.Model
 import com.dicoding.trashup.ui.ml.ImageClassifierHelper
 import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
 import com.dicoding.trashup.utils.createCustomTempFile
@@ -54,7 +56,7 @@ class CameraActivity : AppCompatActivity() {
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
     private var currentImageUri: Uri? = null
-    private var myResult: String = ""
+    private var myResult: Int = 0
     private val imageSize: Int = 256
     private lateinit var imageClassifierHelper: ImageClassifierHelper
 
@@ -96,14 +98,9 @@ class CameraActivity : AppCompatActivity() {
                 val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
                     putExtra(AddWasteActivity.EXTRA_IMAGE_URI, filePath.toString())
                 }
-                val inputStream = contentResolver.openInputStream(uri)
-                // 2. Konversi gambar dari URI ke Bitmap
-                val imageBitmap = BitmapFactory.decodeStream(inputStream)
 
-                // 3. Lakukan penskalaan jika diperlukan
-                val scaledBitmap = Bitmap.createScaledBitmap(imageBitmap, imageSize, imageSize, false)
-                //classifyImage(scaledBitmap)
-
+                classifyImage(uri)
+                intent.putExtra(EXTRA_RESULT, myResult)
                 startActivity(intent)
                 finish()
             } else {
@@ -168,8 +165,10 @@ class CameraActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = output.savedUri ?: return
+                    classifyImage(savedUri)
                     val intent = Intent(this@CameraActivity, AddWasteActivity::class.java).apply {
                         putExtra(AddWasteActivity.EXTRA_IMAGE_URI, savedUri.toString())
+                        putExtra(EXTRA_RESULT, myResult)
                         setResult(Activity.RESULT_OK, intent)
                     }
                     startActivity(intent)
@@ -220,24 +219,6 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-    // Menyimpan file gambar langsung
-    private fun getRealPathFromUri(uri: Uri): String? {
-        var filePath: String? = null
-        val scheme = uri.scheme
-        if (scheme == "content") {
-            val projection = arrayOf(MediaStore.Images.Media.DATA)
-            contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
-                if (cursor.moveToFirst()) {
-                    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-                    filePath = cursor.getString(columnIndex)
-                }
-            }
-        } else if (scheme == "file") {
-            filePath = uri.path
-        }
-        return filePath
-    }
-
     private fun getFilePathFromUri(uri: Uri): String? {
         val parcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
         val fileDescriptor = parcelFileDescriptor?.fileDescriptor ?: return null
@@ -278,75 +259,60 @@ class CameraActivity : AppCompatActivity() {
 
 
     // COBA COBA GES
-//    private fun classifyImage(image: Bitmap) {
-//        try {
-//            // Load the model
-//            val options = Interpreter.Options()
-//            options.addDelegate(FlexDelegate())
-//            val interpreter = Interpreter(loadModelFile(), options)
-//
-//            // Prepare input tensor
-//            val inputHeight = 128  // Adjust to your model's expected input height
-//            val inputWidth = 128  // Adjust to your model's expected input width
-//            val inputChannels = 3  // Number of color channels (usually 3 for RGB)
-//            val byteBuffer = ByteBuffer.allocateDirect(4 * inputHeight * inputWidth * inputChannels)
-//            byteBuffer.order(ByteOrder.nativeOrder())
-//
-//            // Resize the image to the model's expected input size
-//            val resizedImage = Bitmap.createScaledBitmap(image, inputWidth, inputHeight, true)
-//            val intValues = IntArray(inputHeight * inputWidth)
-//            resizedImage.getPixels(intValues, 0, resizedImage.width, 0, 0, resizedImage.width, resizedImage.height)
-//            var pixel = 0
-//            for (i in 0 until inputHeight) {
-//                for (j in 0 until inputWidth) {
-//                    val value = intValues[pixel++]
-//                    byteBuffer.putFloat(((value shr 16) and 0xFF) * (1f / 255))
-//                    byteBuffer.putFloat(((value shr 8) and 0xFF) * (1f / 255))
-//                    byteBuffer.putFloat((value and 0xFF) * (1f / 255))
-//                }
-//            }
-//
-//            // Run model inference
-//            val inputArray = arrayOf<Any>(byteBuffer)
-//            val outputMap = mutableMapOf<Int, Any>()
-//            val outputBuffer = FloatArray(2) // Adjust this according to your model's output
-//            outputMap[0] = outputBuffer
-//            interpreter.runForMultipleInputsOutputs(inputArray, outputMap)
-//
-//            // Process the output
-//            val confidences = outputBuffer
-//            var maxPos = 0
-//            var maxConfidence = 0f
-//            for (i in confidences.indices) {
-//                if (confidences[i] > maxConfidence) {
-//                    maxConfidence = confidences[i]
-//                    maxPos = i
-//                }
-//            }
-//            myResult = maxPos.toString()
-//            Log.e("CameraActivity", myResult)
-//            showToast(myResult)
-//
-//            // Close the interpreter to release resources
-//            interpreter.close()
-//        } catch (e: IOException) {
-//            Log.e("CameraActivity", "Error in classifying image", e)
-//        }
-//    }
-//
-//    private fun loadModelFile(): MappedByteBuffer {
-//        val fileDescriptor = assets.openFd("model.tflite")
-//        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
-//        val fileChannel = inputStream.channel
-//        val startOffset = fileDescriptor.startOffset
-//        val declaredLength = fileDescriptor.declaredLength
-//        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
-//    }
+    private fun classifyImage(imageTrash: Uri) {
+        val inputStream = contentResolver.openInputStream(imageTrash)
+        // 2. Konversi gambar dari URI ke Bitmap
+        val imageBitmap = BitmapFactory.decodeStream(inputStream)
+
+        // 3. Lakukan penskalaan jika diperlukan
+        val image = Bitmap.createScaledBitmap(imageBitmap, imageSize, imageSize, false)
+        try {
+            val model = Model.newInstance(applicationContext)
+            val inputFeature0 =
+                TensorBuffer.createFixedSize(intArrayOf(1, 256, 256, 3), DataType.FLOAT32)
+            val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
+            byteBuffer.order(ByteOrder.nativeOrder())
+
+            val intValues = IntArray(imageSize * imageSize)
+            image?.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
+            var pixel = 0
+            for (i in 0 until imageSize) {
+                for (j in 0 until imageSize) {
+                    val `val` = intValues[pixel++]
+                    byteBuffer.putFloat(((`val` shr 16) and 0xFF) * (1f / 1))
+                    byteBuffer.putFloat(((`val` shr 8) and 0xFF) * (1f / 1))
+                    byteBuffer.putFloat((`val` and 0xFF) * (1f / 1))
+                }
+            }
+
+            inputFeature0.loadBuffer(byteBuffer)
+
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+            val confidences = outputFeature0.floatArray
+            var maxPos = 0
+            var maxConfidence = 0f
+            for (i in confidences.indices) {
+                if (confidences[i] > maxConfidence) {
+                    maxConfidence = confidences[i]
+                    maxPos = i
+                }
+            }
+            myResult = maxPos
+            Log.e("Upload Activity", "${myResult} - Berhasil Terdeteksi")
+
+            model.close()
+        } catch (e: IOException) {
+            showToast(e.toString())
+        }
+    }
 
 
     companion object {
         private const val TAG = "CameraActivity"
         const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
         const val CAMERAX_RESULT = 200
+        const val EXTRA_RESULT = "extra_result"
     }
 }
