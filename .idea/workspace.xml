@@ -218,6 +218,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="" />
+=======
     <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" afterDir="false" />
@@ -234,6 +237,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/points/claim_reward/DetailRewardActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/points/claim_reward/DetailRewardActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/points/claim_reward/DetailRewardViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/points/claim_reward/DetailRewardViewModel.kt" afterDir="false" />
     </list>
+>>>>>>> f0f9bc7b7caf8cfcca145e2e7f88f7109fd42112
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
