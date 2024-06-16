@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.entity.Voucher
+import com.dicoding.trashup.data.network.response.user.VoucherItem
 import com.dicoding.trashup.databinding.ActivityMainBinding
 import com.dicoding.trashup.databinding.FragmentClaimRewardBinding
 import com.dicoding.trashup.ui.ViewModelFactory
@@ -25,7 +26,6 @@ class ClaimRewardFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
     private lateinit var binding: FragmentClaimRewardBinding
-    private val list = ArrayList<Voucher>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
