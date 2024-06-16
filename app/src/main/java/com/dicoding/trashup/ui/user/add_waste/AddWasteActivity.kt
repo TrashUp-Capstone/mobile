@@ -17,6 +17,7 @@ import com.dicoding.trashup.data.db.DatabaseContract
 import com.dicoding.trashup.data.db.WasteHelper
 import com.dicoding.trashup.data.entity.Waste
 import com.dicoding.trashup.databinding.ActivityAddWasteBinding
+import com.dicoding.trashup.ui.user.camera.CameraActivity.Companion.EXTRA_RESULT
 
 
 class AddWasteActivity : AppCompatActivity() {
@@ -48,11 +49,12 @@ class AddWasteActivity : AppCompatActivity() {
         currentImageUri?.let {
             binding.previewImageView.setImageURI(it)
         }
-
+        val wasteResult = intent.getIntExtra(EXTRA_RESULT, 5)
+        Log.d("AddWasteActivity", wasteResult.toString())
         val wasteTypes = resources.getStringArray(com.dicoding.trashup.R.array.waste_types)
         val menuTextAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, wasteTypes)
         binding.edWasteType.setAdapter(menuTextAdapter)
-        binding.edWasteType.setSelection(wasteTypes.size - 1)
+        binding.edWasteType.setSelection(wasteResult)
 
 
         binding.btnSubmit.setOnClickListener {
@@ -132,6 +134,6 @@ class AddWasteActivity : AppCompatActivity() {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
         const val EXTRA_NAVIGATE_TO_CART = "extra_navigate_to_cart"
         const val RESULT_ADD = 101
-        const val EXTRA_POINTS = "extra_points"
+        const val EXTRA_RESULT = "extra_result"
     }
 }
