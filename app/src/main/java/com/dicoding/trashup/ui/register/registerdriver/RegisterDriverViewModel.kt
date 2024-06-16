@@ -39,7 +39,7 @@ class RegisterDriverViewModel: ViewModel() {
                 call: Call<RegisterDriverResponse>,
                 response: Response<RegisterDriverResponse>
             ) {
-                _isLoading.value = true
+                _isLoading.value = false
                 if (response.isSuccessful) {
                     _isSuccess.value = true
                 } else {
@@ -58,7 +58,7 @@ class RegisterDriverViewModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<RegisterDriverResponse>, t: Throwable) {
-                _isLoading.value = true
+                _isLoading.value = false
                 _isSuccess.value = false
                 Log.e(TAG, "Onfailure: ${t.message}")
             }
