@@ -70,6 +70,12 @@ class ClaimRewardFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        homeViewModel.getUserData()
+        viewModel.getListVoucher()
+    }
+
     companion object {
         const val EXTRA_VOUCHER_ID = "extra_voucher_id"
     }

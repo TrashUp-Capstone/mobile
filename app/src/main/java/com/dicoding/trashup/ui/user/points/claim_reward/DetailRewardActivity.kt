@@ -4,7 +4,10 @@ import android.graphics.Movie
 import android.media.tv.TvContract.Programs.Genres.MOVIES
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -12,12 +15,16 @@ import com.dicoding.trashup.R
 import com.dicoding.trashup.data.entity.Voucher
 import com.dicoding.trashup.databinding.ActivityDetailRewardBinding
 import com.dicoding.trashup.formatDate
+import com.dicoding.trashup.ui.ViewModelFactory
 import java.text.NumberFormat
 import java.util.Locale
 
 class DetailRewardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailRewardBinding
+    private val viewModel by viewModels<DetailRewardViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,6 +53,14 @@ class DetailRewardActivity : AppCompatActivity() {
             tvValueReward.text = formattedPrice
             tvValidReward.text = formattedDate
             tvDescReward.text = voucherDescription
+            btnClaim.setOnClickListener {
+                viewModel.redeemVoucher(voucherId)
+                finish()
+            }
+        }
+
+        viewModel.message.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -10,3 +10,7 @@ data class UserRedeemedVoucherResponse(
 	@field:SerializedName("message")
 	val message: String? = null
 )
+
+data class RedeemVoucherRequest(
+	@SerializedName("voucher_type_id") val voucherTypeId: Int
+)

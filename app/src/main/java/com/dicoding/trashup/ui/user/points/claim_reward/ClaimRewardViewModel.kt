@@ -18,7 +18,7 @@ class ClaimRewardViewModel(private val repository: UserRepository) : ViewModel()
     init {
         getListVoucher()
     }
-    private fun getListVoucher() {
+    fun getListVoucher() {
         _isLoading.value = true
         viewModelScope.launch {
             try {

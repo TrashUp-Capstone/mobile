@@ -1,5 +1,6 @@
 package com.dicoding.trashup.data.network.retrofit.user
 
+import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserHistoryVoucherResponse
@@ -7,6 +8,7 @@ import com.dicoding.trashup.data.network.response.user.UserRedeemedVoucherRespon
 import com.dicoding.trashup.data.network.response.user.UserResponse
 import com.dicoding.trashup.data.network.response.user.UserVoucherResponse
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -25,9 +27,8 @@ interface UserApiService {
     @GET("vouchers")
     suspend fun getUserVoucherList() : UserHistoryVoucherResponse
 
-    @FormUrlEncoded
     @POST("activities/vouchers/new")
     suspend fun redeemVoucher(
-        @Field("voucher_type_id") voucherTypeId : String
+        @Body request: RedeemVoucherRequest
     ) : UserRedeemedVoucherResponse
 }
