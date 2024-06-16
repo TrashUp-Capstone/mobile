@@ -28,13 +28,13 @@ import com.dicoding.trashup.ui.user.points.PointsUserActivity
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeUserBinding? = null
     private val viewModel by activityViewModels<HomeViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
 
     // Viewmodel buat menampilkan points
     private val viewModelPoints : ActivityUserViewModel by viewModels()
+    private lateinit var binding: FragmentHomeUserBinding
 
 
 
@@ -57,15 +57,13 @@ class HomeFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeUserBinding.inflate(inflater, container, false)
-
+        binding = FragmentHomeUserBinding.inflate(inflater, container, false)
         // Data user
         viewModel.getUserData()
         viewModel.userData.observe(viewLifecycleOwner) { user ->
@@ -136,7 +134,6 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {

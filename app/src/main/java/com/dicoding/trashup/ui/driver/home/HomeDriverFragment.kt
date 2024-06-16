@@ -6,27 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
 import com.dicoding.trashup.databinding.FragmentHomeDriverBinding
+import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.pickup.PickupDriverFragment
 import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
 
 class HomeDriverFragment : Fragment() {
 
-    private var _binding: FragmentHomeDriverBinding? = null
-    private val binding get() = _binding
-
+    private lateinit var binding: FragmentHomeDriverBinding
+    private val driverViewModel: HomeDriverViewModel by activityViewModels {
+        ViewModelFactory.getInstance(requireActivity().application)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeDriverBinding.inflate(inflater, container, false)
-        return binding?.root
+        binding = FragmentHomeDriverBinding.inflate(inflater, container, false)
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,16 +46,28 @@ class HomeDriverFragment : Fragment() {
         availablePickupViewmodel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
+        driverViewModel.apply {
+            driverNumber.observe(requireActivity()) {
+                binding.driverNumber.text = it
+            }
+            driverName.observe(requireActivity()) {
+                binding.driverName.text = it
+            }
+            driverLicense.observe(requireActivity()) {
+                binding.driverNumberPlat.text = it
+            }
+        }
 
         val layoutManager = LinearLayoutManager(requireActivity())
-        binding?.listAvailableHomeRv?.layoutManager = layoutManager
-        binding?.btnViewProfile?.setOnClickListener {
+        binding.listAvailableHomeRv.layoutManager = layoutManager
+        binding.btnViewProfile.setOnClickListener {
             val navOptions = NavOptions.Builder()
                 .setPopUpTo(R.id.navigation_home_driver, true)
                 .build()
             activity.navController.navigate(R.id.navigation_profile_driver, null, navOptions)
         }
     }
+
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
@@ -84,7 +101,6 @@ class HomeDriverFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     companion object {

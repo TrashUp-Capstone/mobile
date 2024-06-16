@@ -3,6 +3,7 @@ package com.dicoding.trashup.ui.driver.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -18,6 +20,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dicoding.trashup.R
+import com.dicoding.trashup.data.network.response.driver.DataDriver
 import com.dicoding.trashup.databinding.ActivityHomeDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.history.activity.HistoryViewModel
@@ -50,11 +53,15 @@ class HomeActivityDriver : AppCompatActivity() {
 
         viewModel.getSession().observe(this) {user ->
             if (user.token != null) {
-               // biarin aja
+               viewModel.getDataDriver(user.token)
             } else { // Kalau belum login pindahkan ke Welcome Activity
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
             }
+        }
+
+        viewModel.message.observe(this)  {
+            showToast(it)
         }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_driver_activity_main) as NavHostFragment
@@ -63,5 +70,9 @@ class HomeActivityDriver : AppCompatActivity() {
         // Setup BottomNavigationView with NavController
         NavigationUI.setupWithNavController(binding.bottomNavigationDriver, navController)
     }
+
+   fun showToast(message: String) {
+       Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+   }
 
 }

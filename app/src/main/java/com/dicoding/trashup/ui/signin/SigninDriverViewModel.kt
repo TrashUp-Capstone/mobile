@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.dicoding.trashup.data.UserModel
 import com.dicoding.trashup.data.UserRepository
 import com.dicoding.trashup.data.network.response.ErrorResponse
-import com.dicoding.trashup.data.network.response.LoginDriverResponse
+import com.dicoding.trashup.data.network.response.register.LoginDriverResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.google.gson.Gson
 import kotlinx.coroutines.launch

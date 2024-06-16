@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.trashup.data.network.response.ErrorResponse
-import com.dicoding.trashup.data.network.response.RegisterDriverResponse
-import com.dicoding.trashup.data.network.response.RegisterUserResponse
+import com.dicoding.trashup.data.network.response.register.RegisterDriverResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.google.gson.Gson
 import retrofit2.Call
