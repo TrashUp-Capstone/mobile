@@ -1,5 +1,6 @@
 package com.dicoding.trashup.data
 
+import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
@@ -28,6 +29,13 @@ class UserRepository private constructor(
         val token = userModel.token
         val userApiService = ApiConfig.getUserApiService(token.toString())
         return userApiService.getUserData()
+    }
+
+    suspend fun getUserActivities(): UserActivityResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        return userApiService.getUserActivities()
     }
 
     companion object {

@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.PointsResponseItem
+import com.dicoding.trashup.data.network.response.user.DataActivities
 import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.camera.CameraActivity
@@ -59,23 +60,21 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeUserBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Data user
-        viewModel.getUserData()
-        viewModel.userData.observe(viewLifecycleOwner) { user ->
-            if (user != null) {
-                binding.apply {
-                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
-                    tvUserPoints.text = user.points.toString()
-                }
-            }
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
@@ -94,16 +93,34 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        return binding.root
-    }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                // Tampilkan placeholder atau loading spinner
+                showLoading()
+            } else {
+                // Sembunyikan placeholder atau loading spinner
+                hideLoading()
+            }
+        }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // Data user
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                binding.apply {
+                    homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
+                    tvUserPoints.text = user.points.toString()
+                }
+            }
+        }
+        viewModel.getUserData()
 
             // Menampilkan list point di home
-        viewModelPoints.listPoints.observe(viewLifecycleOwner) {
-            setHistoryPoints(it)
+        viewModel.userActivities.observe(viewLifecycleOwner) {
+            if (it != null) {
+                setHistoryPoints(it)
+            }
         }
+        viewModel.getUserActivities()
 
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
@@ -139,11 +156,21 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun setHistoryPoints(reviewPointsActivity: List<PointsResponseItem>) {
-        val latestPoints = reviewPointsActivity.takeLast(3)
+    private fun setHistoryPoints(userActivities: List<DataActivities>) {
+        val latestPoints = userActivities.takeLast(3)
         val adapter = ReviewPointsAdapter()
         adapter.submitList(latestPoints)
         binding.rvRecentWaste.adapter = adapter
+    }
+
+    private fun showLoading() {
+        // Tampilkan placeholder atau loading spinner
+        binding.homeUserWelcome.text = getString(R.string.loading_data)
+        binding.tvUserPoints.text = ""
+    }
+
+    private fun hideLoading() {
+        // Sembunyikan placeholder atau loading spinner
     }
 
     companion object {
