@@ -6,15 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
+import com.dicoding.trashup.data.network.response.user.HistoryVoucherItem
+import com.dicoding.trashup.databinding.FragmentHistoryPointsBinding
+import com.dicoding.trashup.ui.ViewModelFactory
 
 class HistoryPointsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HistoryPointsFragment()
-    }
+    private lateinit var binding: FragmentHistoryPointsBinding
 
-    private val viewModel: HistoryPointsViewModel by viewModels()
+    private val viewModel by activityViewModels<HistoryPointsViewModel>(){
+        ViewModelFactory.getInstance(requireActivity())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,25 @@ class HistoryPointsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_history_points, container, false)
+        binding = FragmentHistoryPointsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.listHistoryVoucher.observe(viewLifecycleOwner) {
+            if (it != null) {
+                setHistoryVoucher(it)
+            }
+        }
+        val layoutManager = LinearLayoutManager(requireActivity())
+        binding.rvHistoryPoints.layoutManager = layoutManager
+    }
+
+    private fun setHistoryVoucher(historyVoucherItem: List<HistoryVoucherItem>) {
+        val adapter = HistoryPointsAdapter()
+        adapter.submitList(historyVoucherItem)
+        binding.rvHistoryPoints.adapter = adapter
     }
 }

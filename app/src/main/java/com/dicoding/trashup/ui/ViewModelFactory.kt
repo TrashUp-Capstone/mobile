@@ -8,8 +8,12 @@ import com.dicoding.trashup.di.Injection
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 import com.dicoding.trashup.ui.signin.SigninDriverViewModel
 import com.dicoding.trashup.ui.signin.SigninViewModel
+import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
 import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
+import com.dicoding.trashup.ui.user.points.claim_reward.ClaimRewardViewModel
+import com.dicoding.trashup.ui.user.points.claim_reward.DetailRewardViewModel
+import com.dicoding.trashup.ui.user.points.history_points.HistoryPointsViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -32,6 +36,20 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(ActivityUserViewModel::class.java) -> {
+                ActivityUserViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ClaimRewardViewModel::class.java) -> {
+                ClaimRewardViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(HistoryPointsViewModel::class.java) -> {
+                HistoryPointsViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailRewardViewModel::class.java) -> {
+                DetailRewardViewModel(repository) as T
+            }
+
+            
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

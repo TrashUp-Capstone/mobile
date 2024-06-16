@@ -1,7 +1,13 @@
 package com.dicoding.trashup.data
 
+import android.util.Log
+import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
+import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserData
+import com.dicoding.trashup.data.network.response.user.UserHistoryVoucherResponse
+import com.dicoding.trashup.data.network.response.user.UserRedeemedVoucherResponse
 import com.dicoding.trashup.data.network.response.user.UserResponse
+import com.dicoding.trashup.data.network.response.user.UserVoucherResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.dicoding.trashup.data.network.retrofit.ApiService
 import com.dicoding.trashup.data.network.retrofit.user.UserApiService
@@ -29,6 +35,38 @@ class UserRepository private constructor(
         val userApiService = ApiConfig.getUserApiService(token.toString())
         return userApiService.getUserData()
     }
+
+    suspend fun getUserActivities(): UserActivityResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        return userApiService.getUserActivities()
+    }
+
+    suspend fun getVoucherList(): UserVoucherResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        return userApiService.getVoucherList()
+    }
+
+    suspend fun getUserVoucherList(): UserHistoryVoucherResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        return userApiService.getUserVoucherList()
+    }
+
+    suspend fun redeemVoucher(voucherTypeId: Int): UserRedeemedVoucherResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        val request = RedeemVoucherRequest(voucherTypeId)
+        Log.d("COY REPO", "voucherTypeId: $voucherTypeId")
+        return userApiService.redeemVoucher(request)
+    }
+
+
 
     companion object {
 

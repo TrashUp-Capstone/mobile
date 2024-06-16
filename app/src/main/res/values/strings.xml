@@ -123,6 +123,7 @@
     <string name="successfully_created">Account successfully created, please log in.</string>
     <string name="input_license_plate">Input License Plate</string>
     <string name="license_plate">License Plate</string>
+    <string name="loading_data">Loading data..</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>
