@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.entity.Voucher
+import com.dicoding.trashup.data.network.response.user.VoucherItem
 import com.dicoding.trashup.databinding.ActivityMainBinding
 import com.dicoding.trashup.databinding.FragmentClaimRewardBinding
 import com.dicoding.trashup.ui.ViewModelFactory
@@ -35,16 +36,8 @@ class ClaimRewardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list.addAll(getListVoucher())
-        showRecycleList()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentClaimRewardBinding.inflate(inflater, container, false)
-
+//        list.addAll(getListVoucher())
+//        showRecycleList()
         homeViewModel.getUserData()
         homeViewModel.userData.observe(viewLifecycleOwner) { user ->
             if (user != null) {
@@ -54,37 +47,51 @@ class ClaimRewardFragment : Fragment() {
                 }
             }
         }
-
-        return binding.root
-
-    }
-
-    private fun showRecycleList() {
-        binding.rvVoucher.layoutManager = LinearLayoutManager(requireContext())
-        val listVoucherAdapter = ListVoucherAdapter(list)
-        binding.rvVoucher.adapter = listVoucherAdapter
-
-        listVoucherAdapter.setOnItemClickCallback(object : ListVoucherAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Voucher) {
-                val intentToDetail = Intent(requireContext(), DetailRewardActivity::class.java)
-                intentToDetail.putExtra("VOUCHER", data)
-                startActivity(intentToDetail)
+        viewModel.listVoucher.observe(viewLifecycleOwner) {
+            if (it != null) {
+                setVoucherData(it)
             }
-        })
-    }
-
-    private fun getListVoucher(): ArrayList<Voucher> {
-        val points = resources.getIntArray(R.array.voucher_points)
-        val date = resources.getStringArray(R.array.voucher_date)
-        val price = resources.getIntArray(R.array.voucher_price)
-        val listVoucher = ArrayList<Voucher>()
-
-        for (x in points.indices) {
-            val voucher = Voucher(points[x], price[x], date[x])
-            listVoucher.add(voucher)
         }
-        return listVoucher
+        val layoutManager = LinearLayoutManager(requireActivity())
+        binding.rvVoucher.layoutManager = layoutManager
     }
+
+    private fun setVoucherData(voucherItems: List<VoucherItem>) {
+        val adapter = ListVoucherAdapter()
+        adapter.submitList(voucherItems)
+        binding.rvVoucher.adapter = adapter
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentClaimRewardBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    companion object {
+        const val EXTRA_VOUCHER_ID = "extra_voucher_id"
+    }
+
+//    private fun showRecycleList() {
+//        binding.rvVoucher.layoutManager = LinearLayoutManager(requireContext())
+//        val listVoucherAdapter = ListVoucherAdapter(list)
+//        binding.rvVoucher.adapter = listVoucherAdapter
+//    }
+
+//    private fun getListVoucher(): ArrayList<Voucher> {
+//        val points = resources.getIntArray(R.array.voucher_points)
+//        val date = resources.getStringArray(R.array.voucher_date)
+//        val price = resources.getIntArray(R.array.voucher_price)
+//        val listVoucher = ArrayList<Voucher>()
+//
+//        for (x in points.indices) {
+//            val voucher = Voucher(points[x], price[x], date[x])
+//            listVoucher.add(voucher)
+//        }
+//        return listVoucher
+//    }
 
 
 }

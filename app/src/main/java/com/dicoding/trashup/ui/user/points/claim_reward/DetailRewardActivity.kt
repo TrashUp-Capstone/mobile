@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.entity.Voucher
 import com.dicoding.trashup.databinding.ActivityDetailRewardBinding
+import com.dicoding.trashup.formatDate
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -29,24 +30,22 @@ class DetailRewardActivity : AppCompatActivity() {
             insets
         }
 
-        val voucher = if (Build.VERSION.SDK_INT >= 33) {
-            intent.getParcelableExtra<Voucher>(EXTRA_VOUCHER, Voucher::class.java)
-        } else {
-            @Suppress("DEPRECATION")
-            intent.getParcelableExtra<Voucher>(EXTRA_VOUCHER)
-        }
+        val voucherId = intent.getIntExtra(ListVoucherAdapter.EXTRA_VOUCHER_ID, 0)
+        val voucherName = intent.getStringExtra(ListVoucherAdapter.EXTRA_VOUCHER_NAME)
+        val voucherDescription = intent.getStringExtra(ListVoucherAdapter.EXTRA_VOUCHER_DESCRIPTION)
+        val voucherCost = intent.getIntExtra(ListVoucherAdapter.EXTRA_VOUCHER_COST, 0)
+        val voucherCreatedAt = intent.getStringExtra(ListVoucherAdapter.EXTRA_VOUCHER_CREATED_AT)
 
-        if (voucher != null) {
-            val formattedPoint = NumberFormat.getNumberInstance(Locale("id", "ID")).format(voucher.points)
-// Konversi price ke format rupiah
-            val formattedPrice = NumberFormat.getCurrencyInstance(Locale("id", "ID")).format(voucher.price)
-            binding.tvCostReward.text = formattedPrice
-            binding.tvValueReward.text = formattedPoint
-            binding.tvValidReward.text = voucher.date
-        }
-    }
 
-    companion object{
-        const val EXTRA_VOUCHER = "VOUCHER"
+        val formattedPoint = NumberFormat.getNumberInstance(Locale("id", "ID")).format(voucherCost)
+        // Konversi price ke format rupiah
+        val formattedPrice = NumberFormat.getCurrencyInstance(Locale("id", "ID")).format(voucherCost)
+        val formattedDate = formatDate(voucherCreatedAt.toString())
+        binding.apply {
+            tvCostReward.text = formattedPoint
+            tvValueReward.text = formattedPrice
+            tvValidReward.text = formattedDate
+            tvDescReward.text = voucherDescription
+        }
     }
 }
