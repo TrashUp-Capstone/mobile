@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, HomeActivityDriver::class.java))
                     finish()
                 } else { // Kalau login akun user, biarin aja jangan pindah halaman
-                    //
+                    Log.e("MainActivity", user.token)
                 }
             } else { // Kalau belum login pindahkan ke Welcome Activity
                 startActivity(Intent(this, WelcomeActivity::class.java))
@@ -63,17 +63,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val navView: BottomNavigationView = binding.navView
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home_user,
-//                R.id.navigation_history_user,
-//                R.id.navigation_cart_user,
-//                R.id.navigation_profile_user,
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }

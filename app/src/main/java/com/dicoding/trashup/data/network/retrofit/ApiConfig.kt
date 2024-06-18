@@ -61,7 +61,7 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
                 .build()
-            Log.d("coy token", token)
+
             val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL_TRASHUP)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -89,7 +89,7 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
                 .build()
-            Log.d("coy token", token)
+
             val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL_TRASHUP)
                 .addConverterFactory(GsonConverterFactory.create())

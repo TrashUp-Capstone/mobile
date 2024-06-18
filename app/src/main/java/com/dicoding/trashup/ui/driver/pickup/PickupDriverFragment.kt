@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.data.network.response.driver.DataPickUpUser
 import com.dicoding.trashup.databinding.FragmentPickupDriverBinding
+import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
+import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
 
@@ -18,6 +22,10 @@ class PickupDriverFragment : Fragment() {
 
     private var _binding: FragmentPickupDriverBinding? = null
     private val binding get() = _binding
+    private var token: String = ""
+    private val driverViewModel: HomeDriverViewModel by activityViewModels {
+        ViewModelFactory.getInstance(requireActivity().application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +43,10 @@ class PickupDriverFragment : Fragment() {
 
         val activity = activity as HomeActivityDriver
         val availablePickupViewmodel =activity.availablePickupViewModel
+        driverViewModel.getSession().observe(requireActivity()) {
+            token = it.token.toString()
+            availablePickupViewmodel.showAvailablePickup(token)
+        }
         availablePickupViewmodel.listPickup.observe(viewLifecycleOwner) {
             setListPickupData(it)
         }
@@ -56,14 +68,14 @@ class PickupDriverFragment : Fragment() {
         }
     }
 
-    private fun setListPickupData(reviewAvailablePickup: List<ResponseItem>) {
+    private fun setListPickupData(reviewAvailablePickup: List<DataPickUpUser>) {
         val adapter = binding?.AvailablePickupRv?.adapter as? ReviewAvailablePickupAdapter
         if (adapter == null) {
             val newAdapter = ReviewAvailablePickupAdapter()
             newAdapter.submitList(reviewAvailablePickup)
             binding?.AvailablePickupRv?.adapter = newAdapter
             newAdapter.setOnItemClickCallback(object : ReviewAvailablePickupAdapter.OnItemClickCallback{
-                override fun onItemClicked(data: ResponseItem) {
+                override fun onItemClicked(data: DataPickUpUser) {
                     val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
                     intentToDetail.putExtra(EXTRA_ID, data.id)
                     startActivity(intentToDetail)
