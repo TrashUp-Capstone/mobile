@@ -3,6 +3,8 @@ package com.dicoding.trashup.data
 import android.util.Log
 import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordRequest
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserEditRequest
 import com.dicoding.trashup.data.network.response.user.UserEditResponse
@@ -82,6 +84,15 @@ class UserRepository private constructor(
         val request = UserEditRequest(name, email, phone, birth, address, password)
         Log.d("COY REQ update profile", "request: $request")
         return userApiService.updateUserProfile(request)
+    }
+
+    suspend fun updateUserPassword(password: String) : UserChangePasswordResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        val request = UserChangePasswordRequest(password)
+        Log.d("COY REQ password profile", "request: $request")
+        return userApiService.updateUserPassword(request)
     }
 
 

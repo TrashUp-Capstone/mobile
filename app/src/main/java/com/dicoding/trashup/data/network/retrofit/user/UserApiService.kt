@@ -2,6 +2,8 @@ package com.dicoding.trashup.data.network.retrofit.user
 
 import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordRequest
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserEditRequest
 import com.dicoding.trashup.data.network.response.user.UserEditResponse
@@ -39,5 +41,9 @@ interface UserApiService {
     suspend fun updateUserProfile(
         @Body request: UserEditRequest
     ) : UserEditResponse
+    @PUT("whoami/reset/user")
+    suspend fun updateUserPassword(
+        @Body request: UserChangePasswordRequest
+    ) : UserChangePasswordResponse
 
 }

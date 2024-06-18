@@ -25,6 +25,9 @@
         android:theme="@style/Theme.TrashUp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.user.profile.change_pass.UserChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.user.profile.edit.UserEditProfileActivity"
             android:exported="false" />
         <activity
