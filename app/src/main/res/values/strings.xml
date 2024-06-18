@@ -59,7 +59,7 @@
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="waiting_for_pick_up">Waiting for Pick Up</string>
     <string name="date_available_pickup">22 \n May</string>
-    <string name="weight_waste">10kg of Waste</string>
+    <string name="weight_waste">%.1fkg of Waste</string>
     <string name="your_address">Jl. Kartini No. 2 Blok C1, Kec. Cipayung, Kota Depok, 11234</string>
     <string name="done_pick_up">Done Pick Up</string>
     <string name="date_done_pickup">22 May 2024</string>

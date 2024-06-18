@@ -54,6 +54,7 @@ class HomeActivityDriver : AppCompatActivity() {
         viewModel.getSession().observe(this) {user ->
             if (user.token != null) {
                viewModel.getDataDriver(user.token)
+                availablePickupViewModel.showAvailablePickup(user.token)
             } else { // Kalau belum login pindahkan ke Welcome Activity
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()

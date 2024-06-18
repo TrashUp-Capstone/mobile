@@ -5,11 +5,13 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -26,16 +28,21 @@ import com.dicoding.trashup.ui.user.camera.CameraActivity
 import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
 import com.dicoding.trashup.ui.user.history.inprocess.ReviewPointsAdapter
 import com.dicoding.trashup.ui.user.points.PointsUserActivity
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 class HomeFragment : Fragment() {
 
     private val viewModel by activityViewModels<HomeViewModel> {
-        ViewModelFactory.getInstance(requireActivity())
+        ViewModelFactory.getInstance(requireContext())
     }
-
+    private var  lat: Double? = null
+    private var lon: Double? = null
+    private var token: String? = null
+    private lateinit var fusedLocation: FusedLocationProviderClient
     // Viewmodel buat menampilkan points
-    private val viewModelPoints : ActivityUserViewModel by viewModels()
     private lateinit var binding: FragmentHomeUserBinding
+
 
 
 
@@ -74,17 +81,35 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // fusedLoaction is used to get lat lon user
+        fusedLocation = LocationServices.getFusedLocationProviderClient(requireContext())
 
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
+        viewModel.messageCreate.observe(requireActivity()) {
+            showToast(it)
+        }
+        viewModel.userToken.observe(requireActivity()) {
+            token = it
+        }
+        requestLocation()
+
         binding.btnAddWaste.setOnClickListener {
-            startCamera()
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(R.id.navigation_home_user, true)
-                .build()
-            findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
+            requestLocation()
+            if (lat != null && lon != null  && token != null) { // if lat lon null, app cannot start the camera
+                viewModel.setLocation(lat!!, lon!!) // dimasukkan ke dalam viewmodel biar lat lon bisa digunakan lagi di user driver
+                viewModel.createWasteActivity(token.toString(), lat!!, lon!!)
+                startCamera()
+                Log.d("HomeFragment", "lat = ${lat} lon = ${lon}")
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.navigation_home_user, true)
+                    .build()
+                findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
+            } else { // show error if lat lon is null
+                showToast("Error lat lon cannot null")
+            }
         }
 
         binding.btnViewPoints.setOnClickListener {
@@ -124,6 +149,42 @@ class HomeFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
         binding.rvRecentWaste.isNestedScrollingEnabled = false;
+    }
+
+    private fun requestLocation() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE
+            )
+            showToast("Location permission is needed for accessing location.")
+        } else {
+            getMyLocation()
+        }
+    }
+
+    private fun getMyLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED) {
+            return
+        }
+
+        fusedLocation.lastLocation.addOnSuccessListener { mylocation ->
+            lat = mylocation.latitude
+            lon = mylocation.longitude
+        }
+    }
+
+    private fun showToast(message: String) {
+        if (isAdded) {
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private val startCameraLauncher =
@@ -173,5 +234,6 @@ class HomeFragment : Fragment() {
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
+        private const val REQUEST_CODE = 101
     }
 }

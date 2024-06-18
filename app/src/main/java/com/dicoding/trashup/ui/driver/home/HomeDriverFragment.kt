@@ -13,6 +13,7 @@ import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.data.network.response.driver.DataPickUpUser
 import com.dicoding.trashup.databinding.FragmentHomeDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.pickup.PickupDriverFragment
@@ -77,13 +78,13 @@ class HomeDriverFragment : Fragment() {
         }
     }
 
-    private fun setListPickupData(reviewAvailablePickup: List<ResponseItem>) {
+    private fun setListPickupData(reviewAvailablePickup: List<DataPickUpUser>) {
         activity?.window?.statusBarColor = resources.getColor(R.color.white_bg)
         val adapter = HomeAvailableAdapter()
         adapter.submitList(reviewAvailablePickup)
         binding?.listAvailableHomeRv?.adapter = adapter
         adapter.setOnItemClickCallback(object : HomeAvailableAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ResponseItem) {
+            override fun onItemClicked(data: DataPickUpUser) {
                 val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
                 intentToDetail.putExtra(EXTRA_ID, data.id)
                 startActivity(intentToDetail)

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.trashup.data.UserModel
@@ -40,10 +41,23 @@ class HomeDriverViewModel (val repository: UserRepository) : ViewModel() {
     private val _driverLicense = MutableLiveData<String>()
     val driverLicense: LiveData<String> = _driverLicense
 
+    private var _driverToken = MutableLiveData<String?>()
+    val driverToken: LiveData<String?> = _driverToken
+
+    private val _latitude = MutableLiveData<Double>()
+    val latitude: LiveData<Double> get() = _latitude
+
+    private val _longitude = MutableLiveData<Double>()
+    val longitude: LiveData<Double> get() = _longitude
+
     fun deleteSession() {
         viewModelScope.launch {
             repository.logout()
         }
+    }
+
+    init {
+        getDataDriver(_driverToken.value.toString())
     }
 
     fun getDataDriver(token: String) {
@@ -83,6 +97,7 @@ class HomeDriverViewModel (val repository: UserRepository) : ViewModel() {
     }
 
     fun getSession() : LiveData<UserModel> {
+        _driverToken.value = repository.getSession().asLiveData().value?.token
         return repository.getSession().asLiveData()
     }
 }
