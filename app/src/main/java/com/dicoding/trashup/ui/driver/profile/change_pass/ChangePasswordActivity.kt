@@ -41,7 +41,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             } else {
                 viewModel.updateDriverPassword(newPw)
                 showToast(getString(R.string.password_user_changed))
-//                finish()
+                finish()
             }
         }
     }
