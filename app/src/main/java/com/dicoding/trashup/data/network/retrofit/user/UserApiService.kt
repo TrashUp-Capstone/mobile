@@ -3,6 +3,8 @@ package com.dicoding.trashup.data.network.retrofit.user
 import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserData
+import com.dicoding.trashup.data.network.response.user.UserEditRequest
+import com.dicoding.trashup.data.network.response.user.UserEditResponse
 import com.dicoding.trashup.data.network.response.user.UserHistoryVoucherResponse
 import com.dicoding.trashup.data.network.response.user.UserRedeemedVoucherResponse
 import com.dicoding.trashup.data.network.response.user.UserResponse
@@ -13,6 +15,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface UserApiService {
     @GET("whoami")
@@ -31,4 +34,10 @@ interface UserApiService {
     suspend fun redeemVoucher(
         @Body request: RedeemVoucherRequest
     ) : UserRedeemedVoucherResponse
+
+    @PUT("whoami/update/user")
+    suspend fun updateUserProfile(
+        @Body request: UserEditRequest
+    ) : UserEditResponse
+
 }

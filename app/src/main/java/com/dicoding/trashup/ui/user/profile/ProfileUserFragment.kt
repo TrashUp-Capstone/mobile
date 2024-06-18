@@ -14,6 +14,7 @@ import com.dicoding.trashup.ui.driver.profile.ChangePasswordActivity
 import com.dicoding.trashup.ui.driver.profile.EditProfileActivity
 import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
+import com.dicoding.trashup.ui.user.profile.edit.UserEditProfileActivity
 
 class ProfileUserFragment : Fragment() {
 
@@ -52,7 +53,7 @@ class ProfileUserFragment : Fragment() {
                 viewModel.deleteSession()
             }
             btnEditProfile.setOnClickListener {
-                startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+                startActivity(Intent(requireContext(), UserEditProfileActivity::class.java))
             }
             btnResetUserPw.setOnClickListener {
                 startActivity(Intent(requireContext(), ChangePasswordActivity::class.java))

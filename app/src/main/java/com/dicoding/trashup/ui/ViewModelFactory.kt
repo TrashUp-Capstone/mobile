@@ -14,6 +14,7 @@ import com.dicoding.trashup.ui.user.main.MainViewModel
 import com.dicoding.trashup.ui.user.points.claim_reward.ClaimRewardViewModel
 import com.dicoding.trashup.ui.user.points.claim_reward.DetailRewardViewModel
 import com.dicoding.trashup.ui.user.points.history_points.HistoryPointsViewModel
+import com.dicoding.trashup.ui.user.profile.edit.UserEditProfileViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -47,6 +48,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(DetailRewardViewModel::class.java) -> {
                 DetailRewardViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(UserEditProfileViewModel::class.java) -> {
+                UserEditProfileViewModel(repository) as T
             }
 
             
