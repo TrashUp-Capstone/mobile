@@ -109,8 +109,8 @@ class AddWasteActivity : AppCompatActivity() {
 
         val values = ContentValues()
         values.put(DatabaseContract.WasteColumns.TYPEWASTE, typeWaste)
-        values.put(DatabaseContract.WasteColumns.WEIGHT, weightWaste)
         values.put(DatabaseContract.WasteColumns.PHOTO, photo.toString())
+        values.put(DatabaseContract.WasteColumns.WEIGHT, weightWaste)
         values.put(DatabaseContract.WasteColumns.POINTS, calculatedPoints)
 
         // Memasukkan nilai-nilai ke dalam database

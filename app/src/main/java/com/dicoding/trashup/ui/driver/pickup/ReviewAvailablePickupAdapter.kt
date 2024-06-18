@@ -10,17 +10,19 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.data.network.response.driver.DataPickUpUser
+import com.dicoding.trashup.data.network.response.driver.PickUpUserResponse
 import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
 import com.dicoding.trashup.formatDate
 
-class ReviewAvailablePickupAdapter : ListAdapter<ResponseItem, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
     interface OnItemClickCallback {
-        fun onItemClicked(data: ResponseItem)
+        fun onItemClicked(data: DataPickUpUser)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -36,27 +38,27 @@ class ReviewAvailablePickupAdapter : ListAdapter<ResponseItem, ReviewAvailablePi
 
     class MyViewHolder(val binding: AvailablePickupReviewBinding, private val onItemClickCallback: OnItemClickCallback) : RecyclerView.ViewHolder(binding.root){
         val context = binding.root.context
-        fun bind(review: ResponseItem) {
+        fun bind(review: DataPickUpUser) {
             binding.dateAvalaiablePickupTv.text = formatDate(review.createdAt)
-            binding.nameAvailablePickupTv.text = review.name
-            binding.addressUserAvailablePickup.text = review.address
-            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.weightWaste.toString().toDouble())
+            binding.nameAvailablePickupTv.text = review.id
+            binding.addressUserAvailablePickup.text = "${review.latitude} ${review.longitude}"
+            binding.weightWasteAvailablePickupTv.text =review.totalWeight.toString()
 
-            Glide.with(binding.root)
-                .load("${review.avatar}")
-                .apply(RequestOptions().transform(CircleCrop()))
-                .into(binding.userPhotoAvailablePickup)
-            binding.detailBtn.setOnClickListener {
-                onItemClickCallback.onItemClicked(review)
-            }
+//            Glide.with(binding.root)
+//                .load("${review.}")
+//                .apply(RequestOptions().transform(CircleCrop()))
+//                .into(binding.userPhotoAvailablePickup)
+//            binding.detailBtn.setOnClickListener {
+//                onItemClickCallback.onItemClicked(review)
+//                    }
         }
     }
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ResponseItem>() {
-            override fun areContentsTheSame(oldItem: ResponseItem, newItem: ResponseItem): Boolean {
+    companion object{
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataPickUpUser>() {
+            override fun areContentsTheSame(oldItem: DataPickUpUser, newItem: DataPickUpUser): Boolean {
                 return oldItem == newItem
             }
-            override fun areItemsTheSame(oldItem: ResponseItem, newItem: ResponseItem): Boolean {
+            override fun areItemsTheSame(oldItem: DataPickUpUser, newItem: DataPickUpUser): Boolean {
                 return oldItem == newItem
             }
         }

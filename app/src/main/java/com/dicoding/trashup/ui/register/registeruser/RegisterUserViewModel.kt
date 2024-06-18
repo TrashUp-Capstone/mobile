@@ -38,7 +38,7 @@ class RegisterUserViewModel: ViewModel() {
                 call: Call<RegisterUserResponse>,
                 response: Response<RegisterUserResponse>
             ) {
-                _isLoading.value = true
+                _isLoading.value = false
                 if (response.isSuccessful) {
                     _isSuccess.value = true
                 } else {
@@ -57,7 +57,7 @@ class RegisterUserViewModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<RegisterUserResponse>, t: Throwable) {
-                _isLoading.value = true
+                _isLoading.value = false
                 _isSuccess.value = false
                 Log.e(TAG, "Onfailure: ${t.message}")
             }
