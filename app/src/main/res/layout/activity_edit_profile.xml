@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:hint="@string/insert_date_of_birth"
             android:inputType="date"
             tools:ignore="SpeakableTextPresentCheck" />
