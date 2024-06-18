@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.driver.profile.edit.EditProfileActivity">
+    tools:context=".ui.user.profile.edit.UserEditProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -201,38 +201,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/plate_label"
-            style="@style/tv_label"
-            android:text="@string/license_plate"
-            android:layout_marginTop="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addressEditTextLayout" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/plateEditTextLayout"
-            style="@style/edit_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plate_label">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_change_plate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textSize="14sp"
-                android:hint="@string/input_license_plate"
-                android:inputType="text"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
             android:id="@+id/password_label"
             style="@style/tv_label"
             android:text="@string/password"
             android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plateEditTextLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/addressEditTextLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordEditTextLayout"
@@ -254,7 +228,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.dicoding.trashup.ui.customview.MyButtonTealBg
-            android:id="@+id/save_account_driver_btn"
+            android:id="@+id/save_account_user_btn"
             style="@style/large_btn"
             android:text="@string/save_information"
             android:layout_marginTop="40dp"

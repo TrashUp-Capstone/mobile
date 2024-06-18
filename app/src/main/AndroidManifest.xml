@@ -27,6 +27,12 @@
         android:theme="@style/Theme.TrashUp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.user.profile.change_pass.UserChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.profile.edit.UserEditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.user.points.claim_reward.DetailRewardActivity"
             android:exported="false" />
         <activity
@@ -48,10 +54,10 @@
             android:name=".ui.driver.pickup.detailpickup.DetailPickUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.driver.profile.ChangePasswordActivity"
+            android:name=".ui.driver.profile.change_pass.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.driver.profile.EditProfileActivity"
+            android:name=".ui.driver.profile.edit.EditProfileActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -78,29 +84,29 @@
             android:name=".ui.driver.home.HomeActivityDriver"
             android:exported="false" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.signin.SigninActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registerdriver.PersonalDataDriverActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registerdriver.RegisterDriverAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registeruser.PersonalDataUserActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.registeruser.RegisterUserAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ui.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:exported="false" />

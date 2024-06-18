@@ -29,3 +29,23 @@ fun uriToFile(imageUri: Uri?, context: Context): File {
     inputStream.close()
     return myFile
 }
+
+
+fun formatDateProfile(dateString: String?): String {
+    return if (dateString != null) {
+        try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val date = inputFormat.parse(dateString)
+            if (date != null) {
+                outputFormat.format(date)
+            } else {
+                "Unknown date"
+            }
+        } catch (e: Exception) {
+            "Invalid date format"
+        }
+    } else {
+        "No date available"
+    }
+}
