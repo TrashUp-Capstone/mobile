@@ -52,10 +52,10 @@
             android:name=".ui.driver.pickup.detailpickup.DetailPickUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.driver.profile.ChangePasswordActivity"
+            android:name=".ui.driver.profile.change_pass.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.driver.profile.EditProfileActivity"
+            android:name=".ui.driver.profile.edit.EditProfileActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.

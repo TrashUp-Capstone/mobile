@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import com.dicoding.trashup.R
-import com.dicoding.trashup.databinding.FragmentHistoryDriverBinding
 import com.dicoding.trashup.databinding.FragmentProfileDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
+import com.dicoding.trashup.ui.driver.profile.change_pass.ChangePasswordActivity
+import com.dicoding.trashup.ui.driver.profile.edit.EditProfileActivity
 
 
 class ProfileDriverFragment : Fragment() {
