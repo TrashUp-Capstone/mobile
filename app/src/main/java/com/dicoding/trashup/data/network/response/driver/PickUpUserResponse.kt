@@ -14,25 +14,31 @@ data class DataPickUpUser(
 	val activityTime: String,
 
 	@field:SerializedName("driver_id")
-	val driverId: Any,
+	val driverId: String,
 
 	@field:SerializedName("activity_status_id")
 	val activityStatusId: Int,
 
+	@field:SerializedName("address")
+	val address: String,
+
 	@field:SerializedName("latitude")
-	val latitude: Double,
+	val latitude: Any,
 
 	@field:SerializedName("created_at")
 	val createdAt: String,
 
 	@field:SerializedName("total_weight")
-	val totalWeight: Double,
+	val totalWeight: Int,
 
 	@field:SerializedName("points")
 	val points: Int,
 
 	@field:SerializedName("user_id")
 	val userId: String,
+
+	@field:SerializedName("name")
+	val name: String,
 
 	@field:SerializedName("started_at")
 	val startedAt: String,
@@ -41,11 +47,11 @@ data class DataPickUpUser(
 	val id: String,
 
 	@field:SerializedName("modified_at")
-	val modifiedAt: Any,
+	val modifiedAt: String,
 
 	@field:SerializedName("ended_at")
-	val endedAt: Any,
+	val endedAt: String,
 
 	@field:SerializedName("longitude")
-	val longitude: Double
+	val longitude: Any
 )

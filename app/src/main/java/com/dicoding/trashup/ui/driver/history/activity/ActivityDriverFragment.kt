@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.data.network.response.driver.DataOnGoingUserItem
 import com.dicoding.trashup.databinding.FragmentActivityDriverBinding
 import com.dicoding.trashup.databinding.FragmentHistoryDriverBinding
 import com.dicoding.trashup.databinding.FragmentPickupDriverBinding
+import com.dicoding.trashup.ui.ViewModelFactory
+import com.dicoding.trashup.ui.driver.history.inprocess.DriverInProcessViewModel
 import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
+import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 
 /**
@@ -22,6 +27,10 @@ import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 class ActivityDriverFragment : Fragment() {
     private var _binding: FragmentActivityDriverBinding? = null
     private val binding get() = _binding
+    private val viewModel: HistoryViewModel by viewModels()
+    private val viewModelMain by viewModels<HomeDriverViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
 
     override fun onCreateView(
@@ -35,14 +44,21 @@ class ActivityDriverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val activity = activity as HomeActivityDriver
-        val activityHistoryViewModel =activity.activityHistoryDriverViewModel
-        activityHistoryViewModel.listPickup.observe(viewLifecycleOwner) {
-            setListActivityHistoryData(it)
+
+        viewModelMain.getSession().observe(requireActivity()) {
+            if (it.token != null) {
+                viewModel.showUserDone(it.token)
+            }
         }
 
-        activityHistoryViewModel.isLoading.observe(viewLifecycleOwner) {
-            showLoading(it)
+
+        viewModel.apply {
+            isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+            listPickup.observe(requireActivity()) {
+                setListActivityHistoryData(it)
+            }
         }
 
         val layoutManager = LinearLayoutManager(requireActivity())
@@ -57,7 +73,7 @@ class ActivityDriverFragment : Fragment() {
         }
     }
 
-    private fun setListActivityHistoryData(reviewHistoryActivity: List<ResponseItem>?) {
+    private fun setListActivityHistoryData(reviewHistoryActivity: List<DataOnGoingUserItem>?) {
         val adapter = ReviewHistoryAdapter()
         adapter.submitList(reviewHistoryActivity)
         binding?.activityDriverRv?.adapter = adapter

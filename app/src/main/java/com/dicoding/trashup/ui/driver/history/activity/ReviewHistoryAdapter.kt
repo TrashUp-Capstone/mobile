@@ -10,13 +10,14 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
+import com.dicoding.trashup.data.network.response.driver.DataOnGoingUserItem
 import com.dicoding.trashup.databinding.ActivityDriverReviewBinding
 import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
 import com.dicoding.trashup.formatDate
 
 import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
 
-class ReviewHistoryAdapter : ListAdapter<ResponseItem, ReviewHistoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ReviewHistoryAdapter : ListAdapter<DataOnGoingUserItem, ReviewHistoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ActivityDriverReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,22 +31,22 @@ class ReviewHistoryAdapter : ListAdapter<ResponseItem, ReviewHistoryAdapter.MyVi
 
     class MyViewHolder(val binding: ActivityDriverReviewBinding) : RecyclerView.ViewHolder(binding.root){
         val context = binding.root.context
-        fun bind(review: ResponseItem) {
+        fun bind(review: DataOnGoingUserItem) {
             binding.datePickupDoneTv.text = formatDate(review.createdAt)
-            binding.nameDonePickupTv.text = review.name
-            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.weightWaste.toString().toDouble())
-            Glide.with(binding.root)
-                .load("${review.avatar}")
-                .apply(RequestOptions().transform(CircleCrop()))
-                .into(binding.userPhotoDonePickup)
+            binding.nameDonePickupTv.text = review.userId
+            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.totalWeight)
+//            Glide.with(binding.root)
+//                .load("${review.avatar}")
+//                .apply(RequestOptions().transform(CircleCrop()))
+//                .into(binding.userPhotoDonePickup)
         }
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ResponseItem>() {
-            override fun areContentsTheSame(oldItem: ResponseItem, newItem: ResponseItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataOnGoingUserItem>() {
+            override fun areContentsTheSame(oldItem: DataOnGoingUserItem, newItem: DataOnGoingUserItem): Boolean {
                 return oldItem == newItem
             }
-            override fun areItemsTheSame(oldItem: ResponseItem, newItem: ResponseItem): Boolean {
+            override fun areItemsTheSame(oldItem: DataOnGoingUserItem, newItem: DataOnGoingUserItem): Boolean {
                 return oldItem == newItem
             }
         }

@@ -1,6 +1,7 @@
 package com.dicoding.trashup.ui.driver.home
 
 import android.content.Intent
+import android.nfc.NfcAdapter.EXTRA_ID
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,6 +27,7 @@ import com.dicoding.trashup.databinding.ActivityHomeDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.history.activity.HistoryViewModel
 import com.dicoding.trashup.ui.driver.pickup.PickUpViewModel
+import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 import com.dicoding.trashup.ui.welcome.WelcomeActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -33,8 +36,9 @@ class HomeActivityDriver : AppCompatActivity() {
     private val viewModel by viewModels<HomeDriverViewModel> {
         ViewModelFactory.getInstance(this)
     }
-    val availablePickupViewModel by viewModels<PickUpViewModel>()
-    val activityHistoryDriverViewModel by viewModels<HistoryViewModel>()
+    val availablePickupViewModel by viewModels<PickUpViewModel>{
+        ViewModelFactory.getInstance(this)
+    }
     lateinit var navController: NavController
 
     private lateinit var binding: ActivityHomeDriverBinding
@@ -51,9 +55,13 @@ class HomeActivityDriver : AppCompatActivity() {
             insets
         }
 
-        viewModel.getSession().observe(this) {user ->
+        val name : String = intent.getStringExtra(EXTRA_NAME).toString()
+        val address : String = intent.getStringExtra(EXTRA_ADDRESS).toString()
+        val totalWeight = intent.getDoubleExtra(EXTRA_WEIGHTS, 0.0)
+
+        viewModel.getSession().observe(this) { user ->
             if (user.token != null) {
-               viewModel.getDataDriver(user.token)
+                viewModel.getDataDriver(user.token)
                 availablePickupViewModel.showAvailablePickup(user.token)
             } else { // Kalau belum login pindahkan ke Welcome Activity
                 startActivity(Intent(this, WelcomeActivity::class.java))
@@ -61,19 +69,29 @@ class HomeActivityDriver : AppCompatActivity() {
             }
         }
 
-        viewModel.message.observe(this)  {
-            showToast(it)
-        }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_driver_activity_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_driver_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
         // Setup BottomNavigationView with NavController
         NavigationUI.setupWithNavController(binding.bottomNavigationDriver, navController)
+        if (intent.getBooleanExtra("navigate_to_history", false)) {
+            navigateToHistoryFragment()
+        }
     }
 
-   fun showToast(message: String) {
-       Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-   }
+    private fun navigateToHistoryFragment() {
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.navigation_home_driver, true)
+            .build()
+        navController.navigate(R.id.navigation_history_driver, null, navOptions)
+    }
+
+    companion object {
+        private const val EXTRA_NAME =  "extra_name"
+        private const val EXTRA_WEIGHTS = "extra_weights"
+        private const val EXTRA_ADDRESS = "extra_address"
+    }
 
 }
