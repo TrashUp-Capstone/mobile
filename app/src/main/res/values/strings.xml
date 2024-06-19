@@ -128,6 +128,8 @@
     <string name="error_password">Enter your current password!</string>
     <string name="password_user_changed">User password reset successfully</string>
     <string name="password_wrong">Wrong current password</string>
+    <string name="empty_pickup">No pickups have been received yet.</string>
+    <string name="waste_details">Waste Details</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>

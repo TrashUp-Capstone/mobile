@@ -40,17 +40,10 @@ class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailable
         val context = binding.root.context
         fun bind(review: DataPickUpUser) {
             binding.dateAvalaiablePickupTv.text = formatDate(review.createdAt)
-            binding.nameAvailablePickupTv.text = review.id
-            binding.addressUserAvailablePickup.text = "${review.latitude} ${review.longitude}"
-            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.totalWeight)
+            binding.nameAvailablePickupTv.text = review.name
+            binding.addressUserAvailablePickup.text = review.address
+            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.totalWeight.toDouble())
 
-//            Glide.with(binding.root)
-//                .load("${review.}")
-//                .apply(RequestOptions().transform(CircleCrop()))
-//                .into(binding.userPhotoAvailablePickup)
-//            binding.detailBtn.setOnClickListener {
-//                onItemClickCallback.onItemClicked(review)
-//                    }
         }
     }
     companion object{

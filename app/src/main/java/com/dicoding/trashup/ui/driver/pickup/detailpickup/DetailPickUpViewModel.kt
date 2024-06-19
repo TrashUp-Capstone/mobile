@@ -5,10 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.trashup.data.network.response.DetailPickUpResponse
+import com.dicoding.trashup.data.network.response.ErrorResponse
+import com.dicoding.trashup.data.network.response.driver.ConfirmPickUpUserResponse
 import com.dicoding.trashup.data.network.response.driver.DataListWasteItem
 import com.dicoding.trashup.data.network.response.driver.ListWastePickUpResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.dicoding.trashup.ui.driver.pickup.PickUpViewModel
+import com.dicoding.trashup.ui.user.cart.CartUserViewModel
+import com.google.android.gms.common.api.Api
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +25,12 @@ class DetailPickUpViewModel : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+
+    private val _isConfirm = MutableLiveData<Boolean>()
+    val isConfirm: LiveData<Boolean> = _isConfirm
+
+    private val _message = MutableLiveData<String>()
+    val message : LiveData<String> = _message
 
     fun showDetailPickup(token: String, id: String) {
         _isLoading.value = true
@@ -47,6 +58,45 @@ class DetailPickUpViewModel : ViewModel() {
                 _isLoading.value = false
                 Log.e(TAG, "onFailures1: ${t.message.toString()}")
             }
+        })
+    }
+
+    fun confirmUser(token: String, id: String) {
+        Log.e("DetailPickUpViewModel", "Token = ${token}, id = ${id}")
+        val body =  mapOf(
+            "id" to id
+        )
+        _isLoading.value = true
+        val client = ApiConfig.getDriverApiService(token).confirmUser(body)
+        client.enqueue(object : Callback<ConfirmPickUpUserResponse> {
+            override fun onResponse(
+                call: Call<ConfirmPickUpUserResponse>,
+                response: Response<ConfirmPickUpUserResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _isConfirm.value = true
+                } else {
+                    _isConfirm.value = false
+                    val errorJson = response.errorBody()?.string()
+                    val gson = Gson()
+                    try {
+                        val errorResponse = gson.fromJson(errorJson, ErrorResponse::class.java)
+                        _message.value = errorResponse.message
+                        Log.e(CartUserViewModel.TAG, "Error Message: ${errorResponse.message}")
+                    } catch (e: Exception) {
+                        _message.value = "Unknown error"
+                        Log.e(CartUserViewModel.TAG, "Parsing error: ${e.message}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ConfirmPickUpUserResponse>, t: Throwable) {
+                _isLoading.value = false
+                _isConfirm.value = false
+                Log.e(TAG, "onFailures1: ${t.message.toString()}")
+            }
+
         })
     }
 

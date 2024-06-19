@@ -108,7 +108,7 @@ class HomeViewModel(private val repository: UserRepository) : ViewModel() {
 
             override fun onFailure(call: Call<AddWasteResponse>, t: Throwable) {
                 _isLoading.value = false
-                TODO("Not yet implemented")
+                Log.e(TAG, "Onresponse: ${t.message}")
             }
         })
     }

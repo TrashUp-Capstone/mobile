@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,6 +28,7 @@ import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.user.camera.CameraActivity
 import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
 import com.dicoding.trashup.ui.user.history.inprocess.ReviewPointsAdapter
+import com.dicoding.trashup.ui.user.main.MainViewModel
 import com.dicoding.trashup.ui.user.points.PointsUserActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -34,6 +36,9 @@ import com.google.android.gms.location.LocationServices
 class HomeFragment : Fragment() {
 
     private val viewModel by activityViewModels<HomeViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+    private val viewModelMain by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
     private var  lat: Double? = null
@@ -91,8 +96,8 @@ class HomeFragment : Fragment() {
         viewModel.messageCreate.observe(requireActivity()) {
             showToast(it)
         }
-        viewModel.userToken.observe(requireActivity()) {
-            token = it
+        viewModelMain.getSession().observe(requireActivity()) {
+            token = it.token.toString()
         }
         requestLocation()
 
@@ -178,6 +183,7 @@ class HomeFragment : Fragment() {
         fusedLocation.lastLocation.addOnSuccessListener { mylocation ->
             lat = mylocation.latitude
             lon = mylocation.longitude
+            Log.e("Homeragment", "lat = ${lat} lon = ${lon}")
         }
     }
 
