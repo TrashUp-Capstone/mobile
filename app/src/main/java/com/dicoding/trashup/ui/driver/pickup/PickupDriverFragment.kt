@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
 import com.dicoding.trashup.data.network.response.ResponseItem
@@ -28,6 +29,9 @@ class PickupDriverFragment : Fragment() {
     private val driverViewModel: HomeDriverViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
+    private val viewModel: PickUpViewModel by activityViewModels() {
+        ViewModelFactory.getInstance(requireActivity().application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +47,15 @@ class PickupDriverFragment : Fragment() {
         @Suppress("DEPRECATION")
         activity?.window?.statusBarColor = resources.getColor(R.color.light_teal)
 
-        val activity = activity as HomeActivityDriver
-        val availablePickupViewmodel =activity.availablePickupViewModel
-        driverViewModel.getSession().observe(requireActivity()) {
+        viewModel.getSession().observe(requireActivity()) {
             token = it.token.toString()
-            availablePickupViewmodel.showAvailablePickup(token)
+            viewModel.showAvailablePickup(token)
         }
-        availablePickupViewmodel.listPickup.observe(viewLifecycleOwner) {
+        viewModel.listPickup.observe(viewLifecycleOwner) {
             setListPickupData(it)
         }
 
-        availablePickupViewmodel.isLoading.observe(viewLifecycleOwner) {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
 
@@ -79,9 +81,11 @@ class PickupDriverFragment : Fragment() {
             newAdapter.setOnItemClickCallback(object : ReviewAvailablePickupAdapter.OnItemClickCallback{
                 override fun onItemClicked(data: DataPickUpUser) {
                     val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
+                    intentToDetail.putExtra(EXTRA_NAME, data.name)
+                    intentToDetail.putExtra(EXTRA_ADDRESS, data.address)
+                    intentToDetail.putExtra(EXTRA_WEIGHTS, data.totalWeight.toDouble())
                     intentToDetail.putExtra(EXTRA_ID, data.id)
-                    intentToDetail.putExtra(EXTRA_WEIGHTS, data.totalWeight)
-                    Log.e("PickupDriverFragment", "Total Weight = ${data.totalWeight}")
+                    Log.e("PickupDriverFragment", "Total Weight = ${data.totalWeight.toDouble()}")
                     startActivity(intentToDetail)
                 }
             })
@@ -106,7 +110,9 @@ class PickupDriverFragment : Fragment() {
     }
 
     companion object {
-        const val EXTRA_ID = "extra_id"
-        const val EXTRA_WEIGHTS = "extra_weights"
+        private const val EXTRA_NAME =  "extra_name"
+        private const val EXTRA_WEIGHTS = "extra_weights"
+        private const val EXTRA_ADDRESS = "extra_address"
+        private const val EXTRA_ID = "extra_id"
     }
 }

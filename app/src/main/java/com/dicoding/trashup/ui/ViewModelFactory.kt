@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.trashup.data.UserRepository
 import com.dicoding.trashup.di.Injection
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
+import com.dicoding.trashup.ui.driver.pickup.PickUpViewModel
 import com.dicoding.trashup.ui.driver.profile.change_pass.ChangePasswordViewModel
 import com.dicoding.trashup.ui.driver.profile.edit.EditProfileViewModel
 import com.dicoding.trashup.ui.signin.SigninDriverViewModel
@@ -69,6 +70,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(UserChangePasswordViewModel::class.java) -> {
                 UserChangePasswordViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(PickUpViewModel::class.java) -> {
+                PickUpViewModel(repository) as T
             }
             modelClass.isAssignableFrom(WaitingViewModel::class.java) -> {
                 WaitingViewModel(repository) as T
