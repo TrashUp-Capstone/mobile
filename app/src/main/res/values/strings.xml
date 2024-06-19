@@ -128,6 +128,32 @@
     <string name="error_password">Enter your current password!</string>
     <string name="password_user_changed">User password reset successfully</string>
     <string name="password_wrong">Wrong current password</string>
+    <string name="faq_q1">What is TrashUp?</string>
+    <string name="faq_a1">TrashUp is a mobile application designed to streamline waste bank operations and enhance community involvement in waste management. It helps users manage their waste effectively by providing features such as user profiles, waste collection schedules, and more.</string>
+    <string name="faq_q2">How do I update my profile information?</string>
+    <string name="faq_a2">To update your profile information:\n
+                            1. Open the app and go to the profile section.\n
+                            2. Click on the "Edit Profile" button.\n
+                            3. Update your name, phone number, date of birth, and address.\n
+                            4. Save your changes.</string>
+    <string name="faq_q3">How do I select my date of birth?</string>
+    <string name="faq_a3">You can select your date of birth using the calendar feature:\n
+
+1. Click on the date of birth field.\n
+2. A calendar will appear. Select your birth date from the calendar.\n
+3. The selected date will be formatted and displayed in the "yyyy-MM-dd" format..</string>
+
+    <string name="faq_q4">What is a waste bank?</string>
+    <string name="faq_a4">A waste bank is a community-driven initiative where residents can deposit their recyclable waste and earn points or money in return. It helps promote recycling and reduces the amount of waste sent to landfills.</string>
+
+    <string name="faq_q5">What types of waste can I deposit?</string>
+    <string name="faq_a5">The types of waste you can deposit include paper, plastic, metal, glass, and electronic waste. Check the app for specific details on accepted materials.</string>
+
+    <string name="faq_q6">What types of waste can I deposit?</string>
+    <string name="faq_a6">The types of waste you can deposit include paper, plastic, metal, glass, and electronic waste. Check the app for specific details on accepted materials.</string>
+
+    <string name="faq_q7">How do I redeem my points or rewards?</string>
+    <string name="faq_a7">You can redeem your points or rewards by going to the "Rewards" section in the app. Select the reward you want to redeem, and follow the instructions provided.</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>

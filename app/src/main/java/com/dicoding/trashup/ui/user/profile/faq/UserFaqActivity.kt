@@ -76,33 +76,46 @@ class UserFaqActivity : AppCompatActivity() {
     private fun addDataToList() {
         faqList.add(
             Faq(
-                "Apa itu Trash Up? 1",
-                "Trashup adalah aplikasi pickup sampah",
+                getString(R.string.faq_q1),
+                getString(R.string.faq_a1),
             )
         )
         faqList.add(
             Faq(
-                "Apa itu Trash Up? 2",
-                "Trashup adalah aplikasi pickup sampah",
+                getString(R.string.faq_q2),
+                getString(R.string.faq_a2),
             )
         )
         faqList.add(
             Faq(
-                "Apa itu Trash Up? 3",
-                "Trashup adalah aplikasi pickup sampah",
+                getString(R.string.faq_q3),
+                getString(R.string.faq_a3),
             )
         )
         faqList.add(
             Faq(
-                "Apa itu Trash Up? 4",
-                "Trashup adalah aplikasi pickup sampah",
+                getString(R.string.faq_q4),
+                getString(R.string.faq_a4),
             )
         )
         faqList.add(
             Faq(
-                "Apa itu Trash Up? 5",
-                "Trashup adalah aplikasi pickup sampah",
+                getString(R.string.faq_q5),
+                getString(R.string.faq_a5),
             )
         )
+        faqList.add(
+            Faq(
+                getString(R.string.faq_q6),
+                getString(R.string.faq_a6),
+            )
+        )
+        faqList.add(
+            Faq(
+                getString(R.string.faq_q7),
+                getString(R.string.faq_a7),
+            )
+        )
+
     }
 }
