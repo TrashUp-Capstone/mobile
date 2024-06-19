@@ -7,13 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.FragmentProfileUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
-import com.dicoding.trashup.ui.driver.profile.ChangePasswordActivity
-import com.dicoding.trashup.ui.driver.profile.EditProfileActivity
 import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
+import com.dicoding.trashup.ui.user.profile.change_pass.UserChangePasswordActivity
+import com.dicoding.trashup.ui.user.profile.edit.UserEditProfileActivity
 
 class ProfileUserFragment : Fragment() {
 
@@ -52,10 +51,10 @@ class ProfileUserFragment : Fragment() {
                 viewModel.deleteSession()
             }
             btnEditProfile.setOnClickListener {
-                startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+                startActivity(Intent(requireContext(), UserEditProfileActivity::class.java))
             }
             btnResetUserPw.setOnClickListener {
-                startActivity(Intent(requireContext(), ChangePasswordActivity::class.java))
+                startActivity(Intent(requireContext(), UserChangePasswordActivity::class.java))
             }
         }
     }

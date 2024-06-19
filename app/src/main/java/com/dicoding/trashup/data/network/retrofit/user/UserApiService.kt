@@ -7,7 +7,11 @@ import com.dicoding.trashup.data.network.response.user.SendWasteResponse
 import com.dicoding.trashup.data.network.response.user.SubmitPhotoResponse
 import com.dicoding.trashup.data.network.response.user.SubmitWasteResponse
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordRequest
+import com.dicoding.trashup.data.network.response.user.UserChangePasswordResponse
 import com.dicoding.trashup.data.network.response.user.UserData
+import com.dicoding.trashup.data.network.response.user.UserEditRequest
+import com.dicoding.trashup.data.network.response.user.UserEditResponse
 import com.dicoding.trashup.data.network.response.user.UserHistoryVoucherResponse
 import com.dicoding.trashup.data.network.response.user.UserRedeemedVoucherResponse
 import com.dicoding.trashup.data.network.response.user.UserResponse
@@ -56,5 +60,13 @@ interface UserApiService {
     @PUT("activities/update/ready")
     fun sendWaste(@Body requestBody: Map<String, String>) : Call<SendWasteResponse>
 
+    @PUT("whoami/update/user")
+    suspend fun updateUserProfile(
+        @Body request: UserEditRequest
+    ) : UserEditResponse
+    @PUT("whoami/reset/user")
+    suspend fun updateUserPassword(
+        @Body request: UserChangePasswordRequest
+    ) : UserChangePasswordResponse
 
 }
