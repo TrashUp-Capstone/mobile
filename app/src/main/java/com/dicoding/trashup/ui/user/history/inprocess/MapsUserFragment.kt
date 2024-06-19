@@ -5,8 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.FragmentMapsUserBinding
+import com.dicoding.trashup.ui.ViewModelFactory
+import com.dicoding.trashup.ui.user.home.HomeViewModel
+import com.dicoding.trashup.ui.user.waiting.WaitingViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -18,6 +24,16 @@ class MapsUserFragment : Fragment() {
 
     private var _binding: FragmentMapsUserBinding? = null
     private val binding get() = _binding!!
+
+    private val homeViewModel by viewModels<HomeViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+    private val waitingViewModel by viewModels<WaitingViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private lateinit var idConfirmAct: String
+
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -53,6 +69,22 @@ class MapsUserFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.user_map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
+        homeViewModel.getUserActivities()
+        // Observe user activities and update idConfirmAct
+        homeViewModel.userActivities.observe(this) { activities ->
+            activities?.firstOrNull()?.let { activity ->
+                idConfirmAct = activity.id.toString()
+            }
+        }
+
+        waitingViewModel.message.observe(this) { message ->
+            showToast(message)
+        }
+
+        binding.btnDelivered.setOnClickListener {
+            waitingViewModel.userFinish(idConfirmAct)
+        }
+
         val bottomSheet = binding.bottomSheet
         BottomSheetBehavior.from(bottomSheet).apply {
             peekHeight = 250
@@ -69,6 +101,10 @@ class MapsUserFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun showToast(string: String) {
+        Toast.makeText(requireContext(), string, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

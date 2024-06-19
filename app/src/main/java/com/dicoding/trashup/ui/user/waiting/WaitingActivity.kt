@@ -48,10 +48,10 @@ class WaitingActivity : AppCompatActivity() {
             showToast(message)
         }
 
-        binding.btnDelivered.setOnClickListener {
-            viewModel.userFinish(idConfirmAct)
-            finish()
-        }
+//        binding.btnDelivered.setOnClickListener {
+//            viewModel.userFinish(idConfirmAct)
+//            finish()
+//        }
 
         binding.ivCancel.setOnClickListener {
             finish()

@@ -44,22 +44,22 @@
                 android:textSize="22sp"
                 android:text="@string/status_waiting"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:text="Press Delivered when the driver has picked up the waste"/>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="22sp"-->
+<!--                android:text="@string/waiting_delivered"/>-->
 
-            <com.dicoding.trashup.ui.customview.MyButtonDarkTealBg
-                android:id="@+id/btn_delivered"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delivered"
-                android:layout_marginBottom="15dp"/>
+<!--            <com.dicoding.trashup.ui.customview.MyButtonDarkTealBg-->
+<!--                android:id="@+id/btn_delivered"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Delivered"-->
+<!--                android:layout_marginBottom="15dp"/>-->
 
             <ImageView
                 android:id="@+id/iv_cancel"

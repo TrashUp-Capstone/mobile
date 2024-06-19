@@ -75,6 +75,13 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">33dp</item>
+        <item name="hintAnimationEnabled">false</item>
+        <item name="boxStrokeColor">@color/light_teal</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
     </style>
 
     <style name="title_app">

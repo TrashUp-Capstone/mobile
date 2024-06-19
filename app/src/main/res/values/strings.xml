@@ -156,6 +156,7 @@
 
     <string name="faq_q7">How do I redeem my points or rewards?</string>
     <string name="faq_a7">You can redeem your points or rewards by going to the "Rewards" section in the app. Select the reward you want to redeem, and follow the instructions provided.</string>
+    <string name="waiting_delivered">Press Delivered when the driver has picked up the waste</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>
