@@ -18,6 +18,7 @@ import com.dicoding.trashup.ui.user.points.claim_reward.DetailRewardViewModel
 import com.dicoding.trashup.ui.user.points.history_points.HistoryPointsViewModel
 import com.dicoding.trashup.ui.user.profile.change_pass.UserChangePasswordViewModel
 import com.dicoding.trashup.ui.user.profile.edit.UserEditProfileViewModel
+import com.dicoding.trashup.ui.user.waiting.WaitingViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -69,6 +70,10 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             modelClass.isAssignableFrom(UserChangePasswordViewModel::class.java) -> {
                 UserChangePasswordViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(WaitingViewModel::class.java) -> {
+                WaitingViewModel(repository) as T
+            }
+
 
             
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

@@ -9,6 +9,8 @@ import com.dicoding.trashup.data.network.response.user.SubmitWasteResponse
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserChangePasswordRequest
 import com.dicoding.trashup.data.network.response.user.UserChangePasswordResponse
+import com.dicoding.trashup.data.network.response.user.UserConfirmRequest
+import com.dicoding.trashup.data.network.response.user.UserConfirmResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserEditRequest
 import com.dicoding.trashup.data.network.response.user.UserEditResponse
@@ -68,5 +70,10 @@ interface UserApiService {
     suspend fun updateUserPassword(
         @Body request: UserChangePasswordRequest
     ) : UserChangePasswordResponse
+
+    @PUT("activities/update/done")
+    suspend fun userConfirmAct(
+        @Body request: UserConfirmRequest
+    ) : UserConfirmResponse
 
 }
