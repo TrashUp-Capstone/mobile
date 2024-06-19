@@ -1,11 +1,13 @@
 package com.dicoding.trashup.ui.driver.home
 
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +18,6 @@ import com.dicoding.trashup.data.network.response.ResponseItem
 import com.dicoding.trashup.data.network.response.driver.DataPickUpUser
 import com.dicoding.trashup.databinding.FragmentHomeDriverBinding
 import com.dicoding.trashup.ui.ViewModelFactory
-import com.dicoding.trashup.ui.driver.pickup.PickupDriverFragment
 import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
 
@@ -72,9 +73,9 @@ class HomeDriverFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding?.progressBar?.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
         } else {
-            binding?.progressBar?.visibility = View.INVISIBLE
+            binding.progressBar.visibility = View.INVISIBLE
         }
     }
 
@@ -82,11 +83,12 @@ class HomeDriverFragment : Fragment() {
         activity?.window?.statusBarColor = resources.getColor(R.color.white_bg)
         val adapter = HomeAvailableAdapter()
         adapter.submitList(reviewAvailablePickup)
-        binding?.listAvailableHomeRv?.adapter = adapter
+        binding.listAvailableHomeRv.adapter = adapter
         adapter.setOnItemClickCallback(object : HomeAvailableAdapter.OnItemClickCallback{
             override fun onItemClicked(data: DataPickUpUser) {
                 val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
                 intentToDetail.putExtra(EXTRA_ID, data.id)
+                intentToDetail.putExtra(EXTRA_WEIGHTS, data.totalWeight)
                 startActivity(intentToDetail)
             }
         })
@@ -105,6 +107,7 @@ class HomeDriverFragment : Fragment() {
     }
 
     companion object {
-        private const val EXTRA_ID = "extra_id"
+        private const val EXTRA_ID =  "extra_id"
+        private const val EXTRA_WEIGHTS = "extra_weights"
     }
 }

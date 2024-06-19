@@ -42,7 +42,7 @@ class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailable
             binding.dateAvalaiablePickupTv.text = formatDate(review.createdAt)
             binding.nameAvailablePickupTv.text = review.id
             binding.addressUserAvailablePickup.text = "${review.latitude} ${review.longitude}"
-            binding.weightWasteAvailablePickupTv.text =review.totalWeight.toString()
+            binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.totalWeight)
 
 //            Glide.with(binding.root)
 //                .load("${review.}")

@@ -1,7 +1,9 @@
 package com.dicoding.trashup.ui.driver.pickup
 
+
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -78,6 +80,8 @@ class PickupDriverFragment : Fragment() {
                 override fun onItemClicked(data: DataPickUpUser) {
                     val intentToDetail = Intent(requireContext(), DetailPickUpActivity::class.java)
                     intentToDetail.putExtra(EXTRA_ID, data.id)
+                    intentToDetail.putExtra(EXTRA_WEIGHTS, data.totalWeight)
+                    Log.e("PickupDriverFragment", "Total Weight = ${data.totalWeight}")
                     startActivity(intentToDetail)
                 }
             })
@@ -103,5 +107,6 @@ class PickupDriverFragment : Fragment() {
 
     companion object {
         const val EXTRA_ID = "extra_id"
+        const val EXTRA_WEIGHTS = "extra_weights"
     }
 }

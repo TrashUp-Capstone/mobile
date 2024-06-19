@@ -5,73 +5,48 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.trashup.data.network.response.DetailPickUpResponse
+import com.dicoding.trashup.data.network.response.driver.DataListWasteItem
+import com.dicoding.trashup.data.network.response.driver.ListWastePickUpResponse
 import com.dicoding.trashup.data.network.retrofit.ApiConfig
 import com.dicoding.trashup.ui.driver.pickup.PickUpViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailPickUpViewModel: ViewModel() {
+class DetailPickUpViewModel : ViewModel() {
 
-    private val _detailPickup = MutableLiveData<DetailPickUpResponse>()
-    val detailPickup : LiveData<DetailPickUpResponse> = _detailPickup
+    private val _detailPickups = MutableLiveData<List<DataListWasteItem>>()
+    val detailPickups: LiveData<List<DataListWasteItem>> get() = _detailPickups
 
-    private val _isloading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isloading
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
-
-    fun showDetailPickup(id: String) {
-        _isloading.value = true
-        val client = ApiConfig.getApiService().getDetailPickup(id)
-        client.enqueue(object : Callback<DetailPickUpResponse> {
+    fun showDetailPickup(token: String, id: String) {
+        _isLoading.value = true
+        val client = ApiConfig.getDriverApiService(token).getListWaste(id)
+        Log.e("DetailPickUpViewModel", "token = ${token}, token = ${id}")
+        client.enqueue(object : Callback<ListWastePickUpResponse> {
             override fun onResponse(
-                call: Call<DetailPickUpResponse>,
-                response: Response<DetailPickUpResponse>
+                call: Call<ListWastePickUpResponse>,
+                response: Response<ListWastePickUpResponse>
             ) {
-                _isloading.value = false
-                if(response.isSuccessful) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
                     val responseBody = response.body()
-                    if(responseBody != null) {
-                        _detailPickup.value = response.body()
-                    } else {
-                        Log.e(TAG, "onFailure:${response.message()}")
+                    if (responseBody != null) {
+                        Log.e("DetailPickUpViewModel", "$response")
+                        _detailPickups.value = responseBody.dataListWaste
                     }
+                    Log.e(TAG, "onFailures3:${responseBody}")
+                } else {
+                    Log.e(TAG, "onFailures2:${response.message()}")
                 }
             }
 
-            override fun onFailure(call: Call<DetailPickUpResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            override fun onFailure(call: Call<ListWastePickUpResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(TAG, "onFailures1: ${t.message.toString()}")
             }
-
-
-        })
-    }
-
-    fun deleteAvailablePickup(id: String) {
-        _isloading.value = true
-        val client = ApiConfig.getApiService().deletAvailablePickup(id)
-        client.enqueue(object : Callback<DetailPickUpResponse> {
-            override fun onResponse(
-                call: Call<DetailPickUpResponse>,
-                response: Response<DetailPickUpResponse>
-            ) {
-                _isloading.value = false
-                if(response.isSuccessful) {
-                    val responseBody = response.body()
-                    if(responseBody != null) {
-                        _detailPickup.value = response.body()
-                    } else {
-                        Log.e(TAG, "onFailure:${response.message()}")
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<DetailPickUpResponse>, t: Throwable) {
-                _isloading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-
-
         })
     }
 
