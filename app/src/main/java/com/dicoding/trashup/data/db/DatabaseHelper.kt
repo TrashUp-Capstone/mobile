@@ -9,7 +9,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
 
     companion object {
         private const val DATABASE_NAME = "dbwaste"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         private const val SQL_CREATE_TABLE_NOTE = "CREATE TABLE $TABLE_NAME" +
                 " (${DatabaseContract.WasteColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " ${DatabaseContract.WasteColumns.TYPEWASTE} TEXT NOT NULL," +
