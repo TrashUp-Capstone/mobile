@@ -92,31 +92,17 @@
 
         <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
             android:id="@+id/detail_btn"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="14dp"
-            android:layout_marginStart="30dp"
-            android:text="@string/detail"
-            android:textSize="14sp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address_user_available_pickup" />
-
-        <com.dicoding.trashup.ui.customview.MyButtonTealBg
-            android:id="@+id/accept_btn"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="14dp"
             android:layout_marginVertical="15dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/accept"
+            android:text="@string/detail"
             android:textAlignment="center"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address_user_available_pickup" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
