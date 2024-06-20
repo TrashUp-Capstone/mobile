@@ -7,14 +7,14 @@ import com.dicoding.trashup.ui.user.history.inprocess.MapsUserFragment
 
 class SectionUserPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
-        return 2
+        return 1
     }
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = MapsUserFragment()
-            1 -> fragment = ActivityUserFragment()
+//            0 -> fragment = MapsUserFragment()
+            0 -> fragment = ActivityUserFragment()
         }
         return fragment as Fragment
     }

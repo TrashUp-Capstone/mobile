@@ -13,11 +13,17 @@ import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityPersonalDataDriverBinding
 import com.dicoding.trashup.ui.register.registeruser.PersonalDataUserActivity
 import com.dicoding.trashup.ui.welcome.WelcomeActivity
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class PersonalDataDriverActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPersonalDataDriverBinding
     private val viewModel by viewModels<RegisterDriverViewModel>()
+    private val sDF = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPersonalDataDriverBinding.inflate(layoutInflater)
@@ -53,6 +59,24 @@ class PersonalDataDriverActivity : AppCompatActivity() {
 
         viewModel.isLoading.observe(this) { isLoading ->
             showLoading(isLoading)
+        }
+
+        binding.btnCalendar.setOnClickListener {
+            val datePickerBuilder = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Date")
+
+            if (binding.edRegisterDateOfBirth.text?.isNotEmpty() == true) {
+                val existingDate = sDF.parse(binding.edRegisterDateOfBirth.text.toString())
+                datePickerBuilder.setSelection(existingDate?.time ?: MaterialDatePicker.todayInUtcMilliseconds())
+            } else {
+                datePickerBuilder.setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            }
+
+            val datePicker = datePickerBuilder.build()
+            datePicker.show(supportFragmentManager, "datePicker")
+            datePicker.addOnPositiveButtonClickListener {
+                binding.edRegisterDateOfBirth.setText(sDF.format(Date(it).time))
+            }
         }
 
         binding.registCreateAccountBtn.setOnClickListener {
