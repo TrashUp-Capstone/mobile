@@ -97,13 +97,16 @@ class CartUserFragment : Fragment() {
             }
         }
         binding.btnConfirm.setOnClickListener {
-           // deleteAllData()
             if (adapter.listWaste.isEmpty() || idAct.toString().isEmpty()) {
                 showToast(requireContext().getString(R.string.error_empty))
             }
             else {
+                Log.d("ID CART 1", "COY CARTNIH : ${idAct.toString()}")
                 submitWaste()
+                Log.d("ID CART 2", "COY CARTNIH : ${idAct.toString()}")
                 confrimActivity()
+                Log.d("ID CART 3", "COY CARTNIH : ${idAct.toString()}")
+                deleteAllData()
             }
         }
         adapter = WasteAdapter(requireContext())
@@ -193,7 +196,7 @@ class CartUserFragment : Fragment() {
             val wasteTypes = waste.typeWaste
             val wasteId = waste.id
             viewModelCart.SubmitWaste(token.toString(), idAct.toString(), wasteId.toString(), weight.toString(), wasteTypes)
-            Log.d("CartUserFragment", "weight = ${weight}, wasteTypes = ${wasteTypes}, wasteId = ${wasteId}")
+            Log.d("COY submitWaste", "weight = ${weight}, wasteTypes = ${wasteTypes}, wasteId = ${wasteId}")
 
             // Buat mengirim photo ke API
 //            val photo = waste.photo.toUri()
@@ -223,16 +226,23 @@ class CartUserFragment : Fragment() {
                 Log.e("CartUserFragment", wastes.size.toString())
                 adapter.listWaste = wastes
                 binding.rvCart.adapter = adapter
+
+                // Recalculate sumPoints and sumWeights after updating adapter.listWaste
+                sumPoints = adapter.getPoints()
+                sumWeights = adapter.getWeights()
             } else {
                 binding.rvCart.adapter = null
                 showToast("No waste items found")
+                // Reset sums if no data is found
+                sumPoints = 0
+                sumWeights = 0.0
             }
             wasteHelper.close()
+
+            Log.d("COY loadWasteDataAsync", "Di sini Total Points : ${sumPoints}, Total Weight = ${sumWeights}")
         }
-        sumPoints = adapter.getPoints()
-        sumWeights = adapter.getWeights()
-        Log.d("CartUserFragment", "Di sini Total Points : ${sumPoints}, Total Weight = ${sumWeights}")
     }
+
 
     private fun sendWaste() {
         viewModelCart.sendWaste(token.toString(), idAct.toString(), sumWeights.toString(), sumPoints.toString())
@@ -247,6 +257,7 @@ class CartUserFragment : Fragment() {
 
     private fun confrimActivity() {
         val intent = Intent(requireContext(), WaitingActivity::class.java)
+        intent.putExtra("ID_ACT", idAct)
         startActivity(intent)
     }
 

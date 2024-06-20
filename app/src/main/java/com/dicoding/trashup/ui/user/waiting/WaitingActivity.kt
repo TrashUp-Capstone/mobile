@@ -22,7 +22,7 @@ class WaitingActivity : AppCompatActivity() {
     private val homeViewModel by viewModels<HomeViewModel> {
         ViewModelFactory.getInstance(this)
     }
-    private lateinit var idConfirmAct: String
+//    private lateinit var idConfirmAct: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,26 +36,29 @@ class WaitingActivity : AppCompatActivity() {
             insets
         }
 
-        homeViewModel.getUserActivities()
-        // Observe user activities and update idConfirmAct
-        homeViewModel.userActivities.observe(this) { activities ->
-            activities?.firstOrNull()?.let { activity ->
-                idConfirmAct = activity.id.toString()
-            }
-        }
+        val idConfirmAct = intent.getStringExtra("ID_ACT")
+
+//        homeViewModel.getUserActivities()
+//        // Observe user activities and update idConfirmAct
+//        homeViewModel.userActivities.observe(this) { activities ->
+//            activities?.firstOrNull()?.let { activity ->
+//                idConfirmAct = activity.id.toString()
+//            }
+//        }
 
         viewModel.message.observe(this) { message ->
             showToast(message)
         }
 
-//        binding.btnDelivered.setOnClickListener {
-//            viewModel.userFinish(idConfirmAct)
-//            finish()
-//        }
-
-        binding.ivCancel.setOnClickListener {
+        binding.btnDelivered.setOnClickListener {
+            Log.d("COY WaitingActivity", "COY ID WAITING: $idConfirmAct")
+            viewModel.userFinish(idConfirmAct.toString())
             finish()
         }
+
+//        binding.ivCancel.setOnClickListener {
+//            finish()
+//        }
     }
 
     private fun showToast(string: String) {

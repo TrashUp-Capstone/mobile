@@ -1,5 +1,6 @@
 package com.dicoding.trashup.ui.user.waiting
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,7 @@ class WaitingViewModel(val repository: UserRepository) : ViewModel() {
     fun userFinish(id: String) {
         _isLoading.value = true
         viewModelScope.launch {
+                Log.d("ID COYY", "id: $id")
             try {
                 val response = repository.userConfirmAct(id)
                 _messageResponse.value = response

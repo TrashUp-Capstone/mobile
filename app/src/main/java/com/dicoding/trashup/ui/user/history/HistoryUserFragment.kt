@@ -39,7 +39,7 @@ class HistoryUserFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = "Tab ${position + 1}"
             if (position == 0) {
-                tab.text = getString(R.string.in_process)
+                tab.text = getString(R.string.activity)
             } else {
                 tab.text = getString(R.string.activity)
             }
