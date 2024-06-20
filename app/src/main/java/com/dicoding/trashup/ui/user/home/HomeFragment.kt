@@ -74,10 +74,6 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -117,7 +113,7 @@ class HomeFragment : Fragment() {
                         .build()
                     findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
                 } else {
-                    showToast("Error: lat lon cannot be null")
+                    showToast(getString(R.string.error_location_is_not_available))
                 }
             }
         }
@@ -158,7 +154,7 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvRecentWaste.layoutManager = layoutManager
-        binding.rvRecentWaste.isNestedScrollingEnabled = false;
+        binding.rvRecentWaste.isNestedScrollingEnabled = false
     }
 
     private fun requestLocation(callback: (Boolean) -> Unit) {
@@ -230,10 +226,6 @@ class HomeFragment : Fragment() {
         startCameraLauncher.launch(intent)
     }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
 
     private fun setHistoryPoints(userActivities: List<DataActivities>) {
         val latestPoints = userActivities.takeLast(3)

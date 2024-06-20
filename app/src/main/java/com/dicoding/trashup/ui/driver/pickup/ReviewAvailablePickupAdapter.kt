@@ -22,7 +22,7 @@ import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
 import com.dicoding.trashup.formatDate
 import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
-class ReviewAvailablePickupAdapter() : ListAdapter<DataPickUpUser, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

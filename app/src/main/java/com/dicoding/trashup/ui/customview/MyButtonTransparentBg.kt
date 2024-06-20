@@ -17,7 +17,7 @@ class MyButtonTransparentBg: AppCompatButton {
     init {
         backgroundTransparent = ContextCompat.getDrawable(context, R.drawable.btn_transparent_bg) as Drawable
         textColors = ContextCompat.getColor(context, R.color.light_teal)
-        setGravity(android.view.Gravity.CENTER);
+        setGravity(android.view.Gravity.CENTER)
         textAlignment = TEXT_ALIGNMENT_CENTER
     }
     override fun onDraw(canvas: Canvas) {

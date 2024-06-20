@@ -33,7 +33,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.dicoding.trashup.R
 import com.dicoding.trashup.databinding.ActivityCameraBinding
 import com.dicoding.trashup.ml.Model
-import com.dicoding.trashup.ui.ml.ImageClassifierHelper
 import com.dicoding.trashup.ui.user.add_waste.AddWasteActivity
 import com.dicoding.trashup.utils.createCustomTempFile
 import org.tensorflow.lite.DataType
@@ -58,7 +57,6 @@ class CameraActivity : AppCompatActivity() {
     private var currentImageUri: Uri? = null
     private var myResult: Int = 0
     private val imageSize: Int = 256
-    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -274,7 +272,7 @@ class CameraActivity : AppCompatActivity() {
             byteBuffer.order(ByteOrder.nativeOrder())
 
             val intValues = IntArray(imageSize * imageSize)
-            image?.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
+            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
             var pixel = 0
             for (i in 0 until imageSize) {
                 for (j in 0 until imageSize) {
@@ -300,7 +298,6 @@ class CameraActivity : AppCompatActivity() {
                 }
             }
             myResult = maxPos
-            Log.e("Upload Activity", "${myResult} - Berhasil Terdeteksi")
 
             model.close()
         } catch (e: IOException) {

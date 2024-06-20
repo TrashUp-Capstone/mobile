@@ -17,7 +17,7 @@ class MyButtonWhiteBg: AppCompatButton {
     init {
         backgroundTeal = ContextCompat.getDrawable(context, R.drawable.btn_white_bg) as Drawable
         textColors = ContextCompat.getColor(context, R.color.dark_teal)
-        setGravity(android.view.Gravity.CENTER);
+        setGravity(android.view.Gravity.CENTER)
     }
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
