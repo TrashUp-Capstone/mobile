@@ -49,7 +49,7 @@
                 android:ems="10"
                 android:textSize="14dp"
                 android:hint="@string/insert_name"
-                android:inputType="phone"
+                android:inputType="text"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
