@@ -241,7 +241,7 @@ class CartUserFragment : Fragment() {
 
     private fun showToast(message: String) {
         if (isAdded) {
-            Toast.makeText(requireContext(), "Pesan Toast Anda", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
     }
 

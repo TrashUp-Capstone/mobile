@@ -12,6 +12,7 @@ import com.dicoding.trashup.ui.ViewModelFactory
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 import com.dicoding.trashup.ui.driver.profile.change_pass.ChangePasswordActivity
 import com.dicoding.trashup.ui.driver.profile.edit.EditProfileActivity
+import com.dicoding.trashup.ui.user.profile.faq.UserFaqActivity
 
 
 class ProfileDriverFragment : Fragment() {
@@ -47,6 +48,9 @@ class ProfileDriverFragment : Fragment() {
             }
             btnResetDriverPw.setOnClickListener {
                 startActivity(Intent(requireActivity(), ChangePasswordActivity::class.java))
+            }
+            btnHelpCenterDriver.setOnClickListener {
+                startActivity(Intent(requireActivity(), UserFaqActivity::class.java))
             }
         }
     }

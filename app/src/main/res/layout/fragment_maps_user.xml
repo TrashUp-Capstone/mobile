@@ -57,11 +57,13 @@
 
             <TextView
                 android:id="@+id/tv_please_wait"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginEnd="33dp"
                 android:layout_gravity="center|top"
-                android:text="@string/please_wait"
+                android:text="@string/waiting_delivered"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -70,86 +72,90 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageView
-                android:id="@+id/your_profile_driver"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginBottom="70dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/content_desc_ivProfile"
-                android:src="@drawable/photo_profile"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_please_wait" />
-
-            <LinearLayout
-                android:id="@+id/tv_data_driver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="33dp"
-                android:gravity="end"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/your_profile_driver">
-
-                <TextView
-                    android:id="@+id/driver_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/your_name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/driver_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/number"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/driver_plate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/number_plate"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
             <com.dicoding.trashup.ui.customview.MyButtonDarkTealBg
-                android:id="@+id/btn_chat_driver"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_delivered"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="33dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginTop="43dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:text="@string/chat_driver"
+                android:text="Delivered"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_cancel_user" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_please_wait" />
 
-            <com.dicoding.trashup.ui.customview.MyButtonRedBg
-                android:id="@+id/btn_cancel_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="33dp"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:text="@string/cancel"
-                android:textColor="@color/white"
-                android:textSize="11sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_data_driver" />
+<!--            <ImageView-->
+<!--                android:id="@+id/your_profile_driver"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_marginStart="33dp"-->
+<!--                android:layout_marginBottom="70dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:contentDescription="@string/content_desc_ivProfile"-->
+<!--                android:src="@drawable/ic_circle_avatar"-->
+<!--                android:tint="@color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tv_please_wait" />-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/tv_data_driver"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="19dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginEnd="33dp"-->
+<!--                android:gravity="end"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/your_profile_driver">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/driver_name"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/your_name"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/driver_number"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/number"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/driver_plate"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/number_plate"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--            </LinearLayout>-->
+
+
+
+<!--            <com.dicoding.trashup.ui.customview.MyButtonRedBg-->
+<!--                android:id="@+id/btn_cancel_user"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:layout_marginEnd="33dp"-->
+<!--                android:paddingStart="40dp"-->
+<!--                android:paddingEnd="40dp"-->
+<!--                android:text="@string/cancel"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="11sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_data_driver" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

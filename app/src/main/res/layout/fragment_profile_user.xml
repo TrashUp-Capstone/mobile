@@ -42,7 +42,8 @@
                 android:layout_width="137dp"
                 android:layout_height="144dp"
                 android:layout_gravity="center"
-                android:src="@drawable/photo_profile" />
+                android:src="@drawable/ic_circle_avatar"
+                android:tint="@color/light_teal"/>
 
             <TextView
                 android:id="@+id/profile_name_label"

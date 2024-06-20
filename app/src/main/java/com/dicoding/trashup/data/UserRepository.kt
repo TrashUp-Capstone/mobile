@@ -9,6 +9,8 @@ import com.dicoding.trashup.data.network.response.user.RedeemVoucherRequest
 import com.dicoding.trashup.data.network.response.user.UserActivityResponse
 import com.dicoding.trashup.data.network.response.user.UserChangePasswordRequest
 import com.dicoding.trashup.data.network.response.user.UserChangePasswordResponse
+import com.dicoding.trashup.data.network.response.user.UserConfirmRequest
+import com.dicoding.trashup.data.network.response.user.UserConfirmResponse
 import com.dicoding.trashup.data.network.response.user.UserData
 import com.dicoding.trashup.data.network.response.user.UserEditRequest
 import com.dicoding.trashup.data.network.response.user.UserEditResponse
@@ -98,6 +100,15 @@ class UserRepository private constructor(
         val request = UserChangePasswordRequest(password)
         Log.d("COY REQ password profile", "request: $request")
         return userApiService.updateUserPassword(request)
+    }
+
+    suspend fun userConfirmAct(id: String) : UserConfirmResponse {
+        val userModel = getSession().first()
+        val token = userModel.token
+        val userApiService = ApiConfig.getUserApiService(token.toString())
+        val request = UserConfirmRequest(id)
+        Log.d("COY REQ password profile", "request: $request")
+        return userApiService.userConfirmAct(request)
     }
 
     // Driver

@@ -49,7 +49,8 @@
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
             android:scaleType="centerCrop"
-            android:src="@drawable/photo_profile"
+            android:src="@drawable/ic_circle_avatar"
+            android:tint="@color/dark_teal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/waiting_pickup_tv" />
 

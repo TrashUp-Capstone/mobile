@@ -82,6 +82,16 @@
           <theme>@style/Theme.TrashUp</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_edit_profile.xml">
+        <config>
+          <theme>@style/Theme.TrashUp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_waiting.xml">
+        <config>
+          <theme>@style/Theme.TrashUp</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml">
         <config>
           <theme>@style/Theme.TrashUp</theme>
@@ -108,6 +118,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_history_driver.xml">
+        <config>
+          <theme>@style/Theme.TrashUp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_history_user.xml">
         <config>
           <theme>@style/Theme.TrashUp</theme>
         </config>
@@ -193,46 +208,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="Add Register features, and driver features (profile, history, home, pickup page)">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/response/driver/CompletedDeliveryResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/response/driver/ConfirmPickUpUserResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/response/driver/UserGoingResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/ChooseSideActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/inprocess/DriverInProcessViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/trash_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_choose_side.xml" afterDir="false" />
+    <list default="true" id="26b5aa9e-cd2a-4842-80d6-71588070b7c2" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/response/driver/PickUpUserResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/response/driver/PickUpUserResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/retrofit/ApiServiceDriver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/data/network/retrofit/ApiServiceDriver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/ViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/ViewModelFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/ActivityDriverFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/ActivityDriverFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/HistoryViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/ReviewHistoryAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/activity/ReviewHistoryAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/inprocess/MapsActivityFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/history/inprocess/MapsActivityFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeActivityDriver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeActivityDriver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeAvailableAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeAvailableAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeDriverFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/home/HomeDriverFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/PickUpViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/PickUpViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/PickupDriverFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/PickupDriverFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/ReviewAvailablePickupAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/ReviewAvailablePickupAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/detailpickup/DetailPickUpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/detailpickup/DetailPickUpActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/detailpickup/DetailPickUpViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/driver/pickup/detailpickup/DetailPickUpViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dicoding/trashup/ui/user/home/HomeViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_pick_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_pick_up.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_driver_review.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_driver_review.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_maps_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_maps_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_list_waste.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_list_waste.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_driver.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_driver.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +226,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ferdi\.android\avd\Pixel_6a_API_33.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Access\.android\avd\Medium_Phone_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -345,10 +329,10 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "welcome",
+    "git-widget-placeholder": "userdev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/",
-    "project.structure.last.edited": "Dependencies",
+    "project.structure.last.edited": "SDK Location",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "editor.preferences.import",
@@ -500,7 +484,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717991947434</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="merge">
+      <option name="closed" value="true" />
+      <created>1718837321552</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718837321552</updated>
+    </task>
+    <task id="LOCAL-00006" summary="merge">
+      <option name="closed" value="true" />
+      <created>1718837410243</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718837410243</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,6 +517,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add sign in features" />
     <MESSAGE value="Add Register features, and driver features (profile, history, home, pickup page)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Register features, and driver features (profile, history, home, pickup page)" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>

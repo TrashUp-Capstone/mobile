@@ -13,6 +13,7 @@ import com.dicoding.trashup.ui.user.home.HomeViewModel
 import com.dicoding.trashup.ui.user.main.MainViewModel
 import com.dicoding.trashup.ui.user.profile.change_pass.UserChangePasswordActivity
 import com.dicoding.trashup.ui.user.profile.edit.UserEditProfileActivity
+import com.dicoding.trashup.ui.user.profile.faq.UserFaqActivity
 
 class ProfileUserFragment : Fragment() {
 
@@ -55,6 +56,9 @@ class ProfileUserFragment : Fragment() {
             }
             btnResetUserPw.setOnClickListener {
                 startActivity(Intent(requireContext(), UserChangePasswordActivity::class.java))
+            }
+            btnHelpCenterUser.setOnClickListener {
+                startActivity(Intent(requireContext(), UserFaqActivity::class.java))
             }
         }
     }
