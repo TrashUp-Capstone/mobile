@@ -87,7 +87,8 @@
                 android:layout_height="70dp"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/photo_profile"
+                android:src="@drawable/ic_circle_avatar"
+                android:tint="@color/dark_teal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView2" />
 
