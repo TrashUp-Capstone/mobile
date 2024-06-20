@@ -1,5 +1,6 @@
 package com.dicoding.trashup.ui.driver.history.activity
 
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.dicoding.trashup.ui.driver.history.inprocess.DriverInProcessViewModel
 import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
 import com.dicoding.trashup.ui.driver.home.HomeDriverViewModel
 import com.dicoding.trashup.ui.driver.pickup.ReviewAvailablePickupAdapter
+import java.util.Locale
 
 /**
  * A simple [Fragment] subclass.

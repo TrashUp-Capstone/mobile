@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.trashup.R
@@ -25,9 +26,11 @@ import com.dicoding.trashup.data.network.response.PointsResponseItem
 import com.dicoding.trashup.data.network.response.user.DataActivities
 import com.dicoding.trashup.databinding.FragmentHomeUserBinding
 import com.dicoding.trashup.ui.ViewModelFactory
+import com.dicoding.trashup.ui.driver.home.HomeActivityDriver
 import com.dicoding.trashup.ui.user.camera.CameraActivity
 import com.dicoding.trashup.ui.user.history.activity.ActivityUserViewModel
 import com.dicoding.trashup.ui.user.history.inprocess.ReviewPointsAdapter
+import com.dicoding.trashup.ui.user.main.MainActivity
 import com.dicoding.trashup.ui.user.main.MainViewModel
 import com.dicoding.trashup.ui.user.points.PointsUserActivity
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -88,6 +91,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // fusedLoaction is used to get lat lon user
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireContext())
+        val activity = activity as MainActivity
 
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
@@ -99,21 +103,22 @@ class HomeFragment : Fragment() {
         viewModelMain.getSession().observe(requireActivity()) {
             token = it.token.toString()
         }
-        requestLocation()
+//        requestLocation()
 
         binding.btnAddWaste.setOnClickListener {
-            requestLocation()
-            if (lat != null && lon != null  && token != null) { // if lat lon null, app cannot start the camera
-                viewModel.setLocation(lat!!, lon!!) // dimasukkan ke dalam viewmodel biar lat lon bisa digunakan lagi di user driver
-                viewModel.createWasteActivity(token.toString(), lat!!, lon!!)
-                startCamera()
-                Log.d("HomeFragment", "lat = ${lat} lon = ${lon}")
-                val navOptions = NavOptions.Builder()
-                    .setPopUpTo(R.id.navigation_home_user, true)
-                    .build()
-                findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
-            } else { // show error if lat lon is null
-                showToast("Error lat lon cannot null")
+            requestLocation { locationRetrieved ->
+                if (locationRetrieved && lat != null && lon != null && token != null) {
+                    viewModel.setLocation(lat!!, lon!!)
+                    viewModel.createWasteActivity(token.toString(), lat!!, lon!!)
+                    startCamera()
+                    Log.d("HomeFragment", "lat = $lat lon = $lon")
+                    val navOptions = NavOptions.Builder()
+                        .setPopUpTo(R.id.navigation_home_user, true)
+                        .build()
+                    findNavController().navigate(R.id.navigation_cart_user, null, navOptions)
+                } else {
+                    showToast("Error: lat lon cannot be null")
+                }
             }
         }
 
@@ -143,7 +148,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.getUserData()
 
-            // Menampilkan list point di home
+        // Menampilkan list point di home
         viewModel.userActivities.observe(viewLifecycleOwner) {
             if (it != null) {
                 setHistoryPoints(it)
@@ -156,7 +161,7 @@ class HomeFragment : Fragment() {
         binding.rvRecentWaste.isNestedScrollingEnabled = false;
     }
 
-    private fun requestLocation() {
+    private fun requestLocation(callback: (Boolean) -> Unit) {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(
@@ -165,25 +170,34 @@ class HomeFragment : Fragment() {
                 REQUEST_CODE
             )
             showToast("Location permission is needed for accessing location.")
+            callback(false)  // Permission not granted, return false
         } else {
-            getMyLocation()
+            getMyLocation(callback)
         }
     }
 
-    private fun getMyLocation() {
+    private fun getMyLocation(callback: (Boolean) -> Unit) {
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED) {
+            callback(false)  // Permission not granted, return false
             return
         }
 
         fusedLocation.lastLocation.addOnSuccessListener { mylocation ->
-            lat = mylocation.latitude
-            lon = mylocation.longitude
-            Log.e("Homeragment", "lat = ${lat} lon = ${lon}")
+            if (mylocation != null) {
+                lat = mylocation.latitude
+                lon = mylocation.longitude
+                Log.e("HomeFragment", "lat = $lat lon = $lon")
+                callback(true)  // Location retrieved successfully
+            } else {
+                callback(false)  // Location not retrieved
+            }
+        }.addOnFailureListener {
+            callback(false)  // Location request failed
         }
     }
 
@@ -232,6 +246,12 @@ class HomeFragment : Fragment() {
         // Tampilkan placeholder atau loading spinner
         binding.homeUserWelcome.text = getString(R.string.loading_data)
         binding.tvUserPoints.text = ""
+        binding.tvViewAll.setOnClickListener {
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_home_user, true)
+                .build()
+            findNavController().navigate(R.id.navigation_history_user, null, navOptions)
+        }
     }
 
     private fun hideLoading() {
