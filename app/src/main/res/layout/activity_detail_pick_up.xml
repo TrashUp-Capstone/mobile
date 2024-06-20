@@ -65,7 +65,8 @@
             android:layout_height="120dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
-            android:src="@drawable/photo_profile"
+            android:src="@drawable/ic_circle_avatar"
+            android:tint="@color/dark_teal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
