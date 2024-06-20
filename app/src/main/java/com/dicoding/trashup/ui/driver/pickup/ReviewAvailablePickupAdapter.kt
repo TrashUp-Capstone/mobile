@@ -1,7 +1,13 @@
 package com.dicoding.trashup.ui.driver.pickup
 
+import android.content.Context
+import android.content.Intent
+import android.nfc.NfcAdapter.EXTRA_ID
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,8 +20,9 @@ import com.dicoding.trashup.data.network.response.driver.DataPickUpUser
 import com.dicoding.trashup.data.network.response.driver.PickUpUserResponse
 import com.dicoding.trashup.databinding.AvailablePickupReviewBinding
 import com.dicoding.trashup.formatDate
+import com.dicoding.trashup.ui.driver.pickup.detailpickup.DetailPickUpActivity
 
-class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ReviewAvailablePickupAdapter() : ListAdapter<DataPickUpUser, ReviewAvailablePickupAdapter.MyViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -43,6 +50,15 @@ class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailable
             binding.nameAvailablePickupTv.text = review.name
             binding.addressUserAvailablePickup.text = review.address
             binding.weightWasteAvailablePickupTv.text = context.getString(R.string.card_weight, review.totalWeight.toDouble())
+            binding.detailBtn.setOnClickListener {
+                val intentToDetail = Intent(context, DetailPickUpActivity::class.java)
+                intentToDetail.putExtra(EXTRA_NAME, review.name)
+                intentToDetail.putExtra(EXTRA_ADDRESS, review.address)
+                intentToDetail.putExtra(EXTRA_WEIGHTS, review.totalWeight.toDouble())
+                intentToDetail.putExtra(EXTRA_ID, review.id)
+                Log.e("PickupDriverFragment", "Total Weight = ${review.totalWeight.toDouble()}")
+                context.startActivity(intentToDetail)
+            }
 
         }
     }
@@ -55,6 +71,10 @@ class ReviewAvailablePickupAdapter : ListAdapter<DataPickUpUser, ReviewAvailable
                 return oldItem == newItem
             }
         }
+        private const val EXTRA_NAME =  "extra_name"
+        private const val EXTRA_WEIGHTS = "extra_weights"
+        private const val EXTRA_ADDRESS = "extra_address"
+        private const val EXTRA_ID = "extra_id"
     }
 
 }

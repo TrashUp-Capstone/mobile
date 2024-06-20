@@ -27,6 +27,11 @@ class HistoryPointsFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUserHistoryVoucher()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,5 +56,6 @@ class HistoryPointsFragment : Fragment() {
         val adapter = HistoryPointsAdapter()
         adapter.submitList(historyVoucherItem)
         binding.rvHistoryPoints.adapter = adapter
+        viewModel.getUserHistoryVoucher()
     }
 }

@@ -19,7 +19,7 @@ class HistoryPointsViewModel(private val repository: UserRepository) : ViewModel
         getUserHistoryVoucher()
     }
 
-    private fun getUserHistoryVoucher() {
+    fun getUserHistoryVoucher() {
         _isLoading.value = true
         viewModelScope.launch {
             try {

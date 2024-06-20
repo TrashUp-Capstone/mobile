@@ -27,19 +27,12 @@ class ClaimRewardFragment : Fragment() {
     }
     private lateinit var binding: FragmentClaimRewardBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        list.addAll(getListVoucher())
-//        showRecycleList()
         homeViewModel.getUserData()
         homeViewModel.userData.observe(viewLifecycleOwner) { user ->
             if (user != null) {
+                homeViewModel.getUserData()
                 binding.apply {
                     homeUserWelcome.text = requireContext().getString(R.string.hi_message, user.name)
                     tvUserPoints.text = user.points.toString()
@@ -74,29 +67,6 @@ class ClaimRewardFragment : Fragment() {
         homeViewModel.getUserData()
         viewModel.getListVoucher()
     }
-
-    companion object {
-        const val EXTRA_VOUCHER_ID = "extra_voucher_id"
-    }
-
-//    private fun showRecycleList() {
-//        binding.rvVoucher.layoutManager = LinearLayoutManager(requireContext())
-//        val listVoucherAdapter = ListVoucherAdapter(list)
-//        binding.rvVoucher.adapter = listVoucherAdapter
-//    }
-
-//    private fun getListVoucher(): ArrayList<Voucher> {
-//        val points = resources.getIntArray(R.array.voucher_points)
-//        val date = resources.getStringArray(R.array.voucher_date)
-//        val price = resources.getIntArray(R.array.voucher_price)
-//        val listVoucher = ArrayList<Voucher>()
-//
-//        for (x in points.indices) {
-//            val voucher = Voucher(points[x], price[x], date[x])
-//            listVoucher.add(voucher)
-//        }
-//        return listVoucher
-//    }
 
 
 }
