@@ -66,8 +66,13 @@ class WasteAdapter(private val context: Context) : RecyclerView.Adapter<WasteAda
         sumWeight = listWaste.sumOf { it.weight }
     }
 
-    fun getPoints(): Int = sumpoints
-    fun getWeights(): Double = sumWeight
+    fun getPoints(): Int {
+        return listWaste.sumOf { it.points }
+    }
+
+    fun getWeights(): Double {
+        return listWaste.sumOf { it.weight }
+    }
 
     inner class WasteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemAddWasteBinding.bind(itemView)
