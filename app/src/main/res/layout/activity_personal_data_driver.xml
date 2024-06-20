@@ -1,180 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.registerdriver.PersonalDataDriverActivity">
-    <TextView
-        android:id="@+id/title_personal_driver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/complete_your_driver_profile"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/dark_title"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:fillViewport="true"
+    tools:context=".ui.register.registerdriver.PersonalDataDriverActivity" >
 
-    <TextView
-        android:id="@+id/photo_profile_label"
-        style="@style/tv_label"
-        android:layout_marginTop="39dp"
-        android:text="@string/photo_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_personal_driver" />
-
-    <ImageView
-        android:id="@+id/create_driver_photo"
-        android:layout_width="113dp"
-        android:layout_height="119dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/photo_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_profile_label" />
-
-    <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:text="Choose Image"
-        app:layout_constraintBottom_toBottomOf="@+id/create_driver_photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/create_driver_photo"
-        app:layout_constraintTop_toBottomOf="@+id/photo_profile_label" />
-
-    <TextView
-        android:id="@+id/phone_number_label"
-        style="@style/tv_label"
-        android:text="@string/phone_number"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/create_driver_photo" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneNumberEditTextLayout"
-        style="@style/edit_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_number_label">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_register_phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="14dp"
-            android:hint="@string/insert_phone_number"
-            android:inputType="phone"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/date_of_birth_label"
-        style="@style/tv_label"
-        android:text="@string/date_of_birth"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEditTextLayout" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dateOfBirthEditTextLayout"
-        style="@style/edit_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_of_birth_label">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_register_date_of_birth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="14dp"
-            android:hint="@string/insert_date_of_birth"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/address_label"
-        style="@style/tv_label"
-        android:text="@string/address"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateOfBirthEditTextLayout" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/addressEditTextLayout"
-        style="@style/edit_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_label">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_register_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="14dp"
-            android:hint="@string/insert_address"
-            android:inputType="text"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/vehicleNumber_label"
-        style="@style/tv_label"
-        android:text="@string/license_plate"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressEditTextLayout" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/vehicleNumberEditTextLayout"
-        style="@style/edit_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleNumber_label">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_register_vehicleNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="14dp"
-            android:hint="@string/input_license_plate"
-            android:inputType="text"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.dicoding.trashup.ui.customview.MyButtonTealBg
-        android:id="@+id/regist_create_account_btn"
-        style="@style/large_btn"
-        android:text="@string/next"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleNumberEditTextLayout" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/white_bg"
-        android:indeterminateTint="@color/dark_grey"
-        android:padding="170dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="8dp"
-        tools:visibility="invisible" />
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/title_personal_driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/complete_your_driver_profile"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_title"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/photo_profile_label"
+            style="@style/tv_label"
+            android:layout_marginTop="39dp"
+            android:text="@string/photo_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_personal_driver" />
+
+        <ImageView
+            android:id="@+id/create_driver_photo"
+            android:layout_width="113dp"
+            android:layout_height="119dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/photo_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo_profile_label" />
+
+        <com.dicoding.trashup.ui.customview.MyButtonTransparentBg
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:text="Choose Image"
+            app:layout_constraintBottom_toBottomOf="@+id/create_driver_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/create_driver_photo"
+            app:layout_constraintTop_toBottomOf="@+id/photo_profile_label" />
+
+        <TextView
+            android:id="@+id/phone_number_label"
+            style="@style/tv_label"
+            android:text="@string/phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/create_driver_photo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneNumberEditTextLayout"
+            style="@style/edit_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_register_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="14sp"
+                android:hint="@string/insert_phone_number"
+                android:inputType="phone"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/date_of_birth_label"
+            style="@style/tv_label"
+            android:text="@string/date_of_birth"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberEditTextLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateOfBirthEditTextLayout"
+            style="@style/edit_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_of_birth_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_register_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="14sp"
+                android:hint="@string/insert_date_of_birth"
+                android:inputType="date"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/address_label"
+            style="@style/tv_label"
+            android:text="@string/address"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateOfBirthEditTextLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addressEditTextLayout"
+            style="@style/edit_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_register_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="14sp"
+                android:hint="@string/insert_address"
+                android:inputType="text"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/vehicleNumber_label"
+            style="@style/tv_label"
+            android:text="@string/license_plate"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressEditTextLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/vehicleNumberEditTextLayout"
+            style="@style/edit_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleNumber_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_register_vehicleNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="14sp"
+                android:hint="@string/input_license_plate"
+                android:inputType="text"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.dicoding.trashup.ui.customview.MyButtonTealBg
+            android:id="@+id/regist_create_account_btn"
+            style="@style/large_btn"
+            android:text="@string/next"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleNumberEditTextLayout" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white_bg"
+            android:indeterminateTint="@color/dark_grey"
+            android:padding="170dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="8dp"
+            tools:visibility="invisible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
