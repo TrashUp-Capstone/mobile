@@ -82,17 +82,15 @@ class CartUserFragment : Fragment() {
             idActivity.observe(requireActivity()) {
                 idAct = it
             }
-            Log.d("CartUserFragment", "Token: ${token}, lat: ${lat}, lon: ${lon}, idAct: ${idAct}")
-        }
+              }
 
         viewModelCart.apply {
             message.observe(requireActivity()) {
-                showToast(it)
                 Log.d("CartUserFragment", it)
             }
 
             messagePhoto.observe(requireActivity()) {
-                showToast(it)
+
                 Log.d("CartUserFragment", it)
             }
         }
@@ -101,11 +99,8 @@ class CartUserFragment : Fragment() {
                 showToast(requireContext().getString(R.string.error_empty))
             }
             else {
-                Log.d("ID CART 1", "COY CARTNIH : ${idAct.toString()}")
                 submitWaste()
-                Log.d("ID CART 2", "COY CARTNIH : ${idAct.toString()}")
                 confrimActivity()
-                Log.d("ID CART 3", "COY CARTNIH : ${idAct.toString()}")
                 deleteAllData()
             }
         }
@@ -140,55 +135,6 @@ class CartUserFragment : Fragment() {
         }
     }
 
-//    @RequiresApi(Build.VERSION_CODES.Q)
-//    private fun submitWaste() {
-//        for (waste in adapter.listWaste) {
-//            val weight = waste.weight
-//            val wasteTypes = waste.typeWaste
-//            val wasteId = waste.id
-//
-//            // Buat mengirim photo ke API
-//            val photoUri = waste.photo.toUri()
-//            Log.d("SubmitWaste", "Photo URI: $photoUri")
-//
-//            if (photoUri.scheme == "file") {
-//                val imageFile = File(photoUri.path!!)
-//                val reducedImageFile = imageFile.reduceFileImage()
-//                val reqImageFile = reducedImageFile.asRequestBody("image/jpeg".toMediaType())
-//                val multipartBody = MultipartBody.Part.createFormData(
-//                    "photo",
-//                    reducedImageFile.name,
-//                    reqImageFile
-//                )
-//                viewModelCart.SubmitWaste(token.toString(), idAct.toString(), wasteId.toString(), weight.toString(), wasteTypes)
-//                viewModelCart.submitPhotoWaste(token.toString(), multipartBody)
-//            } else if (photoUri.scheme == "content") {
-//                try {
-//                    val imageFile = uriToFile(photoUri, requireContext()).reduceFileImage()
-//                    val reqImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-//                    val multipartBody = MultipartBody.Part.createFormData(
-//                        "photo",
-//                        imageFile.name,
-//                        reqImageFile
-//                    )
-//                    viewModelCart.SubmitWaste(token.toString(), idAct.toString(), wasteId.toString(), weight.toString(), wasteTypes)
-//                    viewModelCart.submitPhotoWaste(token.toString(), multipartBody)
-//                } catch (e: FileNotFoundException) {
-//                    Log.e("SubmitWaste", "File not found: ${photoUri.path}", e)
-//                    Toast.makeText(requireContext(), "Photo file not found", Toast.LENGTH_SHORT).show()
-//                } catch (e: Exception) {
-//                    Log.e("SubmitWaste", "Error processing file: ${photoUri.path}", e)
-//                    Toast.makeText(requireContext(), "Error processing photo", Toast.LENGTH_SHORT).show()
-//                }
-//            } else {
-//                Log.e("SubmitWaste", "Unknown URI scheme: ${photoUri.scheme}")
-//                Toast.makeText(requireContext(), "Invalid photo URI", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            Log.d("CartUserFragment", "weight = ${weight}, wasteTypes = ${wasteTypes}, wasteId = ${wasteId}")
-//        }
-//    }
-
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun submitWaste() {
         for (waste in adapter.listWaste) {
@@ -197,17 +143,6 @@ class CartUserFragment : Fragment() {
             val wasteId = waste.id
             viewModelCart.SubmitWaste(token.toString(), idAct.toString(), wasteId.toString(), weight.toString(), wasteTypes)
             Log.d("COY submitWaste", "weight = ${weight}, wasteTypes = ${wasteTypes}, wasteId = ${wasteId}")
-
-            // Buat mengirim photo ke API
-//            val photo = waste.photo.toUri()
-//            val imageFile = uriToFile(photo, requireContext()).reduceFileImage()
-//            val reqImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-//            val multipartBody = MultipartBody.Part.createFormData(
-//                "photo",
-//                imageFile.name,
-//                reqImageFile
-//            )
-//          viewModelCart.submitPhotoWaste(token.toString(), multipartBody)
         }
         sendWaste()
     }

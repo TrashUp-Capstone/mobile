@@ -158,6 +158,7 @@
     <string name="faq_a7">You can redeem your points or rewards by going to the "Rewards" section in the app. Select the reward you want to redeem, and follow the instructions provided.</string>
     <string name="waiting_delivered">Press Delivered when the driver has picked up the waste</string>
     <string name="points_not_sufficient">Your points are not sufficient.</string>
+    <string name="error_location_is_not_available">Error: location is not available</string>
     <string-array name="waste_types">
         <item>Cardboard</item>
         <item>Glass</item>

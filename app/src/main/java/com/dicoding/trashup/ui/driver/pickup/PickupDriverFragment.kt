@@ -29,7 +29,7 @@ class PickupDriverFragment : Fragment() {
     private val driverViewModel: HomeDriverViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
-    private val viewModel: PickUpViewModel by activityViewModels() {
+    private val viewModel: PickUpViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
 

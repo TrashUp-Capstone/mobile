@@ -52,7 +52,7 @@ class AddWasteActivity : AppCompatActivity() {
         val wasteResult = intent.getIntExtra(EXTRA_RESULT, 5)
         Log.d("AddWasteActivity", wasteResult.toString())
         val wasteTypes = resources.getStringArray(com.dicoding.trashup.R.array.waste_types)
-        val menuTextAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, wasteTypes)
+        val menuTextAdapter = ArrayAdapter(this, R.layout.simple_dropdown_item_1line, wasteTypes)
         binding.edWasteType.setAdapter(menuTextAdapter)
         binding.edWasteType.setSelection(wasteResult)
 

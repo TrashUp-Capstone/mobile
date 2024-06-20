@@ -17,14 +17,8 @@ class HistoryPointsFragment : Fragment() {
 
     private lateinit var binding: FragmentHistoryPointsBinding
 
-    private val viewModel by activityViewModels<HistoryPointsViewModel>(){
+    private val viewModel by activityViewModels<HistoryPointsViewModel> {
         ViewModelFactory.getInstance(requireActivity())
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onResume() {

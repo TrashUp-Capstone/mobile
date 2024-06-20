@@ -30,7 +30,7 @@ class HomeDriverFragment : Fragment() {
     private val driverViewModel: HomeDriverViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
-    private val viewModel: PickUpViewModel by activityViewModels() {
+    private val viewModel: PickUpViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireActivity().application)
     }
 
@@ -121,10 +121,6 @@ class HomeDriverFragment : Fragment() {
         @Suppress("DEPRECATION")
         activity?.window?.statusBarColor = resources.getColor(R.color.white)
         activity?.window?.decorView?.systemUiVisibility = 0
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 
     companion object {
