@@ -1,5 +1,6 @@
 package com.dicoding.trashup.ui.driver.history.inprocess
 
+import android.location.Geocoder
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -21,6 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.util.Locale
 
 class MapsActivityFragment : Fragment() {
 
@@ -33,6 +35,7 @@ class MapsActivityFragment : Fragment() {
     private val viewModelMain by viewModels<HomeDriverViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
+    private lateinit var geocoder: Geocoder
     private var _binding: FragmentMapsActivityBinding? = null
     private val binding get() = _binding!!
 
@@ -64,6 +67,7 @@ class MapsActivityFragment : Fragment() {
     ): View {
         _binding = FragmentMapsActivityBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        geocoder = Geocoder(requireContext(), Locale.getDefault())
         return root
     }
 
@@ -152,9 +156,17 @@ class MapsActivityFragment : Fragment() {
             lat = firstData.latitude
             lon = firstData.longitude
             updateMapLocation(lat, lon)
-            binding.yourName.text = firstData.userId
-            binding.yourPhoneNumber.text = context?.getString(R.string.card_weight, firstData.totalWeight)
             binding.yourAddres.text = "Lat = ${firstData.latitude} Lon = ${firstData.longitude}"
+            val addresses = geocoder.getFromLocation(lat, lon, 1)
+            if (addresses != null) {
+                if (addresses.isNotEmpty()) {
+                    val address = addresses[0]
+                    val addressText = address.getAddressLine(0) // Ambil alamat utama
+                    binding.yourAddres.text = addressText
+                } else {
+                    binding.yourAddres.text = "Alamat tidak ditemukan"
+                }
+            }
         } else {
             disableView(false)
             Log.e("MapsActivityFragment", "No item found with null endedAt")

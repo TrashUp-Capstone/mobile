@@ -143,7 +143,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.getUserData()
 
-            // Menampilkan list point di home
+        // Menampilkan list point di home
         viewModel.userActivities.observe(viewLifecycleOwner) {
             if (it != null) {
                 setHistoryPoints(it)
